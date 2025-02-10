@@ -10,5 +10,40 @@
 
 <!-- warrens-maps -->
 
+<p>
+
+    The simplest way to put it... The Geolocation API allows you, with the users
+    permission, to access the users location and use the data as you will.
+
+</p>
+<script>
+
+</script>
+<script>
+
+    /*
+
+        Options for
+
+     */
+
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+    };
+
+    function success(pos) {
+        document.getElementById("geolocation").src = `https://www.openstreetmap.org/export/embed.html?bbox
+=${pos.coords.longitude-0.01},${pos.coords.latitude-0.01},${pos.coords.longitude+0.01},${pos.coords.latitude+0.01}&layer=mapnik&marker=${pos.coords.latitude},${pos.coords.longitude}`;
+    }
+
+    function error(err) {
+        console.warn(`Error (${err.code}): ${err.message}`);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+
+</script>
+<iframe id="geolocation" width="500" height="500" src="" allow="geolocation"></iframe>
 </body>
 </html>
