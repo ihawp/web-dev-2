@@ -20,6 +20,10 @@ h1 {
   font-size: 2rem;
 }
 
+a, button {
+  cursor: pointer;
+}
+
 a {
   color: #fff;
   text-decoration: none;
@@ -40,8 +44,11 @@ ul {
   max-height: 500px;
 }
 
-#navigation {
-  justify-content: start;
+#mobile-nav {
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 2rem;
 }
 
 /* width */
@@ -88,7 +95,7 @@ ul {
   justify-content: end;
 }
 
-.j-start {
+.j-start, #navigation {
   justify-content: start;
 }
 

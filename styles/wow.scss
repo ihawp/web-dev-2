@@ -11,7 +11,6 @@ html {
 body {
   background: $color1;
   color: $color2;
-
   font-family: $font-family;
   font-size: 1.125rem;
 }
@@ -32,6 +31,9 @@ h4 {}
 h5 {}
 h6 {}
 p {}
+a, button {
+  cursor: pointer;
+}
 a { color: $color2; text-decoration: none; font-weight: 700; }
 a:visited {
 
@@ -55,8 +57,11 @@ ul {
   max-width: 100%;
   max-height: 500px;
 }
-#navigation {
-  justify-content: start;
+#mobile-nav {
+  border: none;
+  background: none;
+  color: $color2;
+  font-size: 2rem;
 }
 
 
@@ -106,7 +111,7 @@ $full: 100%;
 .j-end {
   justify-content: end;
 }
-.j-start {
+.j-start, #navigation {
   justify-content: start;
 }
 .j-between {
