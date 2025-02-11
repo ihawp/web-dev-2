@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="styles/ihawp.css">
 </head>
 <body>
-<header class="flex flex-row align center justify between p py-1">
-    <h1>LOGO</h1>
-    <nav>
+<header class="flex flex-row a-center j-between p py-1">
+    <h1 style="width: min-content">LOGO</h1>
+    <nav class="w-full flex flex-col a-end">
         <button id="mobile-nav">&#9776;</button>
-        <ul id="navigation" class="display-sm flex g-1">
+        <ul id="navigation" class="display-sm flex-col-sm g-1">
             <li>
                 <a href="">Home</a>
             </li>
@@ -30,8 +30,7 @@
 <!-- https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API -->
 
 <main>
-    <section class="flex wrap align center justify g-1 mx-1">
-        <iframe id="geolocation" width="300" height="300" src="" allow="geolocation"></iframe>
+    <section class="flex wrap a-center j-center g-1 mx-1">
         <div class="w-half">
             <h2>This is your current location?!</h2>
             <p>
@@ -41,9 +40,10 @@
 
             </p>
         </div>
+        <iframe id="geolocation" width="300" height="300" src="" allow="geolocation"></iframe>
     </section>
 </main>
-<footer class="flex justify between align center py-1">
+<footer class="flex j-between a-center py-1">
     <div>
         <p>&copy; Sid, Isaac, Warren 2025.</p>
     </div>
