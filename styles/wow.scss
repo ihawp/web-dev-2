@@ -55,6 +55,9 @@ ul {
   max-width: 100%;
   max-height: 500px;
 }
+#navigation {
+  justify-content: start;
+}
 
 
 /* width */
@@ -169,15 +172,19 @@ $full: 100%;
   width: 100%;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 50em) {
 
-  .flex-col-sm {
-    display: flex;
-    flex-direction: row;
+  .flex {
+    &.flex-col-sm {
+      flex-direction: row;
+    }
   }
 
   #geolocation {
     max-width: 500px;
+  }
+  #navigation {
+    justify-content: end;
   }
 
   .display-sm {
