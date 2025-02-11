@@ -1,18 +1,129 @@
+/* Isaac, Warren, Sid */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #111;
+  color: #fff;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 header, footer {
   background: #222;
 }
 
+h1 {
+  margin: 0;
+  color: #40c540;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+a:hover {
+  color: #40c540;
+}
+
 ul {
   list-style: none;
+  padding: 0;
 }
 
 #geolocation {
   max-width: 100%;
   max-height: 500px;
+}
+
+/* width */
+.w-full {
+  width: 100%;
+}
+
+.w-half {
+  width: 50%;
+}
+
+.flex {
+  display: flex;
+}
+.flex .flex-col {
+  flex-direction: column;
+}
+.flex .flex-row {
+  flex-direction: row;
+}
+.flex .wrap {
+  flex-wrap: wrap;
+}
+
+.align.center {
+  align-items: center;
+}
+.align.end {
+  align-items: end;
+}
+.align.start {
+  align-items: start;
+}
+
+.justify.center {
+  justify-content: center;
+}
+.justify.end {
+  justify-content: end;
+}
+.justify.start {
+  justify-content: start;
+}
+.justify.between {
+  justify-content: space-between;
+}
+
+/* padding */
+.p-1 {
+  padding: 1rem;
+}
+
+/* padding x */
+.px-1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* padding y */
+.py-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* margin */
+.m-1 {
+  margin: 1rem;
+}
+
+/* margin x */
+.mx-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* margin y */
+.my-1 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* gap */
+.g-1 {
+  gap: 1rem;
+}
+
+.g-2 {
+  gap: 2rem;
 }
 
 .display-sm {
@@ -25,6 +136,9 @@ ul {
   }
   .display-sm {
     display: flex;
+  }
+  #mobile-nav {
+    display: none;
   }
 }
 
