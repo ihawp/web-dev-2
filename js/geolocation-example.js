@@ -1,3 +1,9 @@
+/*
+
+    Using Leaflet.js
+
+ */
+
 // DOM gets
 const geoLocation = document.getElementById("geolocation");
 const alert = document.getElementById('alert');
@@ -19,9 +25,16 @@ const alert = document.getElementById('alert');
 
 */
 const options = {
+
+    // Maximum age of cached position (time from unix), default: 0.
     maximumAge: 0,
+
+    // Maximum amount of time the browser has to return a position, default: Infinity.
     timeout: Infinity,
+
+    // More processing of where you are, generally better output.
     enableHighAccuracy: true
+
 };
 
 /*
@@ -30,6 +43,8 @@ const options = {
 
  */
 const id = navigator.geolocation.watchPosition(success, error, options);
+
+let lastLocation;
 
 function success(pos) {
 
@@ -44,20 +59,37 @@ function success(pos) {
         latitude: pos.coords.latitude,
         longitude: pos.coords.longitude
     }
-
     const targetLocation = {
+        latitude: pos.coords.latitude + 0.01,
+        longitude: pos.coords.longitude + 0.01
     }
 
-    // Add map to 'src' of iframe on DOM
-    const openStreetMapURL = `https://www.openstreetmap.org/export/embed.html?bbox=${ userLocation.longitude },${ userLocation.latitude },${ userLocation.longitude },${ userLocation.latitude }&layer=mapnik&marker=${ userLocation.latitude },${ userLocation.longitude }`;
+    document.getElementById('user-latitude').value = userLocation.latitude;
+    document.getElementById('user-longitude').value = userLocation.longitude;
+    document.getElementById('target-latitude').value = targetLocation.latitude;
+    document.getElementById('target-longitude').value = targetLocation.longitude;
 
-    if (geoLocation.src !== openStreetMapURL) {
-        geoLocation.src = openStreetMapURL;
-    }
+    let map = L.map('map').setView([userLocation.latitude, userLocation.longitude], 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([userLocation.latitude, userLocation.longitude]).addTo(map)
+        .bindPopup('your location')
+        .openPopup();
+
+    L.marker([targetLocation.latitude, targetLocation.longitude]).addTo(map)
+        .bindPopup('target')
+        .openPopup();
+
+
+    googleMaps(userLocation, lastLocation, targetLocation);
+    lastLocation = userLocation;
 
     // Determine if you reached the target location!
     if (targetLocation.latitude >= userLocation.latitude - 0.001 && targetLocation.latitude <= userLocation.latitude + 0.001 && targetLocation.longitude >= userLocation.longitude - 0.001 && targetLocation.longitude <= userLocation.longitude + 0.001) {
-        navigator.clearWatch(id);
+        navigator.geolocation.clearWatch(id);
         alert.innerText = 'You have reached the target location!';
     } else {
         alert.innerText = 'You are NOT at the target location.'
@@ -66,6 +98,30 @@ function success(pos) {
 
 function error(err) {
     console.warn(`Error (${err.code}): ${err.message}`);
+}
+
+function googleMaps(userLocation, lastLocation, targetLocation) {
+    console.log(userLocation, lastLocation, targetLocation);
+
+    // User direction
+    if (lastLocation != undefined) {
+        if (userLocation.latitude < lastLocation.latitude) {
+            console.log('moving south');
+        } else {
+            console.log('moving north');
+        }
+        if (userLocation.longitude < lastLocation.longitude) {
+            console.log('moving west');
+        } else {
+            console.log('moving east');
+        }
+    }
+    // IF latitude GOES DOWN they are moving SOUTH
+    // IF latitude GOES UP they are moving NORTH
+
+    // IF longitude GOES UP they are MOVING EAST
+    // IF longitude GOES DOWN they are MOVING WEST
+
 }
 
 
