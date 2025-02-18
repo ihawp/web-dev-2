@@ -1,16 +1,10 @@
-/*
-
-    Using Leaflet.js
-
- */
+/* Using Leaflet.js */
 
 // DOM gets
-const geoLocation = document.getElementById("geolocation");
 const alert = document.getElementById('alert');
 
 /*
 
-    Options
     The api intakes these options to determine how it should act.
 
     enableHighAccuracy: true;
@@ -32,10 +26,18 @@ const options = {
     // Maximum amount of time the browser has to return a position, default: Infinity.
     timeout: Infinity,
 
-    // More processing of where you are, generally better output.
+    // When set to true, enableHigh... does more processing in finding where you are, generally finds the best available output which is the most accurate location.
     enableHighAccuracy: true
 
 };
+
+/*
+
+    Get the position of the user and stop.
+
+ */
+let unusedUserLocation = navigator.geolocation.getCurrentPosition(success, error, options);
+
 
 /*
 
@@ -60,8 +62,8 @@ function success(pos) {
         longitude: pos.coords.longitude
     }
     const targetLocation = {
-        latitude: pos.coords.latitude + 0.01,
-        longitude: pos.coords.longitude + 0.01
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude
     }
 
     document.getElementById('user-latitude').value = userLocation.latitude;
@@ -84,6 +86,82 @@ function success(pos) {
         .openPopup();
 
 
+    let route = [[userLocation.latitude, userLocation.longitude]];
+
+    // find route
+
+    let fetcher = async (current) => {
+
+        // find roads around the user
+
+        let query = `[out:json]; way(around:50, ${current[0]}, ${current[1]})["highway"]; out body; `;
+
+        let queryString = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+
+        return await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.elements.length > 0) {
+                    alert.innerText += "\nThere is a road";
+                    console.log(data);
+
+                    // for all the roads found check for the closest
+
+                    data.elements.forEach((item) => {
+                        query = `[out:json]; node(${item.nodes.join(',')}); out body; `;
+                        return fetch(query);
+                    });
+                    query = `[out:json]; node(${data.elements.node.join(',')}); out body; `;
+                    return fetch(query);
+                } else {
+                    alert.innerText += "\nThere is no road";
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+
+                // check the direction of the road and allow to repeat
+
+                const coordinates = data.elements.map(node => ({
+
+                    id: node.id,
+
+                    lat: node.lat,
+
+                    lon: node.lon
+
+                }));
+
+
+                console.log("Coordinates of the street:", coordinates);
+            })
+            .catch(error => console.error('Error fetching road data:', error));
+    }
+
+    let wrapper = async () => {
+        let foundRoute = false;
+
+        while (!foundRoute) {
+            let currentRoute = [targetLocation.latitude, targetLocation.longitude];
+            let l = await fetcher(currentRoute);
+            if (l !== 0) {
+                route.push(currentRoute);
+            }
+            foundRoute = true;
+        }
+    }
+    wrapper()
+        .then(response => console.log(response));
+
+
+    route.push([targetLocation.latitude, targetLocation.longitude]);
+
+    let polyline = L.polyline(route, {color: 'red'}).addTo(map);
+
+    // zoom the map to the polyline
+    map.fitBounds(polyline.getBounds());
+
+
     googleMaps(userLocation, lastLocation, targetLocation);
     lastLocation = userLocation;
 
@@ -101,21 +179,7 @@ function error(err) {
 }
 
 function googleMaps(userLocation, lastLocation, targetLocation) {
-    console.log(userLocation, lastLocation, targetLocation);
 
-    // User direction
-    if (lastLocation != undefined) {
-        if (userLocation.latitude < lastLocation.latitude) {
-            console.log('moving south');
-        } else {
-            console.log('moving north');
-        }
-        if (userLocation.longitude < lastLocation.longitude) {
-            console.log('moving west');
-        } else {
-            console.log('moving east');
-        }
-    }
     // IF latitude GOES DOWN they are moving SOUTH
     // IF latitude GOES UP they are moving NORTH
 
@@ -123,11 +187,3 @@ function googleMaps(userLocation, lastLocation, targetLocation) {
     // IF longitude GOES DOWN they are MOVING WEST
 
 }
-
-
-/*
-
-    Get the position of the user and stop.
-
- */
-// navigator.geolocation.getCurrentPosition(success, error, options);
