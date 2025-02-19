@@ -13,5 +13,11 @@ body {
 
 #map {
     width: 100vw;
-    height: 500px;
+    height: 100vh;
+}
+
+
+.absolute {
+    z-index: 10000;
+    position: absolute;
 }

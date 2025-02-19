@@ -3,6 +3,8 @@
 // DOM gets
 const alert = document.getElementById('alert');
 
+
+
 /*
 
     The api intakes these options to determine how it should act.
@@ -36,7 +38,7 @@ const options = {
     Get the position of the user and stop.
 
  */
-let unusedUserLocation = navigator.geolocation.getCurrentPosition(success, error, options);
+// let userLocation = navigator.geolocation.getCurrentPosition(success, error, options);
 
 
 /*
@@ -57,83 +59,73 @@ function success(pos) {
         users returned position)
 
      */
-    const userLocation = {
+    const startLocation = {
         latitude: pos.coords.latitude,
-        longitude: pos.coords.longitude
+        longitude: pos.coords.longitude,
+        latSign: Math.sign(pos.coords.latitude),
+        lonSign: Math.sign(pos.coords.longitude)
     }
     const targetLocation = {
-        latitude: pos.coords.latitude,
-        longitude: pos.coords.longitude
+        latitude: pos.coords.latitude - 0.003,
+        longitude: pos.coords.longitude - 0.009
     }
 
-    document.getElementById('user-latitude').value = userLocation.latitude;
-    document.getElementById('user-longitude').value = userLocation.longitude;
+    document.getElementById('user-latitude').value = startLocation.latitude;
+    document.getElementById('user-longitude').value = startLocation.longitude;
     document.getElementById('target-latitude').value = targetLocation.latitude;
     document.getElementById('target-longitude').value = targetLocation.longitude;
 
-    let map = L.map('map').setView([userLocation.latitude, userLocation.longitude], 13);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    L.marker([userLocation.latitude, userLocation.longitude]).addTo(map)
-        .bindPopup('your location')
-        .openPopup();
-
-    L.marker([targetLocation.latitude, targetLocation.longitude]).addTo(map)
-        .bindPopup('target')
-        .openPopup();
-
-
-    let route = [[userLocation.latitude, userLocation.longitude]];
-
-    // find route
+    let route = [[startLocation.latitude, startLocation.longitude]];
 
     let fetcher = async (current) => {
 
         // find roads around the user
 
-        let query = `[out:json]; way(around:50, ${current[0]}, ${current[1]})["highway"]; out body; `;
+        let queryString = `https://overpass-api.de/api/interpreter?data=`;
+        let query = `[out:json]; way(around:50, ${current.latitude}, ${current.longitude})["highway"]; out body; `;
 
-        let queryString = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
-
-        return await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`)
+        return await fetch(queryString + encodeURIComponent(query))
             .then(response => response.json())
             .then(data => {
                 if (data.elements.length > 0) {
                     alert.innerText += "\nThere is a road";
-                    console.log(data);
 
-                    // for all the roads found check for the closest
 
-                    data.elements.forEach((item) => {
-                        query = `[out:json]; node(${item.nodes.join(',')}); out body; `;
-                        return fetch(query);
+                    let lastOne;
+                    data.elements.forEach(async (item) => {
+
+                        query = `[out:json]; node(id: ${item.id}, ${item.nodes}); out body;`;
+                        await fetch(queryString + encodeURIComponent(query))
+                            .then(response => response.json())
+                            .then(data => {
+
+                                data.elements.forEach((item, key) => {
+                                    if (key === 0) {
+                                        console.log(item, key);
+                                        lastOne = item;
+                                        return;
+                                    }
+                                    if (startLocation.latSign === Math.sign(item.lat) && startLocation.lonSign === Math.sign(item.lon)) {
+                                        console.log(item, key);
+                                        item.latVal = startLocation.latitude - item.lat;
+                                        item.lonVal = startLocation.longitude - item.lon;
+                                        if (item.latVal < lastOne.latVal && item.lonVal < lastOne.lonVal) {
+                                            lastOne = item;
+                                        }
+                                    }
+                                });
+                                alert.innerText += `${lastOne.lat}, ${lastOne.lon}`;
+
+                                return lastOne;
+                            })
+                            .catch(error => {
+                                console.error(error);
+                            });
                     });
-                    query = `[out:json]; node(${data.elements.node.join(',')}); out body; `;
-                    return fetch(query);
                 } else {
                     alert.innerText += "\nThere is no road";
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
-
-                // check the direction of the road and allow to repeat
-
-                const coordinates = data.elements.map(node => ({
-
-                    id: node.id,
-
-                    lat: node.lat,
-
-                    lon: node.lon
-
-                }));
-
-
-                console.log("Coordinates of the street:", coordinates);
             })
             .catch(error => console.error('Error fetching road data:', error));
     }
@@ -142,31 +134,49 @@ function success(pos) {
         let foundRoute = false;
 
         while (!foundRoute) {
-            let currentRoute = [targetLocation.latitude, targetLocation.longitude];
-            let l = await fetcher(currentRoute);
-            if (l !== 0) {
-                route.push(currentRoute);
-            }
+
+            console.log('FOUND ROUTE: ' + foundRoute);
+
             foundRoute = true;
+
+            console.log('FOUND ROUTE: ' + foundRoute);
+
+            let l = await fetcher(targetLocation);
+
+
+
+            console.log(l);
+
+            return l;
         }
+
+        return 'Route Found!';
     }
     wrapper()
-        .then(response => console.log(response));
+        .then(response => {
 
 
-    route.push([targetLocation.latitude, targetLocation.longitude]);
+            console.log(response);
 
-    let polyline = L.polyline(route, {color: 'red'}).addTo(map);
+            L.marker([startLocation.latitude, startLocation.longitude]).addTo(map)
+                .bindPopup('your location')
+                .openPopup();
 
-    // zoom the map to the polyline
-    map.fitBounds(polyline.getBounds());
+            L.marker([targetLocation.latitude, targetLocation.longitude]).addTo(map)
+                .bindPopup('target')
+                .openPopup();
 
+            route.push([targetLocation.latitude, targetLocation.longitude]);
+            let polyline = L.polyline(route, {color: 'red'}).addTo(map);
+            map.fitBounds(polyline.getBounds());
+        })
+        .catch(error => console.error(error));
 
-    googleMaps(userLocation, lastLocation, targetLocation);
-    lastLocation = userLocation;
+    lastLocation = startLocation;
+    navigator.geolocation.clearWatch(id);
 
     // Determine if you reached the target location!
-    if (targetLocation.latitude >= userLocation.latitude - 0.001 && targetLocation.latitude <= userLocation.latitude + 0.001 && targetLocation.longitude >= userLocation.longitude - 0.001 && targetLocation.longitude <= userLocation.longitude + 0.001) {
+    if (targetLocation.latitude >= startLocation.latitude - 0.001 && targetLocation.latitude <= startLocation.latitude + 0.001 && targetLocation.longitude >= startLocation.longitude - 0.001 && targetLocation.longitude <= startLocation.longitude + 0.001) {
         navigator.geolocation.clearWatch(id);
         alert.innerText = 'You have reached the target location!';
     } else {
@@ -178,12 +188,14 @@ function error(err) {
     console.warn(`Error (${err.code}): ${err.message}`);
 }
 
-function googleMaps(userLocation, lastLocation, targetLocation) {
-
     // IF latitude GOES DOWN they are moving SOUTH
     // IF latitude GOES UP they are moving NORTH
 
     // IF longitude GOES UP they are MOVING EAST
     // IF longitude GOES DOWN they are MOVING WEST
+let map = L.map('map').setView([0, 0], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-}
+
