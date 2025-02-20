@@ -16,8 +16,14 @@ body {
     height: 100vh;
 }
 
-
 .absolute {
     z-index: 10000;
     position: absolute;
+}
+
+form {
+    width: 100vw;
+    background: white;
+    display: flex;
+
 }
