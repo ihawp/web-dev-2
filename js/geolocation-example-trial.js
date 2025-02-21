@@ -2,38 +2,37 @@
 
 // Keep it simple.
 
+let map = L.map('map').setView([0, 0], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
 const locationFinder = {
     route: [],
     lowest: {},
     looking: false,
-    really: false,
     options: {
         maximumAge: 0,
         timeout: Infinity,
         enableHighAccuracy: true
     },
     currentPosition: function() {
-        navigator.geolocation.getCurrentPosition(this.success, this.error, this.options)
-    },
-    success: function(position) {
-
         locationFinder.looking = true;
-
-        console.log('success');
+        return navigator.geolocation.getCurrentPosition(this.success, this.error, this.options)
+    },
+    success: async function(position) {
         locationFinder.latitude = position.coords.latitude;
         locationFinder.longitude = position.coords.longitude;
 
-        let map = L.map('map').setView([0, 0], 13);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        console.log(locationFinder.route);
+
         L.marker([locationFinder.latitude, locationFinder.longitude]).addTo(map)
             .bindPopup('your location')
             .openPopup();
 
         locationFinder.latSign = Math.sign(position.coords.latitude);
         locationFinder.lonSign = Math.sign(position.coords.longitude);
-        fetcher(`[out:json]; way(around:50, ${locationFinder.latitude}, ${locationFinder.longitude})["highway"]; out body; `)
+        return await fetcher(`[out:json]; way(around:50, ${locationFinder.latitude}, ${locationFinder.longitude})["highway"]; out body; `)
             .then(data => {
 
                 /*
@@ -66,6 +65,7 @@ const locationFinder = {
                                     locationFinder.lowest.lonVal = longi;
                                 }
 
+
                                 if (locationFinder.latSign === Math.sign(q[g].lat) && locationFinder.lonSign === Math.sign(q[g].lon)) {
                                     // allowed to go.
                                     if (Math.abs(locationFinder.lowest.latVal) > Math.abs(lati) && Math.abs(locationFinder.lowest.lonVal) > Math.abs(longi)) {
@@ -76,12 +76,12 @@ const locationFinder = {
                                         console.log(locationFinder.lowest);
                                     }
                                     if (i === l.length - 1 && g === q.length - 1) {
-                                        locationFinder.really = true;
-                                        locationFinder.looking = false;
                                         L.marker([locationFinder.lowest.latitude, locationFinder.lowest.longitude]).addTo(map)
                                             .bindPopup('route 1')
                                             .openPopup();
-
+                                        locationFinder.latitude = locationFinder.lowest.latitude;
+                                        locationFinder.longitude = locationFinder.lowest.longitude;
+                                        locationFinder.looking = false;
                                     }
                                 }
                             }
@@ -108,18 +108,29 @@ const main = async () => {
     // Couldn't find a way to guarantee it happening every couple of seconds through options.
     // So below is a working system, that might be overcomplicated at this point, but will be simplified once I realize.
 
+    let run = 0;
+
+
+    console.log('started');
+
     let routeFound = false;
     while (!routeFound) {
         if (!locationFinder.looking) {
             locationFinder.currentPosition();
         }
-        if (locationFinder.really) {
-            locationFinder.really = false;
+
+        if (run === 2) {
+            console.log('ended');
             routeFound = true;
+            return 1;
         }
-        routeFound = true;
+        console.log('ran');
+        run++;
+
+
+
     }
 }
 main()
-    .then(response => console.log(response))
+    .then(response => console.log('main:', response))
     .catch(error => console.error(error));
