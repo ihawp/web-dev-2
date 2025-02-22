@@ -134,3 +134,14 @@ const main = async () => {
 main()
     .then(response => console.log('main:', response))
     .catch(error => console.error(error));
+
+
+// get user location.
+
+// wait for that to be returned.
+
+// use the location on the set query stuff above.
+
+// wait for the 'lowest' return value.
+
+// print that point (or path to that point)

@@ -42,12 +42,12 @@ const presentationData = {
             title: "Geolocation API",
             content: {
                 0: {
-                    title: "Why use it?",
-                    content: ["The Geolocation API allows any user (that is running JavaScript) to give access to their current location allowing for more dynamic functionality of the given app.", "this is some content"]
+                    title: "What is an API?",
+                    content: ["Application Programming Interface.", "Essentially, "]
                 },
                 1: {
                     title: "Any practical uses?",
-                    content: ["this is some first instance content", "this is some content"]
+                    content: ["The Geolocation API allows any user (that is running JavaScript) to give the browser access to their current location allowing for more dynamic functionality of the given app."]
                 }
             },
             image: "discord.jpg",
