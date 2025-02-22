@@ -22,8 +22,18 @@ body {
 }
 
 form {
-    width: 100vw;
     background: white;
+    flex-wrap: wrap;
+    border-radius: 4px;
+}
+form > div {
+    width: 100%;
+}
+form, form > div {
     display: flex;
+    border-radius: 16px;
+}
 
+form input[type="submit"] {
+    cursor: pointer;
 }
