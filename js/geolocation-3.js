@@ -38,15 +38,15 @@ let dataStruct = {
     targetLon: 0,
 }
 
-async function findNodeValue(id, nodes) {
+function findNodeValue(id, nodes) {
     // returns about 1-5 lat/lon for each node.
-    return await makeFetch(`[out:json]; node(id: ${id}, ${nodes}); out body;`);
+    return makeFetch(`[out:json]; node(id: ${id}, ${nodes}); out body;`);
 }
 
-async function findStreets(lat, lon) {
+function findStreets(lat, lon) {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
     // returns nearest streets node id and nodes
-    return await makeFetch(`[out:json]; way(around:50, ${lat}, ${lon})["highway"]; out body;`);
+    return makeFetch(`[out:json]; way(around:50, ${lat}, ${lon})["highway"]; out body;`);
 }
 
 
