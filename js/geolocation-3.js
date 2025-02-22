@@ -1,13 +1,3 @@
-function error(error) {
-    console.error(error);
-}
-
-const options = {
-    maxAge: 0,
-    timeout: Infinity,
-    enableHighAccuracy: true
-}
-
 function getLocation() {
     return new Promise((resolve) => {
         navigator.geolocation.getCurrentPosition(function(pos) {
@@ -15,6 +5,15 @@ function getLocation() {
         }, error, options);
     });
 }
+function error(error) {
+    console.error(error);
+}
+const options = {
+    maxAge: 0,
+    timeout: Infinity,
+    enableHighAccuracy: true
+}
+
 
 function makeFetch(query) {
     return new Promise((resolve) => {
@@ -39,82 +38,73 @@ let dataStruct = {
     targetLon: 0,
 }
 
+async function findNodeValue(id, nodes) {
+    // returns about 1-5 lat/lon for each node.
+    return await makeFetch(`[out:json]; node(id: ${id}, ${nodes}); out body;`);
+}
 
-async function run() {
+async function findStreets(lat, lon) {
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
-    let result = await getLocation();
-
-    //
-    let lat = result.coords.latitude;
-    let lon = result.coords.longitude;
-    dataStruct.targetLat = dataStruct.startLat + 0.0054;
-    dataStruct.targetLon = dataStruct.startLon + 0.0054;
-
-
-
-
-    if (result) {
-
-        // returns nearest streets node id and nodes
-        let query = await makeFetch(`[out:json]; way(around:50, ${lat}, ${lon})["highway"]; out body;`);
-        console.log(query);
-
-        let qe = query.elements;
-        for (const i in qe) {
-            let l = qe[i];
-
-            // returns about 1-5 lat/lon for each node.
-            let q = await makeFetch(`[out:json]; node(id: ${l.id}, ${l.nodes}); out body;`);
-
-            let qe2 = q.elements;
-            for (const e in qe2) {
-                let p = qe2[e];
-
-                // checking for lowest
-
-                let newLat = Math.abs(lat - p.lat);
-                let newLon = Math.abs(lon - p.lon);
-                let dataClosest = dataStruct.closest;
-
-
-                if (newLat < dataClosest.latVal && newLon < dataClosest.lonVal) {
-                    dataClosest.latitude = p.lat;
-                    dataClosest.longitude = p.lon;
-                    dataClosest.latVal = newLat;
-                    dataClosest.lonVal = newLon;
-                }
-
-
-            }
-
-            console.log(q);
-        }
-
-
-
-        // make query for surrounding street.
-        // `[out:json]; way(around:50, ${result.coords.latitude}, ${result.coords.longitude})["highway"]; out body;`
-        // `[out:json]; node(id: ${l[i].id}, ${l[i].nodes}); out body;`
-
-        // find actual lat (this is the waste of time of this app)
-
-        // find the closest intersection
-            // continue one way in direction of target
-                // whether this is x or y will be two cases?
-                // or we could have variable acting as both.
-
-    }
-    return result;
+    // returns nearest streets node id and nodes
+    return await makeFetch(`[out:json]; way(around:50, ${lat}, ${lon})["highway"]; out body;`);
 }
 
 
+
+let map = L.map('map').setView([0, 0], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+const addMarker = (lat, lon, label) => {
+    L.marker([lat, lon]).addTo(map)
+        .bindPopup(label)
+        .openPopup();
+}
+
 // add app.
-run()
-    .then(() => {
-        console.log(dataStruct);
+
+// add setTimeout to run this (from start())? it will use the modulated functions in the most efficient way for route searching.
+// as start is simply to get location and makle the map show you where you're at and where you're going.
+// and then however fast the route is calculated it will appear!
+async function run() {
+
+}
+
+async function start() {
 
 
 
+    let userLocation = await getLocation();
+    dataStruct.startLat = userLocation.coords.latitude;
+    dataStruct.startLon = userLocation.coords.longitude;
+    addMarker(dataStruct.startLat, dataStruct.startLon, 'Your Location');
 
-    })
-    .catch(error => console.error(error));
+    // figure out quadrant that target is located in (in) relation to the start location.
+    // might help in determining if we are going the right direction.
+    /*
+    target(-, +)  |     target(+, +)
+                  |
+    ------------start-------------
+                  |
+    target(-, -)  |     target(+, -)
+     */
+
+    dataStruct.targetLat = dataStruct.startLat + 0.0009;
+    dataStruct.targetLon = dataStruct.startLon + 0.0009;
+    addMarker(dataStruct.targetLat, dataStruct.targetLon, 'Target Location');
+
+    let polyline = L.polyline([[dataStruct.startLat, dataStruct.startLon], [dataStruct.targetLat, dataStruct.targetLon]], {color: 'red'}).addTo(map);
+    map.fitBounds(polyline.getBounds());
+
+    if (userLocation) {
+        console.log(userLocation, dataStruct);
+        let l = await findStreets(dataStruct.startLat, dataStruct.startLon);
+        let q = await findStreets(l.lon, l.lat);
+        console.log(q);
+    }
+
+    // when lowest returned check if it is within 50 metres of target. if so, stop it.
+}
+
+start();
