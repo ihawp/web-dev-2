@@ -1,0 +1,207 @@
+/* Isaac, Warren, Sid */
+
+$font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$color1: #111;
+$color2: #fff;
+$color3: #40c540;
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: $color1;
+  color: $color2;
+  font-family: $font-family;
+  font-size: 1.125rem;
+}
+
+header, footer {
+  background: #222;
+}
+
+h1 {
+  margin: 0;
+  color: $color3;
+  font-size: 2rem;
+}
+
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+p {}
+a, button {
+  cursor: pointer;
+}
+a { color: $color2; text-decoration: none; font-weight: 700; }
+a:visited {
+
+}
+a:focus {
+
+}
+a:hover {
+  color: $color3;
+}
+a:active {
+
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+#geolocation {
+  max-width: 100%;
+  max-height: 500px;
+}
+#mobile-nav {
+  border: none;
+  background: none;
+  color: $color2;
+  font-size: 2rem;
+}
+
+
+/* width */
+$full: 100%;
+.w-full {
+  width: $full;
+}
+.w-half {
+  width: calc($full/2);
+}
+
+.flex {
+
+  display: flex;
+
+  &.flex-col, &.flex-col-sm {
+    flex-direction: column;
+  }
+
+  &.flex-row {
+    flex-direction: row;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+}
+
+
+/* align items */
+.a-center {
+  align-items: center;
+}
+.a-end {
+  align-items: end;
+}
+.a-start {
+  align-items: start;
+}
+
+/* justify content */
+.j-center {
+  justify-content: center;
+}
+.j-end {
+  justify-content: end;
+}
+.j-start, #navigation {
+  justify-content: start;
+}
+.j-between {
+  justify-content: space-between;
+}
+
+
+/* padding */
+.p-1 {
+  padding: 1rem;
+}
+
+/* padding x */
+.px-half {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.px-1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* padding y */
+.py-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.py-2 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* margin */
+.m-1 {
+  margin: 1rem;
+}
+
+/* margin x */
+.mx-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* margin y */
+.my-1 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* gap */
+.g-1 {
+  gap: 1rem;
+}
+.g-2 {
+  gap: 2rem;
+}
+
+.display-sm {
+  display: none;
+}
+
+.w-full-sm-half {
+  width: 100%;
+}
+
+@media (min-width: 50em) {
+
+  .flex {
+    &.flex-col-sm {
+      flex-direction: row;
+    }
+  }
+
+  #geolocation {
+    max-width: 500px;
+  }
+  #navigation {
+    justify-content: end;
+  }
+
+  .display-sm {
+    display: flex;
+  }
+
+  .w-full-sm-half {
+    width: 50%;
+  }
+
+  #mobile-nav {
+    display: none;
+  }
+
+}
