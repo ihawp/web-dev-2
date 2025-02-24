@@ -2,23 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Dev 2 - P1</title>
 
-    <link rel="stylesheet" href="styles/cool.css">
+    <link rel="stylesheet" href="styles/normalize-fwd.css">
+    <link rel="stylesheet" href="styles/geolocation.css">
 </head>
 <body>
-<header>
-    <h1>LOGO</h1>
-    <nav>
-        <ul>
+<header class="flex wrap a-center j-between py-2 px-half">
+    <h1>Web Apis</h1>
+    <button id="mobile-nav">&#9776;</button>
+    <nav class="flex w-full-sm-half display-sm" id="navigation">
+        <ul class="flex flex-col-sm g-2">
             <li>
-                <a href="">Home</a>
+                <a href="">Fetch</a>
             </li>
             <li>
-                <a href="">About</a>
+                <a href="">Geolocation</a>
             </li>
             <li>
-                <a href="">Other Things</a>
+                <a href="">Web Storage</a>
             </li>
         </ul>
     </nav>
@@ -27,50 +30,34 @@
 <!-- Implementation of Geolocation API using OpenStreetMap to show you where you are! -->
 <!-- https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API -->
 
-<p>
+<main class="py-1">
+    <section class="flex wrap a-start j-center g-1 mx-1">
+        <div class="w-half">
+            <h2>Geolocation API</h2>
+            <p>
 
-    The simplest way to put it... The Geolocation API allows you, with the users
-    permission, to access the users location and use the data as you will.
+                The simplest way to put it... The Geolocation API allows you, with the users
+                permission, to access the users location and use the data as you will.
 
-</p>
-<script>
+            </p>
+            <div id="alert">
 
-</script>
-<script>
-
-    /*
-
-        Options for
-
-     */
-
-    const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-    };
-
-    function success(pos) {
-        document.getElementById("geolocation").src = `https://www.openstreetmap.org/export/embed.html?bbox
-=${pos.coords.longitude-0.01},${pos.coords.latitude-0.01},${pos.coords.longitude+0.01},${pos.coords.latitude+0.01}&layer=mapnik&marker=${pos.coords.latitude},${pos.coords.longitude}`;
-    }
-
-    function error(err) {
-        console.warn(`Error (${err.code}): ${err.message}`);
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
-
-</script>
-<iframe id="geolocation" width="500" height="500" src="" allow="geolocation">
-    <h2>This is where you are.</h2>
-</iframe>
-<footer>
+            </div>
+        </div>
+        <div class="flex-grow-1">
+            <iframe id="geolocation" width="300" height="300" src="" allow="geolocation"></iframe>
+        </div>
+    </section>
+</main>
+<footer class="flex j-between a-center py-2 px-half">
     <div>
-        <p>&copy; Sid, Isaac, Warren 2025.</p>
+        <p>&copy; Isaac, Warren 2025.</p>
     </div>
     <div>
         <a href="">GitHub Website</a>
     </div>
 </footer>
+<script src="js/mobile-navigation.js"></script>
+<script src="js/geolocation-example.js"></script>
 </body>
 </html>
