@@ -1,0 +1,113 @@
+/* 
+---------------- General Text Styles
+---------------- Artork Display
+---------------- Search Bar
+*/
+
+
+/* General Text Styles*/
+
+body {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #282828;
+	background-color: #ffffff;
+    font-size: clamp(1rem, 1.5vw, 2rem);
+    margin: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin: .5em 0;
+	font-size: 1.75rem;
+    color: #2154a4;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 7rem);
+    text-align: center;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 5rem);
+}
+
+h3 {
+    font-size: clamp(1rem, 2vw, 3rem);
+}
+
+a {
+    color: #2154a4;
+    text-decoration: none;
+}
+
+a:hover, 
+a:active {
+    color: black;
+}
+
+a:focus {
+    color: black;
+    border: 1px solid black;
+}
+
+/* Artwork Display */
+
+.item-image {
+    width: 100%;
+    height: auto;
+    padding-bottom: 1rem;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 1rem;
+}
+
+
+@media (min-width: 50em) {
+    .item {
+        border-bottom: 2px solid #2154a4;
+    }
+
+    .item-image {
+        width: 20%;
+    }
+
+    .item-description {
+        width: 50%;
+    }
+
+    .artworks h2 {
+        padding-left: 4rem;
+    }
+}
+
+/* Search Bar */
+
+.search form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: none;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search form input {
+    width: 80%;
+    padding: .5rem;
+    font-size: clamp(1rem, 2vw, 3rem);
+    border: 1px solid #2154a4;
+}

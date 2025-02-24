@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A page using API to grab information from harvard's art api and displaying them.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A page using API to grab information from harvard's art api and displaying them."
+    />
     <title>Artshow</title>
-</head>
-<body>
-    
+
+    <!-- Stylesheets -->
+     <link rel="stylesheet" href="styles/normalize-fwd.css">
+    <link rel="stylesheet" href="styles/ihawp.css" />
+    <link rel="stylesheet" href="styles/art.css" />
+  </head>
+  <body>
+    <!-- <header>
+      <h1>LOGO</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="">Home</a>
+          </li>
+          <li>
+            <a href="">About</a>
+          </li>
+          <li>
+            <a href="">Other Things</a>
+          </li>
+        </ul>
+      </nav>
+    </header> -->
+    <h1>Artshow</h1>
+    <section class="search">
+        
+        <form action="#">
+          <label for="search"><h3>Search:</h3></label>
+          <input type="text" id="search" name="search" placeholder="try searching here...">
+        </form>
+    </section>
+
+    <section class="artworks" id="artworks">
+        <h2>Harvard Art Museum</h2>
+    </section>
+
+    <section id="loading">
+      <h2>Loading...</h2>
+    </section>
+
     <script src="js/artshow.js"></script>
-</body>
+  </body>
 </html>
