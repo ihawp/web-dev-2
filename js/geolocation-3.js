@@ -125,6 +125,7 @@ function searchForRoute(lat, lon) {
                         // testing below
 
 
+
                         if (largeCount === 10) {
                             resolve(false);
                         }
@@ -142,8 +143,12 @@ function searchForRoute(lat, lon) {
                             largeCount++;
                         }
 
-                        resolve(searchForRoute());
+                        return await searchForRoute(dataStructClosest.latitude, dataStructClosest.longitude);
 
+                    }
+
+                    if (p[q] === p[p.length - 1] && o[g] === o[o.length - 1]) {
+                        console.log('last one done');
                     }
 
                 }
@@ -155,6 +160,8 @@ function searchForRoute(lat, lon) {
 
 const userLat = document.getElementById('user-latitude');
 const userLon = document.getElementById('user-longitude');
+
+let route = [];
 
 async function start() {
 
@@ -187,14 +194,14 @@ async function start() {
 
     // move this func call to outside in event listener for submit button.
     if (userLocation) {
-        let routeFound = await searchForRoute();
+        let routeFound = await searchForRoute(dataStruct.startLat, dataStruct.startLon);
 
         if (routeFound) {
 
             console.log(routeFound);
 
             // print the route line (polyline)
-            let polyline = L.polyline([[dataStruct.startLat, dataStruct.startLon]], {color: 'red'}).addTo(map);
+            let polyline = L.polyline([[dataStruct.startLat, dataStruct.startLon], [dataStruct.startLat, dataStruct.startLon + 0.0005]], {color: 'red'}).addTo(map);
             map.fitBounds(polyline.getBounds());
 
         } else {
