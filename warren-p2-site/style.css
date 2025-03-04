@@ -21,6 +21,10 @@ html {
   display: flex;
 }
 
+.items-center {
+  align-items: center;
+}
+
 .move-down {
   animation: moveDown 400ms ease;
 }
@@ -368,9 +372,109 @@ section {
   margin-bottom: 0.1rem;
   margin-right: 0.25rem;
 }
+#card-2 .second-thing:before {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235)), linear-gradient(0deg, rgba(255, 255, 255, 0.0509803922), rgba(255, 255, 255, 0.0509803922));
+  border-radius: 8px;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+}
+#card-2 .second-thing {
+  left: 118px;
+  position: absolute;
+  top: 28px;
+  opacity: 0;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  background: radial-gradient(66.08% 90.13% at 50% 97.37%, rgba(136, 125, 255, 0.1607843137), rgba(136, 125, 255, 0)), rgba(11, 2, 23, 0.1019607843);
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px;
+  transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) transform, 0.45s cubic-bezier(0.6, 0.6, 0, 1) opacity;
+  width: 254px;
+}
+#card-2 .second-thing .title {
+  font-feature-settings: "cv06" on, "calt" off, "liga" off;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 24px;
+}
+#card-2 .second-thing .text {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 16px;
+  color: #817b8e;
+  margin-bottom: 8px;
+  margin-top: 5px;
+}
+#card-2 .second-thing .footer {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.0509803922);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+  width: 100%;
+  font-size: 12px;
+  font-feature-settings: "cv06" on, "calt" off, "liga" off;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 16px;
+  color: #817b8e;
+}
+#card-2 .second-thing .svg {
+  margin-right: 4px;
+}
+#card-2 .second-thing .desktop:after {
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "|";
+  width: 25px;
+  height: max-content;
+}
+#card-2 #mobile-chart {
+  object-fit: cover;
+  object-position: -50px 40px;
+  width: 670px;
+  height: 130px;
+  transition: 300ms ease;
+  overflow: visible;
+}
+
 .card:hover .first-thing {
   transform: translateX(-150px);
   opacity: 0;
+}
+
+.card:hover .second-thing {
+  transform: translateX(-88px);
+}
+
+#card-2:hover .second-thing {
+  opacity: 1;
+}
+
+#card-2:hover #mobile-chart {
+  object-fit: cover;
+  object-position: -610px 25px;
+  width: 670px;
 }
 
 .mb--0-5 {
