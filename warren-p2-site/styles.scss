@@ -595,14 +595,37 @@ section {
   }
 }
 
+#technical {
+  padding-bottom: 170px;
+  padding-top: 132px;
+  position: relative;
+}
+
 footer {
+
+  background: radial-gradient(32.81% 53.93% at 50% 0%, #8566ff0a, #8566ff00 100%, #8566ff00);
 
   .footer-top, .footer-bottom {
     display: flex;
     flex-direction: column;
   }
 
+  .footer-top::before {
+    background: radial-gradient(50% 56400% at 50% 100%, #a9a3c23d, #a9a3c200);
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
   .footer-top {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 88px 0 64px;
+    position: relative;
 
     svg {
       height: 24px;

@@ -3,11 +3,17 @@ let open = items[0];
 
 
 items.forEach((item) => item.addEventListener('click', (event) => {
-    let faqClicked = item.firstElementChild;
-    if (faqClicked !== open) open.parentElement.open = false;
-    faqClicked.lastElementChild.style.transform = 'rotate(90deg)';
-    open.lastElementChild.style.transform = 'rotate(0deg)';
-    open = faqClicked;
+    event.preventDefault();
+    if (item.open) {
+        item.open = false;
+        item.firstElementChild.lastElementChild.style.transform = 'rotate(0deg)';
+    } else {
+        open.open = false;
+        open.firstElementChild.lastElementChild.style.transform = 'rotate(0deg)';
+        item.open = true;
+        item.firstElementChild.lastElementChild.style.transform = 'rotate(90deg)';
+    }
+    open = item;
 }));
 
 
