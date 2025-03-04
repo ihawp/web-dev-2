@@ -105,6 +105,7 @@ body {
 
   // delete probably
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -119,7 +120,7 @@ h2 {
   font-size: 2rem;
 }
 
-main {
+main, footer, header {
   width: 356px;
   display: flex;
   flex-direction: column;
@@ -172,7 +173,7 @@ section {
 
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 
   .card-inner {
     position: relative;
@@ -186,9 +187,9 @@ section {
   .card {
     text-align: left;
     height: 304px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 16px;
     overflow: hidden;
+    position: relative;
   }
 
   .content {
@@ -490,6 +491,10 @@ section {
     .svg {
       margin-right: 4px;
     }
+    .number {
+      font-weight: 800;
+      color: #fff;
+    }
     .desktop:after {
       font-size: 9px;
       display: flex;
@@ -545,9 +550,9 @@ section {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .card { width: 360px; }
-  main {
-    width: 100%;
+  .card { width: 398px; }
+  main, footer, header {
+    width: 1248px;
   }
   .not-button {
     font-size: 14px;
@@ -558,12 +563,36 @@ section {
   #cards-section-title {
     font-size: 56px;
     line-height: 64px;
+    width: 600px;
+    margin-top: 20px;
   }
   #cards-video {
-    width: 90%;
+    width: 100%;
     margin-bottom: -7rem;
   }
-  #cards-section-title {
-    width: 600px;
-  }
+}
+
+footer {
+
+}
+
+
+.magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  position: absolute;
+  z-index: 2;
+}
+
+.magical-borders-content>* {
+  background: linear-gradient(180deg, #a9a3c233, #a9a3c20c);
+  border-radius: 16px;
+  position: relative;
 }

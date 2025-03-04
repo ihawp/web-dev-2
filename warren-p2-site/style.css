@@ -89,6 +89,7 @@ body {
   margin: 1rem;
   overflow-x: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -102,7 +103,7 @@ h2 {
   font-size: 2rem;
 }
 
-main {
+main, footer, header {
   width: 356px;
   display: flex;
   flex-direction: column;
@@ -152,7 +153,7 @@ section {
 .cards {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 .cards .card-inner {
   position: relative;
@@ -165,9 +166,9 @@ section {
 .cards .card {
   text-align: left;
   height: 304px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 16px;
   overflow: hidden;
+  position: relative;
 }
 .cards .content {
   padding: 0 32px 24px;
@@ -440,6 +441,10 @@ section {
 #card-2 .second-thing .svg {
   margin-right: 4px;
 }
+#card-2 .second-thing .number {
+  font-weight: 800;
+  color: #fff;
+}
 #card-2 .second-thing .desktop:after {
   font-size: 9px;
   display: flex;
@@ -495,10 +500,10 @@ section {
     flex-wrap: wrap;
   }
   .card {
-    width: 360px;
+    width: 398px;
   }
-  main {
-    width: 100%;
+  main, footer, header {
+    width: 1248px;
   }
   .not-button {
     font-size: 14px;
@@ -509,14 +514,32 @@ section {
   #cards-section-title {
     font-size: 56px;
     line-height: 64px;
+    width: 600px;
+    margin-top: 20px;
   }
   #cards-video {
-    width: 90%;
+    width: 100%;
     margin-bottom: -7rem;
   }
-  #cards-section-title {
-    width: 600px;
-  }
+}
+.magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  position: absolute;
+  z-index: 2;
+}
+
+.magical-borders-content > * {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
+  border-radius: 16px;
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */
