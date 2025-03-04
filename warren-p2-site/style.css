@@ -1,0 +1,301 @@
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: "Rebond Grotesque";
+  src: url("fonts/bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter V";
+  src: url("fonts/medium.woff2") format("woff2");
+  src: url("fonts/regular.woff2") format("woff2");
+}
+.flex {
+  display: flex;
+}
+
+.move-down {
+  animation: moveDown 400ms ease;
+}
+
+.move-up {
+  animation: moveUp 400ms ease;
+}
+
+.move-up-back {
+  animation: moveUpBack 400ms ease;
+}
+
+.move-down-back {
+  animation: moveDownBack 400ms ease;
+}
+
+@keyframes moveDown {
+  0% {
+    opacity: 1;
+    top: 80px;
+  }
+  100% {
+    opacity: 0;
+    top: 145px;
+  }
+}
+@keyframes moveUp {
+  0% {
+    opacity: 0;
+    top: -70px;
+  }
+  100% {
+    opacity: 1;
+    top: 20px;
+  }
+}
+@keyframes moveUpBack {
+  0% {
+    opacity: 0;
+    top: 145px;
+  }
+  100% {
+    opacity: 1;
+    top: 80px;
+  }
+}
+@keyframes moveDownBack {
+  0% {
+    opacity: 1;
+    top: 20px;
+  }
+  100% {
+    opacity: 0;
+    top: -70px;
+  }
+}
+body {
+  font-family: "Inter V", sans-serif;
+  background: #0a0118;
+  color: #fff;
+  font-size: 1rem;
+  margin: 1rem;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Rebond Grotesque", sans-serif;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+main {
+  width: 356px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.random {
+  width: 670px;
+  height: 130px;
+  transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) transform, 1s cubic-bezier(0.6, 0.6, 0, 1) opacity !important;
+  left: 0;
+  top: 50px;
+}
+
+.season-top-bottom {
+  top: -17px;
+}
+
+.season-dot {
+  width: 26px;
+  height: 26px;
+}
+
+#season-dot-1 {
+  left: 50px;
+}
+
+#season-dot-2 {
+  left: 100px;
+}
+
+#season-dot-3 {
+  left: 150px;
+}
+
+#cards-video {
+  width: 670px;
+}
+.text-align-center {
+  text-align: center;
+}
+
+.not-button {
+  background: rgba(255, 255, 255, 0.0392156863);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  margin: 0 auto 12px;
+  padding: 4px 14px;
+  width: max-content;
+  font-size: 12px;
+}
+
+#card-1 .none {
+  display: none;
+}
+#card-1 .animation-1-popup:before {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235)), linear-gradient(0deg, rgba(255, 255, 255, 0.0509803922), rgba(255, 255, 255, 0.0509803922));
+  border-radius: 8px;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+}
+#card-1 #card-1-popup-1 {
+  top: 80px;
+}
+#card-1 #card-1-popup-2 {
+  top: -65px;
+}
+#card-1 .animation-1-popup {
+  backdrop-filter: blur(6px);
+  background: radial-gradient(66.08% 90.13% at 50% 97.37%, rgba(136, 125, 255, 0.1607843137), rgba(136, 125, 255, 0)), rgba(11, 2, 23, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+  position: absolute;
+  width: 316px;
+}
+#card-1 .animation-1-popup div:first-of-type {
+  margin-right: 8px;
+}
+#card-1 .animation-1-popup .titlee {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+#card-1 .animation-1-popup .textt {
+  font-size: 12px;
+  line-height: 16px;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.cards .card {
+  text-align: left;
+  height: 304px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.cards .content {
+  padding: 0 32px 24px;
+}
+.cards .content .text, .cards .content .title {
+  font-family: "Inter V", sans-serif;
+  font-weight: 500;
+  line-height: 24px;
+}
+.cards .content .title {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.cards .content .text {
+  color: #9b96b0;
+  font-size: 14px;
+}
+.cards .custom-1 {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 196px;
+  margin: 0;
+  padding: 16px 16px 24px;
+}
+.cards .custom-1 .example {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+.cards .custom-1 .title, .cards .custom-1 .text {
+  font-size: 12px;
+}
+.cards .custom-1 .title {
+  color: #d2d0dd;
+  margin-right: 8px;
+}
+.cards .custom-1 .text {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.0196078431);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: #bab3ff;
+  padding: 6px 8px;
+}
+
+.mb--0-5 {
+  margin-bottom: -0.5rem;
+}
+
+.absolute {
+  position: absolute;
+}
+
+@media screen and (min-width: 700px) {
+  body {
+    font-family: "Inter V", sans-serif;
+  }
+}
+#card-1-popup-1, #card-1-popup-2 {
+  transition: 400ms ease;
+}
+
+.card:hover #card-1-popup-1 {
+  opacity: 0;
+  transform: translateY(45px);
+}
+
+.card:hover #card-1-popup-2 {
+  opacity: 1;
+  top: 0;
+  transform: translateY(85px);
+}
+
+.season-dot {
+  transition: 200ms ease;
+}
+
+.card:hover #season-dot-1 {
+  transform: translate(25px, 85px);
+}
+
+/*# sourceMappingURL=style.css.map */
