@@ -110,33 +110,8 @@ section {
   align-items: center;
 }
 
-.random {
-  width: 670px;
-  height: 130px;
-  transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) transform, 1s cubic-bezier(0.6, 0.6, 0, 1) opacity !important;
-  left: 0;
-  top: 50px;
-}
-
 .season-top-bottom {
   top: -17px;
-}
-
-.season-dot {
-  width: 26px;
-  height: 26px;
-}
-
-#season-dot-1 {
-  left: 50px;
-}
-
-#season-dot-2 {
-  left: 100px;
-}
-
-#season-dot-3 {
-  left: 150px;
 }
 
 #cards-video {
@@ -291,11 +266,65 @@ section {
 }
 
 .season-dot {
-  transition: 200ms ease;
+  width: 18px;
+  height: 18px;
+  transition: 300ms ease;
+}
+
+#season-dot-1 {
+  left: 138px;
+  top: 50px;
+}
+
+#season-dot-2 {
+  left: 168px;
+  top: 59px;
+}
+
+#season-dot-3 {
+  left: 195px;
+  top: 42px;
+}
+
+.card:hover .season-dot {
+  width: 26px;
+  height: 26px;
 }
 
 .card:hover #season-dot-1 {
-  transform: translate(25px, 85px);
+  transform: translate(73px, 63px);
+}
+
+.card:hover #season-dot-2 {
+  transform: translate(82px, 76px);
+}
+
+.card:hover #season-dot-3 {
+  transform: translate(92px, 80px);
+}
+
+#chart-background {
+  -webkit-transition: 400ms ease;
+  width: 670px;
+  height: 130px;
+  object-position: left;
+  object-fit: cover;
+  left: 0;
+  top: 50px;
+  background-image: url("images/cards/card-seasonality-chart-border.png");
+  background-position: 0px;
+  background-size: 670px 100%;
+  background-repeat: no-repeat;
+}
+
+.card:hover #chart-background {
+  object-position: center;
+  object-fit: cover;
+  left: 0;
+  top: 50px;
+  background-image: url("images/cards/card-seasonality-chart-border.png");
+  background-position: -157px -30px;
+  background-size: 670px 100%;
 }
 
 /*# sourceMappingURL=style.css.map */
