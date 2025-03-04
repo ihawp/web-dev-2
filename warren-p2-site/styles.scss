@@ -4,6 +4,7 @@
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
+  user-select: none;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -130,17 +131,8 @@ section {
   align-items: center;
 }
 
-// below is video section
-
-.season-top-bottom {
-  top: -17px;
-}
-
 #cards-video {
   width: 670px;
-
-  video {
-  }
 }
 
 // below is first section stuff.
@@ -157,12 +149,74 @@ section {
   padding: 4px 14px;
   width: max-content;
   font-size: 12px;
+  text-transform: uppercase;
 }
 
+/*
+    CARDS TITLE (below video of sphere)
+*/
+#cards-section-title:before {
+  content: "Spot issues ";
+}
+#cards-section-title {
+  width: 270px;
+}
+#cards-section-title:after {
+  content: " smart indicators";
+}
+
+.cards {
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .card-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 196px;
+    margin: 0;
+    padding: 16px 16px 24px;
+  }
+
+  .card {
+    text-align: left;
+    height: 304px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .content {
+    padding: 0 32px 24px;
+
+    .text, .title {
+      font-family: "Inter V", sans-serif;
+      font-weight: 500;
+      line-height: 24px;
+    }
+    .title {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .text {
+      color: #9b96b0;
+      font-size: 14px;
+    }
+  }
+
+}
 #card-1 {
 
-  .none {
-    display: none;
+  .titlee {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+  .textt {
+    font-size: 12px;
+    line-height: 16px;
   }
   .animation-1-popup:before {
     background: linear-gradient(180deg, #a9a3c233, #a9a3c20c), linear-gradient(0deg, #ffffff0d, #ffffff0d);
@@ -205,60 +259,16 @@ section {
     }
 
 
-    .titlee {
-      font-size: 14px;
-      line-height: 24px;
-      font-weight: 500;
-    }
-    .textt {
-      font-size: 12px;
-      line-height: 16px;
-    }
   }
-  .second {
-
+  .season-top-bottom {
+    top: -17px;
   }
 }
 
-.cards {
+// ANIMATION ONE
+#card-1 {
 
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-  .card {
-    text-align: left;
-    height: 304px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .content {
-    padding: 0 32px 24px;
-
-    .text, .title {
-      font-family: "Inter V", sans-serif;
-      font-weight: 500;
-      line-height: 24px;
-    }
-    .title {
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-    .text {
-      color: #9b96b0;
-      font-size: 14px;
-    }
-  }
-
-  .custom-1 {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    min-height: 196px;
-    margin: 0;
-    padding: 16px 16px 24px;
+  .card-1-custom {
 
     .example {
       bottom: 10px;
@@ -286,27 +296,30 @@ section {
       color: #bab3ff;
       padding: 6px 8px;
     }
-
-
   }
 
-}
-
-.mb--0-5 {
-  margin-bottom: -.5rem;
-}
-.absolute {
-  position: absolute;
-}
-
-@media screen and (min-width: 700px) {
-  body {
-    font-family: 'Inter V', sans-serif;
+  #card-1-popup-1, #card-1-popup-2 {
+    transition: 400ms ease;
   }
-}
 
-#card-1-popup-1, #card-1-popup-2 {
-  transition: 400ms ease;
+  .season-dot {
+    width: 18px;
+    height: 18px;
+    transition: .45s cubic-bezier(.6,.6,0,1) transform, 1s cubic-bezier(.6,.6,0,1) opacity !important;
+  }
+  #season-dot-1 {
+    left: 138px;
+    top: 50px;
+  }
+  #season-dot-2 {
+    left: 168px;
+    top: 59px;
+  }
+  #season-dot-3 {
+    left: 195px;
+    top: 42px;
+  }
+
 }
 .card:hover #card-1-popup-1 {
   opacity: 0;
@@ -317,66 +330,140 @@ section {
   top: 0;
   transform: translateY(85px);
 }
-
-.season-dot {
-  width: 18px;
-  height: 18px;
-  transition: 300ms ease;
-}
-#season-dot-1 {
-  left: 138px;
-  top: 50px;
-}
-#season-dot-2 {
-  left: 168px;
-  top: 59px;
-}
-#season-dot-3 {
-  left: 195px;
-  top: 42px;
-}
 .card:hover .season-dot {
   width: 26px;
   height: 26px;
 }
-.card {
-}
 .card:hover #season-dot-1 {
-  transform: translate(73px, 63px);
+  transform: translate(-4px, 65px);
 }
 .card:hover #season-dot-2 {
-  transform: translate(82px, 76px);
+  transform: translate(4px, 80px);
 }
 .card:hover #season-dot-3 {
-  transform: translate(92px, 80px);
+  transform: translate(13px, 80px);
 }
-
 #chart-background {
   -webkit-transition: 400ms ease;
-
-  width: 670px;
+  width: 100%;
   height: 130px;
-
   object-position: left;
   object-fit: cover;
-
   left: 0;
   top: 50px;
   background-image: url("images/cards/card-seasonality-chart-border.png");
-  background-position: 0px;
+  background-position: 0;
   background-size: 670px 100%;
   background-repeat: no-repeat;
 }
-
 .card:hover #chart-background {
-
-  object-position: center;
+  object-position: -240px;
   object-fit: cover;
-
   left: 0;
   top: 50px;
   background-image: url("images/cards/card-seasonality-chart-border.png");
-  background-position: -157px -30px;
+  background-position: -240px -30px;
   background-size: 670px 100%;
+}
 
+
+// ANIMATION TWO
+#card-2 {
+
+
+  .first-thing {
+    background: #0b021733;
+    border: 1px solid rgba(255, 255, 255, .05);
+    border-radius: 99px;
+    display: flex;
+    left: 30px;
+    padding: 8px 16px;
+    top: 25px;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    position: absolute;
+    transition: .45s cubic-bezier(.6,.6,0,1) transform, .45s cubic-bezier(.6,.6,0,1) opacity;
+    z-index: 16;
+
+    .mobile, .desktop {
+      font-feature-settings: "cv06" on, "calt" off, "liga" off;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -.01em;
+      line-height: 16px;
+    }
+
+    .mobile::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: greenyellow;
+      display: inline-block;
+      margin-bottom: .1rem;
+      margin-left: .5rem;
+      margin-right: .25rem;
+    }
+    .desktop::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: blue;
+      display: inline-block;
+      margin-bottom: .1rem;
+      margin-right: .25rem;
+    }
+
+  }
+
+  .second-thing {
+
+  }
+
+}
+.card:hover .first-thing {
+  transform: translateX(-150px);
+  opacity: 0;
+}
+
+// single property classes
+.mb--0-5 {
+  margin-bottom: -.5rem;
+}
+.absolute {
+  position: absolute;
+}
+
+@media screen and (min-width: 70em) {
+  body {
+    font-family: 'Inter V', sans-serif;
+  }
+  .cards {
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .card { width: 360px; }
+  main {
+    width: 100%;
+  }
+  .not-button {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    line-height: 24px;
+  }
+  #cards-section-title {
+    font-size: 56px;
+    line-height: 64px;
+  }
+  #cards-video {
+    width: 90%;
+    margin-bottom: -7rem;
+  }
+  #cards-section-title {
+    width: 600px;
+  }
 }

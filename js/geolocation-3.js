@@ -4,6 +4,7 @@ const dataStruct = {
     startLat: 0,
     startLon: 0,
     closest: {
+        streetName: '',
         latitude: 0,
         latVal: 100,
         longitude: 0,
@@ -51,13 +52,6 @@ function findStreets(lat, lon) {
     return makeFetch(`[out:json]; way(around:50, ${lat}, ${lon})["highway"]; out body;`);
 }
 
-
-
-let map = L.map('map').setView([0, 0], 13);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
 const addMarker = (lat, lon, label) => {
     L.marker([lat, lon]).addTo(map)
         .bindPopup(label)
@@ -66,12 +60,19 @@ const addMarker = (lat, lon, label) => {
 
 // need to add function for finding intersection (in correct direction for a given street),
 // will check documentation what I should be saving for that search
-function findIntersection(lat, lon) {
+function findIntersection(streetName) {
     // intersection fetch (with on street (found street) coordinates)
-    return makeFetch(``);
-}
+    return makeFetch(`
+                              [out:json];
+                              [bbox:{{bbox}}];
+                              way[highway][name="${streetName}"]->.w1;
+                              way[highway][name="West 23rd Street"]->.w2;
+                              node(w.w1)(w.w2);
+                              out body;
+    `);
 
-let largeCount = 0;
+    // make sure intersection is in direction of target as per graph below.
+}
 
 function searchForRoute(lat, lon) {
 
@@ -88,14 +89,17 @@ function searchForRoute(lat, lon) {
 
                 let c = p[q];
 
+                console.log(c);
+
                 let d = await findNodeValue(c.id, c.nodes);
                 let o = d.elements;
 
                 for (const g in o) {
 
-                    console.log('wow');
-
                     let k = o[g];
+
+                    console.log(k);
+
                     let newLat = Math.abs(dataStruct.startLat - k.lat);
                     let newLon = Math.abs(dataStruct.startLon - k.lon);
                     let dataStructClosest = dataStruct.closest;
@@ -107,6 +111,9 @@ function searchForRoute(lat, lon) {
 
                         dataStructClosest.latVal = newLat;
                         dataStructClosest.lonVal = newLon;
+
+                        dataStructClosest.streetName = c.tags.name;
+                        console.log('street name: ', c.tags.name);
 
 
                         /*
@@ -122,33 +129,47 @@ function searchForRoute(lat, lon) {
                             }
 
                         */
-                        // testing below
 
-
-
-                        if (largeCount === 10) {
-                            resolve(false);
-                        }
-
-                        // if closest is within 50 metres of target?
-                        if (dataStruct.targetLat <= dataStructClosest.latitude + 0.0002 && dataStruct.targetLat >= dataStructClosest.latitude - 0.0002 && dataStruct.targetLon <= dataStructClosest.longitude + 0.0002 && dataStruct.targetLon >= dataStructClosest.longitude - 0.0002) {
-                            console.log('complete route found');
-
-                            // push target to route array in here.
-                            resolve(true);
-
-
-                        } else {
-                            console.log(largeCount, 'still calculating streets');
-                            largeCount++;
-                        }
-
-                        return await searchForRoute(dataStructClosest.latitude, dataStructClosest.longitude);
+                        // return await searchForRoute(dataStructClosest.latitude, dataStructClosest.longitude);
 
                     }
 
                     if (p[q] === p[p.length - 1] && o[g] === o[o.length - 1]) {
-                        console.log('last one done');
+
+                        route.push([dataStructClosest.latitude, dataStructClosest.longitude]);
+                        addMarker(dataStructClosest.latitude, dataStructClosest.longitude, 'Route Marker');
+
+
+                        // TWO LINES BELOW ARE 'fake' DELETE THEM
+                        dataStructClosest.latitude = dataStruct.targetLat + 0.0001;
+                        dataStructClosest.longitude = dataStruct.targetLon + 0.0001;
+
+                        if (dataStruct.targetLat <= dataStructClosest.latitude + 0.0002 && dataStruct.targetLat >= dataStructClosest.latitude - 0.0002 && dataStruct.targetLon <= dataStructClosest.longitude + 0.0002 && dataStruct.targetLon >= dataStructClosest.longitude - 0.0002) {
+
+                            console.log('complete route found');
+
+                            route.push([dataStruct.targetLat, dataStruct.targetLon]);
+                            addMarker(dataStruct.targetLat, dataStruct.targetLon, 'Target Location');
+
+
+                            resolve(true);
+
+                            // push target to route array in here.
+
+                        } else {
+                            console.log('still calculating streets');
+
+                            // recurse
+                        }
+
+                        // so we are here... sure! we have two points calculatable and a proper polyline between the two.
+                        // what is the best way to repeat the action of looking before resolving to true.
+                        // obvisouly I need to send something like this:
+                        // return await searchForRoute(dataStructClosest.latitude, dataStructClosest.longitude);
+                        // but that doesn't work on it's own.
+                        // What if I made a new promise for calling just this function. Probably nothing would change and it still wouldn't work so darn.
+                        // Honestly (unfortunately) I have just no clue how to complete this best.
+
                     }
 
                 }
@@ -160,30 +181,36 @@ function searchForRoute(lat, lon) {
 
 const userLat = document.getElementById('user-latitude');
 const userLon = document.getElementById('user-longitude');
-
+const targetLat = document.getElementById('target-latitude');
+const targetLon = document.getElementById('target-longitude');
 let route = [];
+
+let map = L.map('map');
+
 
 async function start() {
 
-
-
-    // get and set user location (set to 'dataStruct' object properties)
-    // add a marker to the map showing the user where they are.
-
+    // Get user location.
     let userLocation = await getLocation();
 
+    // Set user location to inputs and dataStruct object.
     userLat.value = dataStruct.startLat = userLocation.coords.latitude;
     userLon.value = dataStruct.startLon = userLocation.coords.longitude;
-    dataStruct.targetLat = userLat.value;
-    dataStruct.targetLon = userLon.value;
 
+    map.setView([dataStruct.startLat, dataStruct.startLon], 18);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Set target location to inputs and dataStruct object
+    // Would be removable (the adding to inputs since the user would input where they want to go)
+    targetLat.value = dataStruct.targetLat = parseInt(userLat.value) + 0.005;
+    targetLon.value = dataStruct.targetLon = parseInt(userLon.value) + 0.005;
+
+    // Push user start location to route array (for later) and add marker at start location.
+    route.push([dataStruct.startLat, dataStruct.startLon]);
     addMarker(dataStruct.startLat, dataStruct.startLon, 'Your Location');
 
-    // input this data into the 'user location'/'your location' section of the form
-
-
-    // figure out quadrant that target is located in (in) relation to the start location.
-    // might help in determining if we are going the right direction.
     /*
             target(-, +)  |     target(+, +)
                           |
@@ -192,25 +219,30 @@ async function start() {
             target(-, -)  |     target(+, -)
      */
 
-    // move this func call to outside in event listener for submit button.
+
+    // Has the users start location been found?
     if (userLocation) {
+
+        // Find route (this function should run the whole thing and recurse as required)
         let routeFound = await searchForRoute(dataStruct.startLat, dataStruct.startLon);
 
+        // Has a full route been found?
         if (routeFound) {
 
-            console.log(routeFound);
-
-            // print the route line (polyline)
-            let polyline = L.polyline([[dataStruct.startLat, dataStruct.startLon], [dataStruct.startLat, dataStruct.startLon + 0.0005]], {color: 'red'}).addTo(map);
+            // Print the route line between the markers (polyline)
+            let polyline = L.polyline(route, {color: 'red'}).addTo(map);
             map.fitBounds(polyline.getBounds());
 
         } else {
-            console.error('error finding route');
+            console.error('There was an error when searching for a route.');
         }
-
+    } else {
+        console.error('Please allow access to your location.');
     }
 }
 
 start()
-    .then(response => console.log(response))
+    .then(response => {
+        console.log(response);
+    })
     .catch(error => console.error('Route Not Found: ', error));
