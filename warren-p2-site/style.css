@@ -234,6 +234,25 @@ section {
   top: -17px;
 }
 
+.magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  z-index: 2;
+}
+
+.magical-borders-content > * {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
+  border-radius: 16px;
+  position: relative;
+}
+
 #card-1 .card-1-custom .example {
   bottom: 10px;
   left: 50%;
@@ -521,24 +540,85 @@ section {
     width: 100%;
     margin-bottom: -7rem;
   }
+  .magical-borders-inner {
+    position: absolute;
+  }
 }
-.magical-borders-inner {
-  background-color: #0a0118;
-  border-radius: 16px;
+footer .footer-top, footer .footer-bottom {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  top: 1px;
-  right: 1px;
-  bottom: 1px;
-  left: 1px;
-  position: absolute;
-  z-index: 2;
 }
-
-.magical-borders-content > * {
-  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
-  border-radius: 16px;
+footer .footer-top svg {
+  height: 24px;
+  margin-bottom: 24px;
+  width: 82.29px;
+}
+footer .footer-top .description {
+  margin-bottom: 32px;
+  font-feature-settings: "cv06" on, "calt" off, "liga" off;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 24px;
+}
+footer .footer-top button {
+  width: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 999px;
+  display: inline-block;
+  position: relative;
+  background: transparent;
+  border: 1px solid gray;
+  color: gray;
+}
+footer .footer-top .right nav {
+  display: flex;
+  align-items: flex-start;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 24px;
+  margin-top: 48px;
+  width: 100%;
+}
+footer .footer-top .right .nav-group {
+  gap: 0;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+footer .footer-top .right .nav-group details {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 8px;
+}
+footer .footer-top .right .nav-group details summary {
+  cursor: pointer;
+  padding-top: 16px;
+  pointer-events: all;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .footer-top .right .nav-group details summary h2 {
+  font-size: 16px;
+  line-height: 24px;
+  color: #9b96b0;
+  text-transform: uppercase;
+}
+footer .footer-top .right .nav-group details summary span {
+  transition: all 0.2s ease;
+}
+footer .footer-top .right .nav-group details summary ul {
+  opacity: 0;
+  max-height: 0;
+  gap: 12px;
+  margin-top: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
   position: relative;
 }
 
