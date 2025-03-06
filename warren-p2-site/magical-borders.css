@@ -1,6 +1,6 @@
 :root {
-    --bg: hsl(246 44% 4%);
-    --card-bg: hsl(235 40% 2%);
+    --bg: #0a0118;
+    --card-bg: #0a0118;
     --color: hsl(240 18% 80%);
 
     --border-size: -3px;
@@ -23,10 +23,10 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
-    left: 1px;
+    top: 1.125px;
+    right: 1.125px;
+    bottom: 1.125px;
+    left: 1.125px;
     z-index: 2;
     position: absolute;
 }
@@ -34,6 +34,15 @@
     background: linear-gradient(180deg, #a9a3c233, #a9a3c20c);
     border-radius: 16px;
     position: relative;
+}
+
+.mouse-dot {
+    position: absolute;
+    box-shadow: 0 0 150px 150px rgb(0, 255, 255, 0.075);
+    border-radius: 100%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 @layer magical-borders {
@@ -65,7 +74,6 @@
         position: absolute;
         z-index: -1;
         border-radius: var(--outer-border-radius);
-
         background: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1.5%) calc(var(--hue-lum, 100) * 1.5%) / 0.5), transparent calc(var(--spotlight-size) * 1px));
         background-attachment: fixed;
     }
@@ -74,11 +82,10 @@
         display: none;
         --alpha: 0.5;
         content: "";
-        inset: 0;
+        inset: 1;
         position: absolute;
         z-index: -1;
         border-radius: var(--outer-border-radius);
-
         background: radial-gradient(
                 circle at calc(var(--x) * 1px) calc(var(--y) * 1px),
                 hsl(
@@ -88,7 +95,12 @@
                 transparent calc(var(--spotlight-size) * 1px)
         );
         background-attachment: fixed;
-
         filter: blur(1.5rem);
     }
 }
+
+/*
+   this is the imperfection of my use of this effect
+   some cases require that you specify a larger border on one side
+   (i think cause of browsers rendering 264px as 263.9999px
+*/

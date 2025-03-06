@@ -18,7 +18,6 @@ items.forEach((item) => {
     item.addEventListener('click', (event) => {
         event.preventDefault();
 
-        // Check window width
         if (window.innerWidth < 1128) {
             if (item.open) {
                 updateArrowState(item, false);
@@ -38,19 +37,19 @@ items.forEach((item) => {
 
 
 function handleResize() {
-    if (window.innerWidth > 1128) {
-        items.forEach((item) => {
-            item.open = true;
-            let q = item.firstElementChild;
-            q.firstElementChild.style.color = '#fff';
-            updateArrowState(item, true);
-        });
-    } else {
+    if (window.innerWidth < 1128) {
         items.forEach((item) => {
             item.open = false;
             let q = item.firstElementChild;
             q.firstElementChild.style.color = '#676182';
             updateArrowState(item, false);
+        });
+    } else {
+        items.forEach((item) => {
+            item.open = true;
+            let q = item.firstElementChild;
+            q.firstElementChild.style.color = '#fff';
+            updateArrowState(item, true);
         });
     }
 }

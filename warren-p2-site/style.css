@@ -1,6 +1,9 @@
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
+}
+
+svg, img, video {
   user-select: none;
 }
 
@@ -82,11 +85,11 @@ html {
   }
 }
 body {
+  font-family: Inter V, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-family: "Inter V", sans-serif;
   background: #0a0118;
   color: #fff;
-  font-size: 1rem;
+  font-size: 14px;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -104,10 +107,14 @@ h2 {
 }
 
 main, footer, header {
-  width: 356px;
+  width: 342px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+header {
+  height: 70px;
 }
 
 section {
@@ -162,20 +169,35 @@ section {
   height: 304px;
   width: 356px;
   border-radius: 16px;
-  position: relative;
-  overflow: hidden;
+  position: inherit;
   display: flex;
-  padding: 0;
+}
+.cards .card .gridline:before {
+  background: linear-gradient(180deg, #0a0118, rgba(10, 1, 24, 0) 24.22%, rgba(10, 1, 24, 0) 73.85%, #0a0118);
+  content: "";
+  height: 100%;
+  width: 100%;
+  z-index: 15;
 }
 .cards .card .card-inner {
   position: relative;
-  overflow: clip;
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 196px;
   margin: 0;
   padding: 16px 16px 24px;
+}
+.cards .card .card-inner .card-inner-container {
+  position: absolute;
+  overflow: hidden;
+  top: 16px;
+  left: 16px;
+  right: 0;
+  width: 324px;
+  height: 165px;
+  border-radius: 6px;
+  background: radial-gradient(32.81% 53.93% at 50% 0%, rgba(133, 102, 255, 0.0392156863), rgba(133, 102, 255, 0) 100%, rgba(133, 102, 255, 0));
 }
 .cards .card .card-inner .container {
   top: 50%;
@@ -186,9 +208,10 @@ section {
   padding: 0 32px 24px;
 }
 .cards .content .text, .cards .content .title {
-  font-family: "Inter V", sans-serif;
   font-weight: 500;
   line-height: 24px;
+  letter-spacing: -0.01em;
+  font-feature-settings: "cv06" on, "calt" off, "liga" off;
 }
 .cards .content .title {
   margin-bottom: 8px;
@@ -208,9 +231,7 @@ section {
   left: 0;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
   -webkit-mask-composite: xor;
-  mask-composite: exclude;
   padding: 1px;
   pointer-events: none;
   position: absolute;
@@ -247,7 +268,9 @@ section {
   margin-right: 8px;
 }
 #card-1 .season-top-bottom {
-  top: -17px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #card-1 .card-1-custom .example {
@@ -277,21 +300,21 @@ section {
   transition: 400ms ease;
 }
 #card-1 .season-dot {
-  width: 18px;
-  height: 18px;
+  width: 26px;
+  height: 26px;
   transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) transform, 1s cubic-bezier(0.6, 0.6, 0, 1) opacity !important;
 }
 #card-1 #season-dot-1 {
-  left: 138px;
-  top: 50px;
+  left: 134px;
+  top: 15px;
 }
 #card-1 #season-dot-2 {
-  left: 168px;
-  top: 59px;
+  left: 163px;
+  top: 23px;
 }
 #card-1 #season-dot-3 {
-  left: 195px;
-  top: 42px;
+  left: 190px;
+  top: 6px;
 }
 
 .card:hover #card-1-popup-1 {
@@ -305,9 +328,10 @@ section {
   transform: translateY(85px);
 }
 
-.card:hover .season-dot {
-  width: 26px;
-  height: 26px;
+.card:hover #chart-background {
+  object-position: -240px;
+  background-image: url("images/cards/card-seasonality-chart-border.png");
+  background-position: -240px -30px;
 }
 
 .card:hover #season-dot-1 {
@@ -323,27 +347,17 @@ section {
 }
 
 #chart-background {
-  -webkit-transition: 400ms ease;
-  width: 100%;
+  transition: 400ms ease;
+  width: 670px;
   height: 130px;
-  object-position: left;
+  object-position: left top;
   object-fit: cover;
   left: 0;
-  top: 50px;
+  top: 20px;
   background-image: url("images/cards/card-seasonality-chart-border.png");
   background-position: 0;
   background-size: 670px 100%;
   background-repeat: no-repeat;
-}
-
-.card:hover #chart-background {
-  object-position: -240px;
-  object-fit: cover;
-  left: 0;
-  top: 50px;
-  background-image: url("images/cards/card-seasonality-chart-border.png");
-  background-position: -240px -30px;
-  background-size: 670px 100%;
 }
 
 #card-2 .first-thing {
@@ -471,9 +485,9 @@ section {
   object-fit: cover;
   object-position: -50px 40px;
   width: 670px;
+  overflow: visible;
   height: 130px;
   transition: 300ms ease;
-  overflow: visible;
 }
 
 .card:hover .first-thing {
@@ -491,10 +505,76 @@ section {
 
 #card-2:hover #mobile-chart {
   object-fit: cover;
-  object-position: -610px 25px;
+  object-position: -620px 25px;
   width: 670px;
 }
 
+#card-6 .opportunity-background, #card-6 .opportunity-chart {
+  object-fit: cover;
+  transition: 500ms ease;
+}
+#card-6 .opportunity-background {
+  width: 670px;
+  height: 204px;
+  zoom: 550%;
+  object-position: -20px -125px;
+  overflow: visible;
+}
+#card-6 .opportunity-ball {
+  width: 57px;
+  height: 57px;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #fff;
+  position: absolute;
+  transition: 500ms ease;
+}
+#card-6 .opportunity-chart:before {
+  background: linear-gradient(to right, #8666ff 90%, transparent 100%);
+  content: "";
+  display: block;
+  height: 100%;
+  transform: translate(-78%);
+  transition: 0.8s cubic-bezier(0.6, 0.6, 0, 1) transform;
+  width: -100%;
+}
+#card-6 .opportunity-chart {
+  background-repeat: no-repeat;
+  object-position: 0;
+  width: 45px;
+  height: 95px;
+  background-image: url("images/cards/card-opportunity-chart.png");
+  background-size: cover;
+}
+#card-6:hover .opportunity-background {
+  transform: translate(-63px, 35px);
+}
+
+#card-6:hover .opportunity-chart {
+  width: 234px;
+}
+
+#card-6:hover .opportunity-ball {
+  animation: ball-bounce 700ms;
+  animation-fill-mode: inherit;
+  bottom: 70px;
+}
+
+@keyframes ball-bounce {
+  50% {
+    bottom: 100px;
+    background: rgba(113, 61, 255, 0.2392156863);
+  }
+  90% {
+    bottom: 65px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 70px;
+  }
+}
 .mb--0-5 {
   margin-bottom: -0.5rem;
 }
@@ -517,7 +597,7 @@ footer .footer-top, footer .footer-bottom {
   flex-direction: column;
   width: 100%;
 }
-footer .footer-top::before {
+footer .footer-top::before, footer .footer-top::after {
   background: radial-gradient(50% 56400% at 50% 100%, rgba(169, 163, 194, 0.2392156863), rgba(169, 163, 194, 0));
   bottom: 0;
   content: "";
@@ -525,6 +605,9 @@ footer .footer-top::before {
   left: 0;
   position: absolute;
   width: 100%;
+}
+footer .footer-top::after {
+  top: 0;
 }
 footer .footer-top {
   display: flex;
@@ -577,9 +660,7 @@ footer .footer-top .glowing-box-button {
 footer .footer-top .right .footer-contact-inner {
   background: radial-gradient(67.49% 100% at 50% 0%, rgba(255, 255, 255, 0.0784313725), rgba(255, 255, 255, 0)), rgba(255, 255, 255, 0.0196078431);
   border-radius: 16px;
-  height: 100%;
   padding: 28px;
-  width: 264px;
 }
 footer .footer-top .right .footer-contact-sizing, footer .footer-top .right .footer-contact-inner {
   height: 192px;
@@ -603,8 +684,6 @@ footer .footer-top .right .footer-contact-inner-description {
   color: #9b96b0;
 }
 footer .footer-top .right .footer-copyright, footer .footer-top .right .footer-contact-inner-description {
-  font-size: 14px;
-  font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 24px;
 }
@@ -627,7 +706,6 @@ footer .footer-top .right .nav-group {
 }
 footer .footer-top .right .nav-group details {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0 8px;
   transition: 2.5s ease;
 }
 footer .footer-top .right .nav-group summary {
@@ -745,9 +823,6 @@ footer .footer-bottom svg {
   footer .footer-bottom {
     padding: 64px 0;
   }
-  .glowing-box-active {
-    width: 100px;
-  }
   footer .footer-top button {
     width: max-content;
   }
@@ -756,17 +831,6 @@ footer .footer-bottom svg {
     font-family: "Inter V", sans-serif;
     font-size: 14px;
   }
-}
-.mouse-dot {
-  position: absolute;
-  box-shadow: 0 0 100px 100px rgba(0, 255, 255, 0.075);
-  border-radius: 100%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-@media screen and (min-width: 1248px) {
   body {
     font-family: "Inter V", sans-serif;
   }
@@ -801,15 +865,30 @@ footer .footer-bottom svg {
     width: 100%;
     margin-bottom: -7rem;
   }
-  footer .footer-top .right .nav-group ul {
+  footer .footer-top .right .nav-group {
     gap: 16px;
   }
-  footer .footer-top .right .footer-contact-sizing {
+  footer .footer-top .right .magical-borders.footer-contact-sizing {
     width: 264px;
   }
   footer .footer-bottom {
     line-height: 0;
     align-items: center;
+  }
+  footer .footer-top .right {
+    height: 360px;
+    gap: 16px;
+  }
+  .cards .content .text {
+    font-size: 16px;
+  }
+  .cards .card .card-inner .card-inner-container {
+    width: 364px;
+  }
+}
+@media (max-width: 1248px) {
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
   }
 }
 
