@@ -4,31 +4,29 @@
     <meta charset="UTF-8">
     <title>p2 site</title>
     <link rel="stylesheet" href="../styles/normalize-fwd.css">
+    <link rel="stylesheet" href="magical-borders.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <main>
 
-    <section id="cards-video">
-        <video preload="none" loop muted playsinline autoplay>
-            <source src="images/cards/cards-video.webm">
-        </video>
-    </section>
-
     <section class="text-align-center">
+        <div id="cards-video">
+            <video preload="none" loop muted playsinline autoplay>
+                <source src="images/cards/cards-video.webm">
+            </video>
+        </div>
         <div class="not-button mb--0-5">
             magic happens by data science
         </div>
         <h2 id="cards-section-title">faster with</h2>
-
-        <div class="cards magical-borders-content">
-
-            <div class="card" id="card-1">
+        <div id="cards" class="cards magical-borders-container">
+            <div class="card magical-borders" id="card-1">
                 <div class="magical-borders-inner">
                     <div class="card-inner card-1-custom">
 
-                            <img class="absolute" width="326" height="138" alt="" draggable="false" src="images/cards/card-gridline.png">
+                            <img class="absolute gridline" alt="" draggable="false" src="images/cards/card-gridline.png">
                             <img class="absolute season-top-bottom" src="images/cards/card-seasonality-light-bottom.png" alt="card-seasonality-light-top.png" draggable="false">
                             <img id="chart-background" class="absolute" src="images/cards/card-seasonality-chart-background.png" alt="card-seasonality-chart-background.png" draggable="false">
                             <img class="absolute season-top-bottom" alt="" draggable="false" src="images/cards/card-seasonality-light-top.png">
@@ -36,7 +34,7 @@
                             <img class="absolute season-dot" id="season-dot-2" alt="" src="images/cards/card-seasonality-dot.png" draggable="false">
                             <img class="absolute season-dot" id="season-dot-3" alt="" src="images/cards/card-seasonality-dot.png" draggable="false">
 
-                            <div class="animation-1-popup absolute flex" id="card-1-popup-1">
+                            <div class="animation-1-popup nice-border-1 absolute flex" id="card-1-popup-1">
                                 <div>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.98461 4.12252C10.1524 4.34396 10.1539 4.64961 9.98828 4.87268C9.18117 5.95948 8.70389 7.30478 8.70389 8.76337C8.70389 12.3713 11.6287 15.2962 15.2367 15.2962C16.6953 15.2962 18.0406 14.8189 19.1274 14.0118C19.3504 13.8461 19.6561 13.8476 19.8775 14.0154C20.099 14.1833 20.183 14.4771 20.0838 14.7367C18.8799 17.8864 15.8293 20.125 12.2543 20.125C7.62652 20.125 3.875 16.3735 3.875 11.7458C3.875 8.17073 6.11362 5.12011 9.26337 3.91623C9.52291 3.81703 9.81678 3.90109 9.98461 4.12252ZM7.93017 6.07692C6.22465 7.37992 5.125 9.43488 5.125 11.7458C5.125 15.6832 8.31688 18.875 12.2543 18.875C14.5652 18.875 16.6201 17.7754 17.9231 16.0699C17.0856 16.3779 16.1805 16.5462 15.2367 16.5462C10.9384 16.5462 7.45389 13.0617 7.45389 8.76337C7.45389 7.81955 7.62211 6.91449 7.93017 6.07692Z" fill="#8566FF"></path></svg>
                                 </div>
@@ -50,7 +48,7 @@
                                 </div>
                             </div>
 
-                            <div class="animation-1-popup absolute flex" id="card-1-popup-2">
+                            <div class="animation-1-popup nice-border-1 absolute flex" id="card-1-popup-2">
                                 <div>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.25C12.3452 3.25 12.625 3.52982 12.625 3.875V5.75C12.625 6.09518 12.3452 6.375 12 6.375C11.6548 6.375 11.375 6.09518 11.375 5.75V3.875C11.375 3.52982 11.6548 3.25 12 3.25Z" fill="#FAAF46"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12C8.25 9.92893 9.92893 8.25 12 8.25C14.0711 8.25 15.75 9.92893 15.75 12C15.75 14.0711 14.0711 15.75 12 15.75C9.92893 15.75 8.25 14.0711 8.25 12Z" fill="#FAAF46"></path><path d="M12.625 18.25C12.625 17.9048 12.3452 17.625 12 17.625C11.6548 17.625 11.375 17.9048 11.375 18.25V20.125C11.375 20.4702 11.6548 20.75 12 20.75C12.3452 20.75 12.625 20.4702 12.625 20.125V18.25Z" fill="#FAAF46"></path><path d="M5.81282 5.81282C6.0569 5.56874 6.45262 5.56874 6.6967 5.81282L8.02253 7.13864C8.2666 7.38272 8.2666 7.77845 8.02253 8.02253C7.77845 8.26661 7.38272 8.26661 7.13864 8.02253L5.81282 6.6967C5.56874 6.45262 5.56874 6.0569 5.81282 5.81282Z" fill="#FAAF46"></path><path d="M16.8614 15.9775C16.6173 15.7334 16.2216 15.7334 15.9775 15.9775C15.7334 16.2216 15.7334 16.6173 15.9775 16.8614L17.3033 18.1872C17.5474 18.4313 17.9431 18.4313 18.1872 18.1872C18.4313 17.9431 18.4313 17.5474 18.1872 17.3033L16.8614 15.9775Z" fill="#FAAF46"></path><path d="M18.1872 5.81282C17.9431 5.56874 17.5474 5.56874 17.3033 5.81282L15.9775 7.13864C15.7334 7.38272 15.7334 7.77845 15.9775 8.02253C16.2216 8.26661 16.6173 8.26661 16.8614 8.02253L18.1872 6.6967C18.4313 6.45262 18.4313 6.0569 18.1872 5.81282Z" fill="#FAAF46"></path><path d="M7.13864 15.9775C7.38271 15.7334 7.77844 15.7334 8.02252 15.9775C8.2666 16.2216 8.2666 16.6173 8.02252 16.8614L6.6967 18.1872C6.45262 18.4313 6.05689 18.4313 5.81281 18.1872C5.56873 17.9431 5.56873 17.5474 5.81281 17.3033L7.13864 15.9775Z" fill="#FAAF46"></path><path d="M3.25 12C3.25 11.6548 3.52982 11.375 3.875 11.375H5.75C6.09518 11.375 6.375 11.6548 6.375 12C6.375 12.3452 6.09518 12.625 5.75 12.625H3.875C3.52982 12.625 3.25 12.3452 3.25 12Z" fill="#FAAF46"></path><path d="M18.25 11.375C17.9048 11.375 17.625 11.6548 17.625 12C17.625 12.3452 17.9048 12.625 18.25 12.625H20.125C20.4702 12.625 20.75 12.3452 20.75 12C20.75 11.6548 20.4702 11.375 20.125 11.375H18.25Z" fill="#FAAF46"></path></svg>
                                 </div>
@@ -77,15 +75,14 @@
                     </div>
             </div>
 
-            <div class="card" id="card-2">
+            <div class="card magical-borders" id="card-2">
                 <div class="magical-borders-inner">
                     <div class="card-inner">
 
                         <img class="absolute season-top-bottom" alt="" src="images/cards/card-mobile-lights-1.png" draggable="false">
                         <img class="absolute season-top-bottom" alt="" src="images/cards/card-mobile-lights-2.png" draggable="false">
                         <img class="absolute" id="mobile-chart" src="images/cards/card-mobile-chart.png" alt="card-seasonality-chart-background.png" draggable="false">
-                        <img class="absolute" width="326" height="138" alt="" src="images/cards/card-gridline.png" draggable="false">
-
+                        <img class="absolute gridline" alt="" src="images/cards/card-gridline.png" draggable="false">
                         <div class="first-thing">
                             <div class="desktop">
                                 <span>
@@ -140,7 +137,7 @@
                 </div>
             </div>
 
-            <div class="card" id="card-3">
+            <div class="card magical-borders" id="card-3">
                 <div class="magical-borders-inner">
                     <div class="card-inner">
                         <img src="" alt="" class="absolute" draggable="false">
@@ -152,7 +149,7 @@
                 </div>
             </div>
 
-            <div class="card" id="card-4">
+            <div class="card magical-borders" id="card-4">
                 <div class="magical-borders-inner">
                     <div class="card-inner">
                         <img src="" alt="" class="absolute" draggable="false">
@@ -164,7 +161,7 @@
                 </div>
             </div>
 
-            <div class="card" id="card-5">
+            <div class="card magical-borders" id="card-5">
                 <div class="magical-borders-inner">
                     <div class="card-inner">
                         <img src="" alt="" class="absolute" draggable="false">
@@ -176,7 +173,7 @@
                 </div>
             </div>
 
-            <div class="card" id="card-6">
+            <div class="card magical-borders" id="card-6">
                 <div class="magical-borders-inner">
                     <div class="card-inner">
                         <img src="" alt="" class="absolute" draggable="false">
@@ -192,8 +189,8 @@
     </section>
 
     <section id="technical">
-
     </section>
+
 </main>
 
 
@@ -209,19 +206,9 @@
                 <span>of SEO analytics.</span>
             </div>
 
-            <div style="--animation-speed:2s" class="glowing-box glowing-box-active">
-                <div class="glowing-box-animations" >
-                    <div class="glowing-box-glow"></div>
-                    <div class="glowing-box-stars-masker">
-                        <div class="glowing-box-stars"></div>
-                    </div></div>
-                <div class="glowing-box-borders-masker">
-                    <div class="glowing-box-borders"></div>
-                </div>
-                <button class="glowing-box-button">
-                    <span>Unlimited trial for 14 days</span>
-                </button>
-            </div>
+            <button class="glowing-box-button">
+                <span>Unlimited trial for 14 days</span>
+            </button>
         </div>
         <div class="right">
             <nav aria-label="Site Map for wope.com">
@@ -324,10 +311,16 @@
                     </details>
                 </div>
             </nav>
-            <div class="footer-contact-inner">
-                <img src="images/footer/grid.svg" height="1" width="1" alt="GRID" class="lazy-image lazy-image-loaded footer-contact-inner-grid">
-                <div class="footer-contact-inner-title">Get in touch</div>
-                <div class="footer-contact-inner-description">651 N Broad St<br> Suite 201<br> Middletown, Delaware 19709<br> United States</div>
+            <div class="magical-borders-container">
+                <div class="magical-borders footer-contact-sizing">
+                    <div class="magical-borders-inner">
+                        <div class="footer-contact-inner">
+                            <img src="images/footer/grid.svg" height="1" width="1" alt="GRID" class="lazy-image lazy-image-loaded footer-contact-inner-grid">
+                            <div class="footer-contact-inner-title">Get in touch</div>
+                            <div class="footer-contact-inner-description">651 N Broad St<br> Suite 201<br> Middletown, Delaware 19709<br> United States</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -367,5 +360,6 @@
 
 
 <script src="faq-dropdown.js"></script>
+<script src="magical-borders.js"></script>
 </body>
 </html>
