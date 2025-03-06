@@ -87,7 +87,6 @@ body {
   background: #0a0118;
   color: #fff;
   font-size: 1rem;
-  margin: 1rem;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -547,6 +546,14 @@ footer .footer-top .description {
   line-height: 24px;
   max-width: 250px;
 }
+footer .footer-top .description span {
+  background: linear-gradient(180deg, #fff 22.5%, rgba(255, 255, 255, 0.7019607843));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
 footer .footer-top .footer .glowing-box-button {
   background-color: transparent;
 }
@@ -575,7 +582,7 @@ footer .footer-top .right .footer-contact-inner {
   width: 264px;
 }
 footer .footer-top .right .footer-contact-sizing, footer .footer-top .right .footer-contact-inner {
-  height: 204px;
+  height: 192px;
   width: 100%;
 }
 footer .footer-top .right .footer-contact-inner-grid {
@@ -670,16 +677,17 @@ footer .footer-top .right .nav-group li a:hover {
 footer .footer-bottom {
   display: flex;
   justify-content: start;
-  align-items: start;
-  margin-top: 2rem;
+  align-items: center;
   color: #9b96b0;
   font-size: 14px;
+  line-height: 0;
 }
 footer .footer-bottom ul {
   list-style: none;
   padding: 0;
   display: flex;
   gap: 1rem;
+  margin: 0;
 }
 footer .footer-bottom svg {
   color: #9b96b0;
@@ -792,8 +800,10 @@ footer .footer-bottom svg {
     width: 100%;
     margin-bottom: -7rem;
   }
+  footer .footer-top .right .nav-group ul {
+    gap: 16px;
+  }
   footer .footer-top .right .footer-contact-sizing {
-    height: 204px;
     width: 264px;
   }
 }

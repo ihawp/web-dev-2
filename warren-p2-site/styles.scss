@@ -99,7 +99,6 @@ body {
   background: $backgroundColor;
   color: $mainColor;
   font-size: 1rem;
-  margin: 1rem;
   overflow-x: hidden;
 
   // delete probably
@@ -603,6 +602,15 @@ footer {
       letter-spacing: -.01em;
       line-height: 24px;
       max-width: 250px;
+
+      span {
+        background: linear-gradient(180deg, #fff 22.5%, #ffffffb3);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        display: block;
+      }
     }
 
 
@@ -640,7 +648,7 @@ footer {
       }
 
       .footer-contact-sizing, .footer-contact-inner {
-        height: 204px;
+        height: 192px;
         width: 100%;
       }
 
@@ -747,16 +755,17 @@ footer {
 
     display: flex;
     justify-content: start;
-    align-items: start;
-    margin-top: 2rem;
+    align-items: center;
     color: #9b96b0;
     font-size: 14px;
+    line-height: 0;
 
     ul {
       list-style: none;
       padding: 0;
       display: flex;
       gap: 1rem;
+      margin: 0;
     }
 
     svg {
@@ -890,8 +899,11 @@ footer {
     margin-bottom: -7rem;
   }
 
+  footer .footer-top .right .nav-group ul {
+    gap: 16px;
+  }
+
   footer .footer-top .right .footer-contact-sizing {
-    height: 204px;
     width: 264px;
   }
 }
