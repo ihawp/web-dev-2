@@ -755,10 +755,11 @@ footer {
 
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: start;
     color: #9b96b0;
     font-size: 14px;
-    line-height: 0;
+    gap: 24px;
+    padding: 24px 0;
 
     ul {
       list-style: none;
@@ -905,5 +906,9 @@ footer {
 
   footer .footer-top .right .footer-contact-sizing {
     width: 264px;
+  }
+  footer .footer-bottom {
+    line-height: 0;
+    align-items: center;
   }
 }
