@@ -169,25 +169,12 @@ section {
   content: " smart indicators";
 }
 
-h3 {
-    color: #d2d0dd;
-    margin: 0 auto;
-    max-width: 744px;
-    text-align: center;
-      font-size: 16px;
-      line-height: 24px;
-    font-feature-settings: "cv06" on,"calt" off,"liga" off;
-  font-weight: 400;
-  letter-spacing: -.01em;
-}
-
 .cards {
 
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   position: relative;
-  overflow: hidden;
 
   .footer {
     align-items: center;
@@ -230,7 +217,6 @@ h3 {
     position: inherit;
     display: flex;
 
-
     .card-inner {
       position: relative;
       display: flex;
@@ -248,9 +234,11 @@ h3 {
         width: 324px;
         height: 165px;
         border-radius: 6px;
+        /*
+        clip-path: inset(-5px 0 -10px 0);
+         */
+        overflow: hidden;
         background: radial-gradient(32.81% 53.93% at 50% 0%, #8566ff0a, #8566ff00 100%, #8566ff00);
-
-
       }
 
       .container {
@@ -260,11 +248,13 @@ h3 {
       }
     }
   }
+
   .content {
     padding: 0 32px 24px;
-    z-index: 999;
-    background: #0a0118;
-    border-radius: 16px;
+    box-shadow: 0 -15px 25px 30px #0a0118;
+    clip-path: inset(-100px 3.25px 3.25px 3.25px);
+    -webkit-clip-path: inset(-100px 3.25px 3.25px 3.25px);
+    position: relative;
 
     .text, .title {
       font-weight: 500;
@@ -368,6 +358,7 @@ h3 {
       left: 50%;
       transform: translateX(-50%);
       display: flex;
+      z-index: 2;
       align-items: center;
     }
 
@@ -469,7 +460,6 @@ h3 {
     color: #fff;
     position: absolute;
     transition: .45s cubic-bezier(.6,.6,0,1) transform, .45s cubic-bezier(.6,.6,0,1) opacity;
-    z-index: 16;
 
     .mobile, .desktop {
       font-size: 12px;
@@ -521,7 +511,6 @@ h3 {
   }
 
   .second-thing {
-    z-index: 10;
     left: 118px;
     position: absolute;
     top: 28px;
@@ -561,7 +550,6 @@ h3 {
     width: 100%;
     height: 108px;
     transition: 300ms ease;
-    z-index: 9;
   }
 
 }
@@ -584,7 +572,7 @@ h3 {
 #card-3 {
 
   .card-1 {
-    bottom: 10px;
+    bottom: 20px;
   }
 
   .anim-title {
@@ -615,7 +603,7 @@ h3 {
   }
 
   .card-2 {
-    top: 10px;
+    top: 28px;
     opacity: 0;
 
     .anim-text {
@@ -732,7 +720,7 @@ h3 {
       opacity: 0;
     }
     .card-2 {
-      top: 0;
+      top: 8px;
       opacity: 1;
     }
 
@@ -768,7 +756,7 @@ h3 {
   }
 
   .cannibal-chart-left, .cannibal-chart-right {
-    top: 60px;
+    top: 43px;
     width: 112px;
     height: 68px;
     position: absolute;
@@ -838,44 +826,42 @@ h3 {
     right: 31px;
   }
 
-}
-
-
-#card-4:hover {
-  .cannibal-chart {
-    background-image: url("images/cards/card-cannibalization-chart-2.png");
-    background-position: -75px 10px;
-  }
-  .cannibal-chart-left {
-    width: 198px;
-    height: 120px;
-    top: 12px;
-    left: 63px;
-  }
-  .cannibal-chart-right {
-    width: 198px;
-    height: 120px;
-    top: 12px;
-    right: 63px;
-  }
-  .cannibal-chart-left, .cannibal-chart-right {
-    div:not(:first-of-type) {
-      height: 8px;
-      margin-top: 10px;
+  &:hover {
+    .cannibal-chart {
+      background-image: url("images/cards/card-cannibalization-chart-2.png");
+      background-position: -75px 10px;
     }
-    div:first-of-type {
-      margin-bottom: 8px;
-      height: 14px;
-      width: 70px;
+    .cannibal-chart-left {
+      width: 198px;
+      height: 120px;
+      top: 12px;
+      left: 63px;
     }
-    div:nth-child(2) {
-      width: 134px;
+    .cannibal-chart-right {
+      width: 198px;
+      height: 120px;
+      top: 12px;
+      right: 63px;
     }
-    div:nth-child(3) {
-      width: 112px;
-    }
-    div:nth-child(4) {
-      width: 156px;
+    .cannibal-chart-left, .cannibal-chart-right {
+      div:not(:first-of-type) {
+        height: 8px;
+        margin-top: 10px;
+      }
+      div:first-of-type {
+        margin-bottom: 8px;
+        height: 14px;
+        width: 70px;
+      }
+      div:nth-child(2) {
+        width: 134px;
+      }
+      div:nth-child(3) {
+        width: 112px;
+      }
+      div:nth-child(4) {
+        width: 156px;
+      }
     }
   }
 }
@@ -945,36 +931,88 @@ h3 {
 
   .opportunity-traffic {
 
+    width: max-content;
 
+    opacity: 0;
 
+    right: -30px;
+    top: 43px;
+    transition: 400ms ease all;
+  }
+
+  &:hover {
+    .opportunity-background {
+      object-position: -83px -90px;
+    }
+    .opportunity-chart {
+      width: 234px;
+    }
+    .opportunity-ball {
+      animation: ball-bounce 700ms;
+      bottom: 70px;
+      background: #713dff3d;
+      @keyframes ball-bounce {
+        0% {
+          bottom: 32px;
+        }
+        70% {
+          bottom: 100px;
+        }
+        90% {
+          bottom: 65px;
+        }
+        100% {
+          opacity: 1;
+          bottom: 70px;
+        }
+      }
+    }
+    .opportunity-traffic {
+      opacity: 1;
+      right: 37px;
+      top: 43px;
+    }
   }
 
 
 }
-#card-6:hover .opportunity-background {
-  object-position: -83px -90px;
-}
-#card-6:hover .opportunity-chart {
-  width: 234px;
-}
-#card-6:hover .opportunity-ball {
-  animation: ball-bounce 700ms;
-  bottom: 70px;
+@media screen and (min-width: 1138px) {
+  #card-6 {
+
+    .opportunity-background {
+      object-position: -16px -124.5px;
+    }
+    &:hover {
+      .opportunity-background {
+        object-position: -79px -90px;
+      }
+      .opportunity-chart {
+        width: 234px;
+      }
+      .opportunity-ball {
+        animation: ball-bounce 700ms;
+        bottom: 70px;
+        @keyframes ball-bounce {
+          50% {
+            bottom: 100px;
+            background: #713dff3d;
+          }
+          90% {
+            bottom: 65px;
+          }
+          100% {
+            opacity: 1;
+            bottom: 70px;
+          }
+        }
+      }
+    }
+
+
+
+  }
 }
 
-@keyframes ball-bounce {
-  50% {
-    bottom: 100px;
-    background: #713dff3d;
-  }
-  90% {
-    bottom: 65px;
-  }
-  100% {
-    opacity: 1;
-    bottom: 70px;
-  }
-}
 
 // single property classes
 .mb--0-5 {
@@ -1063,7 +1101,6 @@ footer {
       cursor: pointer;
       padding: 7px 24px;
       position: relative;
-      z-index: 1;
       font-size: 14px;
       font-weight: 500;
       letter-spacing: -.01em;

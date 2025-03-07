@@ -157,24 +157,11 @@ section {
   content: " smart indicators";
 }
 
-h3 {
-  color: #d2d0dd;
-  margin: 0 auto;
-  max-width: 744px;
-  text-align: center;
-  font-size: 16px;
-  line-height: 24px;
-  font-feature-settings: "cv06" on, "calt" off, "liga" off;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
 .cards {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   position: relative;
-  overflow: hidden;
 }
 .cards .footer {
   align-items: center;
@@ -233,6 +220,10 @@ h3 {
   width: 324px;
   height: 165px;
   border-radius: 6px;
+  /*
+  clip-path: inset(-5px 0 -10px 0);
+   */
+  overflow: hidden;
   background: radial-gradient(32.81% 53.93% at 50% 0%, rgba(133, 102, 255, 0.0392156863), rgba(133, 102, 255, 0) 100%, rgba(133, 102, 255, 0));
 }
 .cards .card .card-inner .container {
@@ -242,9 +233,10 @@ h3 {
 }
 .cards .content {
   padding: 0 32px 24px;
-  z-index: 999;
-  background: #0a0118;
-  border-radius: 16px;
+  box-shadow: 0 -15px 25px 30px #0a0118;
+  clip-path: inset(-100px 3.25px 3.25px 3.25px);
+  -webkit-clip-path: inset(-100px 3.25px 3.25px 3.25px);
+  position: relative;
 }
 .cards .content .text, .cards .content .title {
   font-weight: 500;
@@ -329,6 +321,7 @@ h3 {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  z-index: 2;
   align-items: center;
 }
 #card-1 .card-1-custom .title, #card-1 .card-1-custom .text {
@@ -424,7 +417,6 @@ h3 {
   color: #fff;
   position: absolute;
   transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) transform, 0.45s cubic-bezier(0.6, 0.6, 0, 1) opacity;
-  z-index: 16;
 }
 #card-2 .first-thing .mobile, #card-2 .first-thing .desktop {
   font-size: 12px;
@@ -471,7 +463,6 @@ h3 {
   position: absolute;
 }
 #card-2 .second-thing {
-  z-index: 10;
   left: 118px;
   position: absolute;
   top: 28px;
@@ -508,7 +499,6 @@ h3 {
   width: 100%;
   height: 108px;
   transition: 300ms ease;
-  z-index: 9;
 }
 
 #card-2:hover .first-thing {
@@ -524,7 +514,7 @@ h3 {
 }
 
 #card-3 .card-1 {
-  bottom: 10px;
+  bottom: 20px;
 }
 #card-3 .anim-title {
   color: #f9f8fc;
@@ -551,7 +541,7 @@ h3 {
   transition: 300ms ease;
 }
 #card-3 .card-2 {
-  top: 10px;
+  top: 28px;
   opacity: 0;
 }
 #card-3 .card-2 .anim-text {
@@ -643,7 +633,7 @@ h3 {
   opacity: 0;
 }
 #card-3:hover .card-2 {
-  top: 0;
+  top: 8px;
   opacity: 1;
 }
 #card-3:hover .spotter-container {
@@ -670,7 +660,7 @@ h3 {
   background-repeat: no-repeat;
 }
 #card-4 .cannibal-chart-left, #card-4 .cannibal-chart-right {
-  top: 60px;
+  top: 43px;
   width: 112px;
   height: 68px;
   position: absolute;
@@ -733,7 +723,6 @@ h3 {
 #card-4 .cannibal-chart-right {
   right: 31px;
 }
-
 #card-4:hover .cannibal-chart {
   background-image: url("images/cards/card-cannibalization-chart-2.png");
   background-position: -75px 10px;
@@ -808,23 +797,30 @@ h3 {
   background-image: url("images/cards/card-opportunity-chart.png");
   background-size: cover;
 }
+#card-6 .opportunity-traffic {
+  width: max-content;
+  opacity: 0;
+  right: -30px;
+  top: 43px;
+  transition: 400ms ease all;
+}
 #card-6:hover .opportunity-background {
   object-position: -83px -90px;
 }
-
 #card-6:hover .opportunity-chart {
   width: 234px;
 }
-
 #card-6:hover .opportunity-ball {
   animation: ball-bounce 700ms;
   bottom: 70px;
+  background: rgba(113, 61, 255, 0.2392156863);
 }
-
 @keyframes ball-bounce {
-  50% {
+  0% {
+    bottom: 32px;
+  }
+  70% {
     bottom: 100px;
-    background: rgba(113, 61, 255, 0.2392156863);
   }
   90% {
     bottom: 65px;
@@ -832,6 +828,40 @@ h3 {
   100% {
     opacity: 1;
     bottom: 70px;
+  }
+}
+#card-6:hover .opportunity-traffic {
+  opacity: 1;
+  right: 37px;
+  top: 43px;
+}
+
+@media screen and (min-width: 1138px) {
+  #card-6 .opportunity-background {
+    object-position: -16px -124.5px;
+  }
+  #card-6:hover .opportunity-background {
+    object-position: -79px -90px;
+  }
+  #card-6:hover .opportunity-chart {
+    width: 234px;
+  }
+  #card-6:hover .opportunity-ball {
+    animation: ball-bounce 700ms;
+    bottom: 70px;
+  }
+  @keyframes ball-bounce {
+    50% {
+      bottom: 100px;
+      background: rgba(113, 61, 255, 0.2392156863);
+    }
+    90% {
+      bottom: 65px;
+    }
+    100% {
+      opacity: 1;
+      bottom: 70px;
+    }
   }
 }
 .mb--0-5 {
@@ -906,7 +936,6 @@ footer .footer-top .glowing-box-button {
   cursor: pointer;
   padding: 7px 24px;
   position: relative;
-  z-index: 1;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
