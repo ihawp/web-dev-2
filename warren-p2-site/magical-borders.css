@@ -3,6 +3,9 @@
     --card-bg: #0a0118;
     --color: hsl(240 18% 80%);
 
+    --x: 0;
+    --y: 0;
+
     --border-size: -3px;
     --border-radius: 20px;
     --outer-border-radius: 22px;
@@ -16,6 +19,7 @@
 }
 
 @layer magical-borders;
+
 
 .magical-borders-inner {
     background-color: #0a0118;
@@ -49,13 +53,7 @@
 
     .magical-borders {
         --alpha: calc(var(--active, 0) * 0.15);
-        --radial-bg: radial-gradient(
-                circle at calc(var(--x) * 1px) calc(var(--y) * 1px),
-                hsl(
-                        var(--hue-val, 240) calc(var(--hue-sat, 0) * 1%)
-                        calc(var(--hue-lum, 100) * 1%) / var(--alpha)
-                ),
-                transparent calc(var(--spotlight-size) * 1px)
+        --radial-bg: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1%) calc(var(--hue-lum, 100) * 1%) / var(--alpha)), transparent calc(var(--spotlight-size) * 1px)
         );
         aspect-ratio: 4 / 5;
         background: var(--radial-bg), var(--card-bg);
@@ -74,33 +72,19 @@
         position: absolute;
         z-index: -1;
         border-radius: var(--outer-border-radius);
-        background: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1.5%) calc(var(--hue-lum, 100) * 1.5%) / 0.5), transparent calc(var(--spotlight-size) * 1px));
-        background-attachment: fixed;
+        background: fixed radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1.5%) calc(var(--hue-lum, 100) * 1.5%) / 0.5), transparent calc(var(--spotlight-size) * 1px));
     }
 
     .magical-borders::after {
         display: none;
         --alpha: 0.5;
         content: "";
-        inset: 1;
+        inset: 0;
         position: absolute;
         z-index: -1;
         border-radius: var(--outer-border-radius);
-        background: radial-gradient(
-                circle at calc(var(--x) * 1px) calc(var(--y) * 1px),
-                hsl(
-                        var(--hue-val, 240) calc(var(--hue-sat, 0) * 1.5%)
-                        calc(var(--hue-lum, 100) * 1%) / 0.5
-                ),
-                transparent calc(var(--spotlight-size) * 1px)
-        );
+        background: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1.5%) calc(var(--hue-lum, 100) * 1%) / 0.5), transparent calc(var(--spotlight-size) * 1px));
         background-attachment: fixed;
         filter: blur(1.5rem);
     }
 }
-
-/*
-   this is the imperfection of my use of this effect
-   some cases require that you specify a larger border on one side
-   (i think cause of browsers rendering 264px as 263.9999px
-*/

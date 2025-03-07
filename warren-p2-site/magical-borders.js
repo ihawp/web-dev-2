@@ -1,4 +1,4 @@
-const magicalBorders = document.querySelectorAll('.magical-borders-inner');
+const magicalBorders = document.querySelectorAll('.magical-borders');
 const cards = document.querySelectorAll('.magical-borders-container');
 
 
@@ -7,7 +7,13 @@ const placeCursor = ({ x, y }) => {
     document.documentElement.style.setProperty("--y", y.toFixed(2));
 };
 
-cards.forEach(item => item.addEventListener("pointermove", placeCursor));
+cards.forEach(item => {
+    item.addEventListener("pointermove", placeCursor);
+    item.addEventListener('mouseout', () => {
+        document.documentElement.style.setProperty("--x", "-10000");
+        document.documentElement.style.setProperty("--y", "-10000");
+    });
+});
 
 magicalBorders.forEach(item => {
     const mouseDot = document.createElement('div');
@@ -25,9 +31,7 @@ magicalBorders.forEach(item => {
         mouseDot.style.left = `${x}px`;
         mouseDot.style.top = `${y}px`;
     });
-
-    cards.forEach(item => item.addEventListener('mouseout', () => {
+    item.addEventListener('mouseout', () => {
         mouseDot.style.opacity = '0';
-        document.documentElement.style.setProperty("--y", "0");
-    }));
+    });
 });

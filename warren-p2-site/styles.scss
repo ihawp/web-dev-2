@@ -5,7 +5,7 @@ html {
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
-svg, img, video {
+svg, img, video, .not-button, #cards-section-title {
   user-select: none;
 }
 *, *:before, *:after {
@@ -177,6 +177,47 @@ section {
   position: relative;
   overflow: hidden;
 
+  h3 {
+    color: #d2d0dd;
+    margin: 0 auto;
+    max-width: 744px;
+    text-align: center;
+      font-size: 16px;
+      line-height: 24px;
+  }
+
+  .footer {
+    align-items: center;
+    background: #ffffff0d;
+    border: 1px solid rgba(255, 255, 255, .05);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+    width: 100%;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 16px;
+    color: #817b8e;
+    .left-footer:after {
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      content: "|";
+      width: 25px;
+      height: max-content;
+    }
+    .svg {
+      margin-right: 4px;
+    }
+    .number {
+      font-weight: 500;
+      color: #fff;
+    }
+  }
 
   .card {
     text-align: left;
@@ -186,13 +227,6 @@ section {
     position: inherit;
     display: flex;
 
-    .gridline:before {
-      background: linear-gradient(180deg, #0a0118, #0a011800 24.22%, #0a011800 73.85%, #0a0118);
-      content: "";
-      height: 100%;
-      width: 100%;
-      z-index: 15;
-    }
 
     .card-inner {
       position: relative;
@@ -224,7 +258,6 @@ section {
       }
     }
   }
-
   .content {
     padding: 0 32px 24px;
 
@@ -254,7 +287,9 @@ section {
     left: 0;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
     -webkit-mask-composite: xor;
+    mask-composite: exclude;
     padding: 1px;
     pointer-events: none;
     position: absolute;
@@ -274,6 +309,9 @@ section {
   }
 
 }
+.z-index-10 {
+  z-index: 10;
+}
 #card-1 {
 
   .titlee {
@@ -286,12 +324,17 @@ section {
     line-height: 16px;
   }
 
+  #card-1-popup-1, #card-1-popup-2 {
+    left: 18px;
+  }
+
   #card-1-popup-1 {
-    top: 80px;
+    top: 85px;
   }
 
   #card-1-popup-2 {
-    top: -65px;
+    top: -23px;
+    opacity: 0;
   }
 
   .animation-1-popup {
@@ -299,11 +342,17 @@ section {
       margin-right: 8px;
     }
   }
-  .season-top-bottom {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+}
+
+.season-top-bottom {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .5;
+}
+
+.svg {
+  margin-right: 8px;
 }
 
 // ANIMATION ONE
@@ -367,10 +416,23 @@ section {
   opacity: 0;
   transform: translateY(45px);
 }
-.card:hover #card-1-popup-2 {
+#card-1:hover #card-1-popup-2 {
   opacity: 1;
   top: 0;
-  transform: translateY(85px);
+  transform: translateY(15px);
+}
+#chart-background {
+  transition: 400ms ease;
+  width: 670px;
+  height: 130px;
+  object-position: left top;
+  object-fit: cover;
+  left: 0;
+  top: 20px;
+  background-image: url("images/cards/card-seasonality-chart-border.png");
+  background-position: 0;
+  background-size: 670px 100%;
+  background-repeat: no-repeat;
 }
 .card:hover #chart-background {
   object-position: -240px;
@@ -385,19 +447,6 @@ section {
 }
 .card:hover #season-dot-3 {
   transform: translate(13px, 80px);
-}
-#chart-background {
-  transition: 400ms ease;
-  width: 670px;
-  height: 130px;
-  object-position: left top;
-  object-fit: cover;
-  left: 0;
-  top: 20px;
-  background-image: url("images/cards/card-seasonality-chart-border.png");
-  background-position: 0;
-  background-size: 670px 100%;
-  background-repeat: no-repeat;
 }
 
 
@@ -470,6 +519,7 @@ section {
   }
 
   .second-thing {
+    z-index: 10;
     left: 118px;
     position: absolute;
     top: 28px;
@@ -497,79 +547,215 @@ section {
       line-height: 16px;
       color: #817b8e;
       margin-bottom: 8px;
-      margin-top: 5px;
-    }
-    .footer {
-      align-items: center;
-      background: #ffffff0d;
-      border: 1px solid rgba(255, 255, 255, .05);
-      border-radius: 4px;
-      display: flex;
-      justify-content: center;
-      padding: 4px;
-      width: 100%;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 400;
-      letter-spacing: -.01em;
-      line-height: 16px;
-      color: #817b8e;
-    }
-    .svg {
-      margin-right: 4px;
-    }
-    .number {
-      font-weight: 800;
-      color: #fff;
-    }
-    .desktop:after {
-      font-size: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      content: "|";
-      width: 25px;
-      height: max-content;
     }
 
   }
 
   #mobile-chart {
+    display: block;
+    object-position: -50px 0;
     object-fit: cover;
-    object-position: -50px 40px;
-    width: 670px;
-    overflow: visible;
-    height: 130px;
+    top: 30px;
+    width: 100%;
+    height: 108px;
     transition: 300ms ease;
+    z-index: 9;
   }
 
 }
-.card:hover .first-thing {
-  transform: translateX(-150px);
-  opacity: 0;
-}
-.card:hover .second-thing {
-  transform: translateX(-88px);
-}
-#card-2:hover .second-thing {
-  opacity: 1;
-}
-#card-2:hover #mobile-chart {
-  object-fit: cover;
-  object-position: -620px 25px;
-  width: 670px;
+#card-2:hover {
+  .first-thing {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  .second-thing {
+    transform: translateX(-88px);
+    opacity: 1;
+  }
+  #mobile-chart {
+    object-position: -450px 0;
+  }
 }
 
 // ANIMATION THREE
 
 #card-3 {
 
+  .card-1 {
+    bottom: 10px;
+  }
+
+  .anim-title {
+    color: #f9f8fc;
+    font-feature-settings: "cv06" on,"calt" off,"liga" off;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -.01em;
+    line-height: 24px;
+  }
+
+  .anim-text {
+    color: #fff;
+    opacity: .4;
+    font-feature-settings: "cv06" on,"calt" off,"liga" off;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    line-height: 16px;
+  }
+
+  .card-1, .card-2 {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 254px;
+    transition: 300ms ease;
+  }
+
+  .card-2 {
+    top: 10px;
+    opacity: 0;
+
+    .anim-text {
+      margin-bottom: 8px;
+    }
+  }
+
+}
+
+#card-3:hover .card-1 {
+  bottom: -20px;
+  opacity: 0;
+}
+#card-3:hover .card-2 {
+  top: 0;
+  opacity: 1;
 }
 
 // ANIMATION FOUR
 
 #card-4 {
 
+  .cannibal-chart {
+    width: 100%; height: 138px;
+    background-image: url("images/cards/card-cannibalization-chart-1.png");
+    background-size: cover;
+    transition: 400ms ease;
+    background-position: 0 10px;
+    background-repeat: no-repeat;
+  }
+
+  .cannibal-chart-left, .cannibal-chart-right {
+    top: 60px;
+    width: 112px;
+    height: 68px;
+    position: absolute;
+    display: inline-block;
+    content:"";
+    border-radius: 6px;
+    border: 1px solid #0a0118;
+    background: radial-gradient(72.06% 98.28% at 50% 89.22%,#887dff29,#887dff00),#0b0217;
+
+    transition: 400ms ease;
+  }
+
+  .cannibal-chart-left:before, .cannibal-chart-right:before {
+      background: linear-gradient(180deg,#ffffff1a,#fff0);
+      border-radius: 6px;
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+      mask-composite: add, add;
+      mask-composite: xor;
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 1px;
+      pointer-events: none;
+      position: absolute;
+  }
+
+  .cannibal-chart-left, .cannibal-chart-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    div {
+      background: #26374a;
+      height: 7px;
+      margin-top: 4px;
+      border-radius: 6px;
+      transition: 400ms ease;
+    }
+    div:first-of-type {
+      height: 10px;
+      margin-bottom: 5px;
+      width: 40px;
+    }
+    div:nth-child(2) {
+      width: 76px;
+    }
+    div:nth-child(3) {
+      width: 64px;
+    }
+    div:nth-child(4) {
+      width: 88px;
+    }
+  }
+
+  .cannibal-chart-left {
+    left: 31px;
+
+  }
+
+  .cannibal-chart-right {
+    right: 31px;
+  }
+
+}
+
+
+#card-4:hover {
+  .cannibal-chart {
+    background-image: url("images/cards/card-cannibalization-chart-2.png");
+    background-position: -75px 10px;
+  }
+  .cannibal-chart-left {
+    width: 198px;
+    height: 120px;
+    top: 12px;
+    left: 63px;
+  }
+  .cannibal-chart-right {
+    width: 198px;
+    height: 120px;
+    top: 12px;
+    right: 63px;
+  }
+  .cannibal-chart-left, .cannibal-chart-right {
+    div:not(:first-of-type) {
+      height: 8px;
+      margin-top: 10px;
+    }
+    div:first-of-type {
+      margin-bottom: 8px;
+      height: 14px;
+      width: 70px;
+    }
+    div:nth-child(2) {
+      width: 134px;
+    }
+    div:nth-child(3) {
+      width: 112px;
+    }
+    div:nth-child(4) {
+      width: 156px;
+    }
+  }
 }
 
 // ANIMATION FIVE
@@ -596,7 +782,6 @@ section {
   }
 
   .opportunity-ball {
-
     width: 57px;
     height: 57px;
     left: 50%;
@@ -638,19 +823,20 @@ section {
 
   .opportunity-traffic {
 
+
+
   }
 
 
 }
 #card-6:hover .opportunity-background {
-  transform: translate(-63px, 35px);
+  object-position: -83px -90px;
 }
 #card-6:hover .opportunity-chart {
   width: 234px;
 }
 #card-6:hover .opportunity-ball {
   animation: ball-bounce 700ms;
-  animation-fill-mode: inherit;
   bottom: 70px;
 }
 
@@ -1012,10 +1198,7 @@ footer {
   footer .footer-top .right .nav-group {
     gap: 16px;
   }
-
-
-
-  footer .footer-top .right .magical-borders.footer-contact-sizing {
+  footer .footer-top .right .footer-contact-sizing {
     width: 264px;
   }
   footer .footer-bottom {
@@ -1034,6 +1217,28 @@ footer {
   .cards .card .card-inner .card-inner-container {
     width: 364px;
   }
+
+  #card-4 .cannibal-chart-left {
+    left: 51px;
+
+  }
+  #card-4:hover {
+    .cannibal-chart-left {
+      left: 83px;
+    }
+    .cannibal-chart-right {
+      right: 83px;
+    }
+  }
+
+  #card-4 .cannibal-chart-right {
+    right: 51px;
+  }
+
+  #card-1 #card-1-popup-1, #card-1 #card-1-popup-2 {
+    left: 40px;
+  }
+
 }
 
 @media (max-width: 1248px) {

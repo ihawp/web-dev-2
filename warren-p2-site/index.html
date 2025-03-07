@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../styles/normalize-fwd.css">
     <link rel="stylesheet" href="magical-borders.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="images/cards/card-cannibalization-chart-2.png">
 </head>
 <body lang="en">
 
@@ -81,7 +82,7 @@
                                 </div>
                             </div>
 
-                            <div class="absolute example">
+                            <div class="absolute example z-index-10">
                                 <div class="title">Example:</div>
                                 <div class="text">Ice Cream</div>
                             </div>
@@ -125,7 +126,7 @@
                                 The landing page has mobile friendlyness issues. Focus on them to avoid problems.
                             </div>
                             <div class="footer">
-                                <div class="flex items-center desktop">
+                                <div class="flex items-center desktop left-footer">
                                     <div class="svg">
                                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" q:key="bO_0"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 13.5C5 13.2239 5.22386 13 5.5 13H11.5C11.7761 13 12 13.2239 12 13.5C12 13.7761 11.7761 14 11.5 14H5.5C5.22386 14 5 13.7761 5 13.5Z" fill="#713DFF"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M5.97812 2H11.0219C11.7034 2 12.2454 1.99999 12.6827 2.03572C13.1305 2.07231 13.5123 2.14884 13.862 2.32698C14.4265 2.6146 14.8854 3.07354 15.173 3.63803C15.3512 3.98765 15.4277 4.36949 15.4643 4.81729C15.5 5.25458 15.5 5.79659 15.5 6.47811V7.52189C15.5 8.20341 15.5 8.74542 15.4643 9.18271C15.4277 9.63051 15.3512 10.0123 15.173 10.362C14.8854 10.9265 14.4265 11.3854 13.862 11.673C13.5123 11.8512 13.1305 11.9277 12.6827 11.9643C12.2454 12 11.7034 12 11.0219 12H5.97811C5.29659 12 4.75458 12 4.31729 11.9643C3.86949 11.9277 3.48765 11.8512 3.13803 11.673C2.57354 11.3854 2.1146 10.9265 1.82698 10.362C1.64884 10.0123 1.57231 9.63051 1.53572 9.18271C1.49999 8.74542 1.5 8.2034 1.5 7.52188V6.47812C1.5 5.7966 1.49999 5.25458 1.53572 4.81729C1.57231 4.36949 1.64884 3.98765 1.82698 3.63803C2.1146 3.07354 2.57354 2.6146 3.13803 2.32698C3.48765 2.14884 3.86949 2.07231 4.31729 2.03572C4.75458 1.99999 5.2966 2 5.97812 2ZM4.39872 3.0324C4.01276 3.06393 3.77717 3.12365 3.59202 3.21799C3.21569 3.40973 2.90973 3.71569 2.71799 4.09202C2.62365 4.27717 2.56393 4.51276 2.5324 4.89872C2.50039 5.29052 2.5 5.79168 2.5 6.5V7.5C2.5 8.20832 2.50039 8.70948 2.5324 9.10128C2.56393 9.48724 2.62365 9.72283 2.71799 9.90798C2.90973 10.2843 3.21569 10.5903 3.59202 10.782C3.77717 10.8764 4.01276 10.9361 4.39872 10.9676C4.79052 10.9996 5.29168 11 6 11H11C11.7083 11 12.2095 10.9996 12.6013 10.9676C12.9872 10.9361 13.2228 10.8764 13.408 10.782C13.7843 10.5903 14.0903 10.2843 14.282 9.90798C14.3764 9.72283 14.4361 9.48724 14.4676 9.10128C14.4996 8.70948 14.5 8.20832 14.5 7.5V6.5C14.5 5.79168 14.4996 5.29052 14.4676 4.89872C14.4361 4.51276 14.3764 4.27717 14.282 4.09202C14.0903 3.71569 13.7843 3.40973 13.408 3.21799C13.2228 3.12365 12.9872 3.06393 12.6013 3.0324C12.2095 3.00039 11.7083 3 11 3H6C5.29168 3 4.79052 3.00039 4.39872 3.0324Z" fill="#713DFF"></path></svg>
                                     </div>
@@ -162,10 +163,67 @@
                 <div class="magical-borders-inner">
                     <div class="card-inner">
                         <div class="card-inner-container">
-                            <img class="absolute season-top-bottom" alt="" src="images/cards/card-mobile-lights-1.png" draggable="false">
-                            <img class="absolute season-top-bottom" alt="" src="images/cards/card-mobile-lights-2.png" draggable="false">
-                            <img class="absolute" id="mobile-chart" src="images/cards/card-mobile-chart.png" alt="card-seasonality-chart-background.png" draggable="false">
+                            <img class="absolute season-top-bottom" alt="" src="images/cards/card-spotter-lights.png" draggable="false">
                             <img class="absolute gridline" alt="" src="images/cards/card-gridline.png" draggable="false">
+
+                            <div class="card-1 nice-border-1 flex z-index-10">
+                                    <div>
+                                        <svg class="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                                            <rect width="24" height="24" rx="4" fill="white" fill-opacity="0.02"></rect>
+                                            <path d="M13.75 6.75C13.4278 6.75 13.1667 7.01117 13.1667 7.33333C13.1667 7.6555 13.4278 7.91667 13.75 7.91667H17.25C17.5722 7.91667 17.8333 7.6555 17.8333 7.33333C17.8333 7.01117 17.5722 6.75 17.25 6.75H13.75Z" fill="#F4F1F9"></path>
+                                            <path d="M10.8333 14.3333C10.8333 14.6555 10.5722 14.9167 10.25 14.9167H6.75C6.42783 14.9167 6.16667 14.6555 6.16667 14.3333C6.16667 14.0112 6.42783 13.75 6.75 13.75H10.25C10.5722 13.75 10.8333 14.0112 10.8333 14.3333Z" fill="#F4F1F9"></path>
+                                            <path d="M13.75 9.08333C13.4278 9.08333 13.1667 9.3445 13.1667 9.66667C13.1667 9.98883 13.4278 10.25 13.75 10.25H17.25C17.5722 10.25 17.8333 9.98883 17.8333 9.66667C17.8333 9.3445 17.5722 9.08333 17.25 9.08333H13.75Z" fill="#F4F1F9"></path>
+                                            <path d="M10.8333 16.6667C10.8333 16.9888 10.5722 17.25 10.25 17.25H6.75C6.42783 17.25 6.16667 16.9888 6.16667 16.6667C6.16667 16.3445 6.42783 16.0833 6.75 16.0833H10.25C10.5722 16.0833 10.8333 16.3445 10.8333 16.6667Z" fill="#F4F1F9"></path>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.9167 12C13.3058 12 12 13.3058 12 14.9167C12 16.5275 13.3058 17.8333 14.9167 17.8333C15.5109 17.8333 16.0641 17.6552 16.5251 17.35L18.0042 18.8291C18.232 19.057 18.6013 19.057 18.8291 18.8291C19.057 18.6013 19.057 18.232 18.8291 18.0042L17.35 16.5251C17.6552 16.0641 17.8333 15.5109 17.8333 14.9167C17.8333 13.3058 16.5275 12 14.9167 12ZM13.1667 14.9167C13.1667 13.9502 13.9502 13.1667 14.9167 13.1667C15.8832 13.1667 16.6667 13.9502 16.6667 14.9167C16.6667 15.4001 16.4714 15.8368 16.1541 16.1541C15.8368 16.4714 15.4001 16.6667 14.9167 16.6667C13.9502 16.6667 13.1667 15.8832 13.1667 14.9167Z" fill="#F4F1F9"></path>
+                                            <path d="M5 8.5C5 7.4128 5 6.8692 5.17761 6.44041C5.41443 5.86867 5.86867 5.41443 6.44041 5.17761C6.8692 5 7.4128 5 8.5 5C9.5872 5 10.1308 5 10.5596 5.17761C11.1313 5.41443 11.5856 5.86867 11.8224 6.44041C12 6.8692 12 7.4128 12 8.5C12 9.5872 12 10.1308 11.8224 10.5596C11.5856 11.1313 11.1313 11.5856 10.5596 11.8224C10.1308 12 9.5872 12 8.5 12C7.4128 12 6.8692 12 6.44041 11.8224C5.86867 11.5856 5.41443 11.1313 5.17761 10.5596C5 10.1308 5 9.5872 5 8.5Z" fill="#F4F1F9"></path>
+                                            <rect x="0.5" y="0.5" width="23" height="23" rx="3.5" stroke="white" stroke-opacity="0.04"></rect>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="anim-title">
+                                            Keyword: iPhone 14 Pro Max
+                                        </div>
+                                        <div class="anim-text">
+                                            Find the best moments to celebrate!
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="card-2 nice-border-1 flex z-index-10">
+                                <div>
+                                    <div class="anim-title">
+                                        Best Rank
+                                    </div>
+                                    <div class="anim-text">
+                                        Reached your peak moment from the day you start to track this keyword.
+                                    </div>
+                                    <div class="flex items-center footer">
+                                        <div class="flex items-center left-footer">
+                                            <svg class="svg" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 2C5.18629 2 2.5 4.68629 2.5 8C2.5 11.3137 5.18629 14 8.5 14C11.8137 14 14.5 11.3137 14.5 8C14.5 4.68629 11.8137 2 8.5 2ZM1.5 8C1.5 4.13401 4.63401 1 8.5 1C12.366 1 15.5 4.13401 15.5 8C15.5 11.866 12.366 15 8.5 15C4.63401 15 1.5 11.866 1.5 8ZM11.8536 4.64645C12.0488 4.84171 12.0488 5.15829 11.8536 5.35355L9.20711 8L9.35355 8.14645C9.54882 8.34171 9.54882 8.65829 9.35355 8.85355C9.15829 9.04882 8.84171 9.04882 8.64645 8.85355L8.5 8.70711L8.35355 8.85355C8.15829 9.04882 7.84171 9.04882 7.64645 8.85355C7.45118 8.65829 7.45118 8.34171 7.64645 8.14645L7.79289 8L5.64645 5.85355C5.45118 5.65829 5.45118 5.34171 5.64645 5.14645C5.84171 4.95118 6.15829 4.95118 6.35355 5.14645L8.5 7.29289L11.1464 4.64645C11.3417 4.45118 11.6583 4.45118 11.8536 4.64645Z" fill="#817B8E"></path>
+                                            </svg>
+                                            <div class="svg">
+                                                First Rank
+                                            </div>
+                                            <div class="number">
+                                                12
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <svg class="svg" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 1C4.63401 1 1.5 4.13401 1.5 8C1.5 11.866 4.63401 15 8.5 15C12.366 15 15.5 11.866 15.5 8C15.5 4.13401 12.366 1 8.5 1ZM2.5 8C2.5 4.68629 5.18629 2 8.5 2C11.8137 2 14.5 4.68629 14.5 8C14.5 11.3137 11.8137 14 8.5 14C5.18629 14 2.5 11.3137 2.5 8Z" fill="#BAB3FF"></path>
+                                                <path d="M8.3048 4.13174C8.37546 3.95609 8.62454 3.95609 8.69519 4.13174L9.53879 6.22894C9.56888 6.30374 9.6392 6.35474 9.71976 6.36019L11.9784 6.51308C12.1675 6.52589 12.2445 6.76237 12.099 6.88373L10.3618 8.33276C10.2998 8.38444 10.2729 8.46697 10.2926 8.54514L10.8449 10.7368C10.8912 10.9204 10.6897 11.0666 10.5291 10.9659L8.61184 9.76426C8.54346 9.7214 8.45654 9.7214 8.38816 9.76426L6.47088 10.9659C6.3103 11.0666 6.10879 10.9204 6.15505 10.7368L6.70735 8.54514C6.72705 8.46697 6.70019 8.38444 6.63823 8.33276L4.90099 6.88373C4.75548 6.76237 4.83245 6.52589 5.02162 6.51308L7.28024 6.36019C7.36079 6.35474 7.43111 6.30374 7.4612 6.22894L8.3048 4.13174Z" fill="#BAB3FF"></path>
+                                            </svg>
+                                            <div class="svg">
+                                                Best Rank
+                                            </div>
+                                            <div class="number">
+                                                3
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="content">
@@ -179,9 +237,22 @@
                 <div class="magical-borders-inner">
                     <div class="card-inner">
                         <div class="card-inner-container">
-                            <img class="absolute season-top-bottom" alt="" src="images/cards/card-cannibalization-lights.png" draggable="false">
-                            <img class="absolute" src="images/cards/card-cannibalization-chart-1.png" alt="card-seasonality-chart-background.png" draggable="false">
                             <img class="absolute gridline" alt="" src="images/cards/card-gridline.png" draggable="false">
+                            <img class="absolute season-top-bottom" alt="" src="images/cards/card-cannibalization-lights.png" draggable="false">
+                            <div class="absolute cannibal-chart z-index-10">
+                                <div class="cannibal-chart-left">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="cannibal-chart-right">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="content">
@@ -216,6 +287,19 @@
                             <div class="absolute opportunity-chart"></div>
                             <img class="absolute opportunity-background" alt="" src="images/cards/card-opportunity-background.png" draggable="false">
                             <div class="opportunity-ball"></div>
+                            <div class="absolute opportunity-traffic nice-border-1 flex items-center">
+                                <svg width="24" class="" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.7857 5C17.0105 5 15.5714 6.4103 15.5714 8.15C15.5714 9.1132 16.0126 9.97462 16.7061 10.5518L15.7363 12.3797C15.374 13.0625 15.1244 13.5314 14.9106 13.8583C14.6892 14.1969 14.5809 14.2604 14.5548 14.2716C14.3546 14.3578 14.1251 14.3494 13.932 14.2488C13.9069 14.2357 13.8037 14.1645 13.6086 13.8106C13.4204 13.469 13.2071 12.9832 12.8977 12.2758L12.4011 11.1401C12.1094 10.4732 11.8711 9.92821 11.6483 9.52396C11.4285 9.12531 11.1577 8.73352 10.7387 8.51512C10.1594 8.21321 9.471 8.18808 8.87036 8.4468C8.43593 8.63391 8.13607 9.00484 7.88664 9.38634C7.63361 9.77323 7.3545 10.2992 7.01292 10.943L6.02678 12.8015C5.76726 12.7353 5.49497 12.7 5.21429 12.7C3.43909 12.7 2 14.1103 2 15.85C2 17.5897 3.43909 19 5.21429 19C6.98949 19 8.42857 17.5897 8.42857 15.85C8.42857 14.8875 7.98807 14.0259 7.29389 13.448L8.26371 11.6203C8.626 10.9375 8.87557 10.4686 9.08936 10.1417C9.31079 9.80312 9.41914 9.73963 9.44521 9.72843C9.64543 9.64219 9.87493 9.65059 10.068 9.75118C10.0931 9.76434 10.1964 9.83553 10.3914 10.1894C10.5797 10.531 10.7929 11.0168 11.1023 11.7242L11.5989 12.8598C11.8906 13.5268 12.1289 14.0718 12.3518 14.476C12.5715 14.8747 12.8423 15.2665 13.2613 15.4849C13.8406 15.7868 14.529 15.8119 15.1296 15.5532C15.5641 15.3661 15.8639 14.9952 16.1134 14.6137C16.3664 14.2268 16.6455 13.7008 16.9871 13.0571L17.9733 11.1984C18.2331 11.2647 18.5055 11.3 18.7857 11.3C20.5609 11.3 22 9.88971 22 8.15C22 6.4103 20.5609 5 18.7857 5ZM17 8.15C17 7.1835 17.7995 6.4 18.7857 6.4C19.7719 6.4 20.5714 7.1835 20.5714 8.15C20.5714 9.11649 19.7719 9.9 18.7857 9.9C18.4872 9.9 18.2078 9.82881 17.9621 9.70337C17.3889 9.41063 17 8.82424 17 8.15Z" fill="white"></path></g><defs><clipPath id="clip0_265_3247"><rect width="20" height="14" fill="white" transform="translate(2 5)"></rect></clipPath></defs>
+                                </svg>
+                                <div>
+                                    <div>Traffic</div>
+                                    <div class="flex items-center">
+                                        <span class="card-animation-opportunity-traffic-value-number">230</span>
+                                        <svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 9L9.5 12L6.5 15" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        <span class="card-animation-opportunity-traffic-value-number">4,5K</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="content">
@@ -226,6 +310,7 @@
             </div>
 
         </div>
+        <h3>Automatically handles anomaly detection rules that trigger without human attention.</h3>
     </section>
 
     <section id="technical">
