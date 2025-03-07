@@ -169,6 +169,18 @@ section {
   content: " smart indicators";
 }
 
+h3 {
+    color: #d2d0dd;
+    margin: 0 auto;
+    max-width: 744px;
+    text-align: center;
+      font-size: 16px;
+      line-height: 24px;
+    font-feature-settings: "cv06" on,"calt" off,"liga" off;
+  font-weight: 400;
+  letter-spacing: -.01em;
+}
+
 .cards {
 
   display: flex;
@@ -176,15 +188,6 @@ section {
   gap: 1.5rem;
   position: relative;
   overflow: hidden;
-
-  h3 {
-    color: #d2d0dd;
-    margin: 0 auto;
-    max-width: 744px;
-    text-align: center;
-      font-size: 16px;
-      line-height: 24px;
-  }
 
   .footer {
     align-items: center;
@@ -239,7 +242,6 @@ section {
 
       .card-inner-container {
         position: absolute;
-        overflow: hidden;
         top: 16px;
         left: 16px;
         right: 0;
@@ -260,6 +262,9 @@ section {
   }
   .content {
     padding: 0 32px 24px;
+    z-index: 999;
+    background: #0a0118;
+    border-radius: 16px;
 
     .text, .title {
       font-weight: 500;
@@ -308,9 +313,6 @@ section {
     height: 138px;
   }
 
-}
-.z-index-10 {
-  z-index: 10;
 }
 #card-1 {
 
@@ -621,15 +623,135 @@ section {
     }
   }
 
-}
+  .spotter-container {
+    display: flex;
+    height: 100%;
+    left: 0;
+    padding: 0 39px;
+    position: absolute;
+    top: 94px;
+    transition: 300ms ease;
+    width: 100%;
 
-#card-3:hover .card-1 {
-  bottom: -20px;
-  opacity: 0;
-}
-#card-3:hover .card-2 {
-  top: 0;
-  opacity: 1;
+    .spotter-item:nth-child(2), .spotter-item:nth-child(3), .spotter-item:nth-child(4), .spotter-item:nth-child(5),
+    .spotter-item:nth-child(7), .spotter-item:nth-child(14), .spotter-item:nth-child(15), .spotter-item:nth-child(16) {
+      background: #713dff;
+      transform: translateY(-100%);
+    }
+    .spotter-item:nth-child(1), .spotter-item:nth-child(6), .spotter-item:nth-child(8), .spotter-item:nth-child(9),
+    .spotter-item:nth-child(10), .spotter-item:nth-child(11), .spotter-item:nth-child(12), .spotter-item:nth-child(13) {
+      background: #1e162c;
+      transform: translateY(0%);
+    }
+
+    .spotter-item {
+      margin-right: 6px;
+      background: #713dff;
+      width: 12px;
+      border-radius: 16px;
+      transition: 300ms ease;
+
+      &:nth-child(1) {
+        height: 27px;
+      }
+
+      &:nth-child(2) {
+        height: 40px;
+      }
+
+      &:nth-child(3) {
+        height: 20px;
+      }
+
+      &:nth-child(4) {
+        height: 29px;
+      }
+
+      &:nth-child(5) {
+        height: 14px;
+      }
+
+      &:nth-child(6) {
+        height: 16px;
+      }
+
+      &:nth-child(7) {
+        height: 40px;
+      }
+
+      &:nth-child(8) {
+        height: 40px;
+      }
+
+      &:nth-child(9) {
+        height: 71px;
+      }
+
+      &:nth-child(10) {
+        height: 22px;
+      }
+
+      &:nth-child(11) {
+        height: 22px;
+      }
+
+      &:nth-child(12) {
+        height: 12px;
+      }
+
+      &:nth-child(13) {
+        height: 31px;
+      }
+
+      &:nth-child(14) {
+        height: 25px;
+      }
+
+      &:nth-child(15) {
+        height: 12px;
+      }
+
+      &:nth-child(16) {
+        height: 33px;
+      }
+
+      &:nth-child(17) {
+        display: none;
+      }
+
+      &:nth-child(18) {
+        display: none;
+      }
+    }
+  }
+
+
+  &:hover {
+    .card-1 {
+      bottom: -20px;
+      opacity: 0;
+    }
+    .card-2 {
+      top: 0;
+      opacity: 1;
+    }
+
+    .spotter-container {
+      top: 130px;
+      .spotter-item:nth-child(2), .spotter-item:nth-child(3), .spotter-item:nth-child(4), .spotter-item:nth-child(5),
+      .spotter-item:nth-child(7), .spotter-item:nth-child(14), .spotter-item:nth-child(15), .spotter-item:nth-child(16) {
+        background: #1e162c;
+        transform: translateY(0%);
+      }
+      .spotter-item:nth-child(1), .spotter-item:nth-child(6), .spotter-item:nth-child(8), .spotter-item:nth-child(9),
+      .spotter-item:nth-child(10), .spotter-item:nth-child(11), .spotter-item:nth-child(12), .spotter-item:nth-child(13) {
+        background: #713dff;
+        transform: translateY(-100%);
+      }
+    }
+
+  }
+
 }
 
 // ANIMATION FOUR
@@ -1216,6 +1338,95 @@ footer {
 
   .cards .card .card-inner .card-inner-container {
     width: 364px;
+  }
+
+  #card-3 {
+    .spotter-container {
+      display: flex;
+      height: 100%;
+      left: 0;
+      padding: 0 39px;
+      position: absolute;
+      top: 94px;
+      transition: 300ms ease;
+      width: 100%;
+
+      .spotter-item:nth-child(2), .spotter-item:nth-child(3), .spotter-item:nth-child(4), .spotter-item:nth-child(5),
+      .spotter-item:nth-child(7), .spotter-item:nth-child(13), .spotter-item:nth-child(14),
+      .spotter-item:nth-child(15), .spotter-item:nth-child(17), .spotter-item:nth-child(18) {
+        background: #713dff;
+        transform: translateY(-100%);
+      }
+      .spotter-item:nth-child(1), .spotter-item:nth-child(8), .spotter-item:nth-child(9), .spotter-item:nth-child(10),
+      .spotter-item:nth-child(11), .spotter-item:nth-child(12), .spotter-item:nth-child(16) {
+        background: #1e162c;
+        transform: translateY(0%);
+      }
+
+      .spotter-item:nth-child(6) {
+        background: #713dff;
+        transform: translateY(0%);
+      }
+
+      .spotter-item {
+
+        &:nth-child(10) {
+          height: 22px;
+        }
+
+        &:nth-child(11) {
+          height: 12px;
+        }
+
+        &:nth-child(12) {
+          height: 31px;
+        }
+
+        &:nth-child(13) {
+          height: 25px;
+        }
+
+        &:nth-child(14) {
+          height: 12px;
+        }
+
+        &:nth-child(15) {
+          height: 33px;
+        }
+
+        &:nth-child(16) {
+          height: 22px;
+        }
+
+        &:nth-child(17) {
+          height: 39px;
+          display: inline;
+        }
+
+        &:nth-child(18) {
+          display: inline;
+          height: 12px;
+        }
+      }
+    }
+
+
+    &:hover {
+      .spotter-container {
+        top: 130px;
+        .spotter-item:nth-child(2), .spotter-item:nth-child(3), .spotter-item:nth-child(4), .spotter-item:nth-child(5),
+        .spotter-item:nth-child(7), .spotter-item:nth-child(14), .spotter-item:nth-child(15), .spotter-item:nth-child(16) {
+          background: #1e162c;
+          transform: translateY(0%);
+        }
+        .spotter-item:nth-child(1), .spotter-item:nth-child(6), .spotter-item:nth-child(8), .spotter-item:nth-child(9),
+        .spotter-item:nth-child(10), .spotter-item:nth-child(11), .spotter-item:nth-child(12), .spotter-item:nth-child(13) {
+          background: #713dff;
+          transform: translateY(-100%);
+        }
+      }
+
+    }
   }
 
   #card-4 .cannibal-chart-left {
