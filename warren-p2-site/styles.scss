@@ -119,8 +119,21 @@ h2 {
   font-size: 2rem;
 }
 
-main, footer, header {
-  width: 342px;
+.cards-description {
+  color: #d2d0dd;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+  font-feature-settings: "cv06" on, "calt" off, "liga" off;
+  letter-spacing: -.01em;
+  /*
+  font-size: 28px;
+  line-height: 36px;
+   */
+}
+main, section, footer, header {
+  width: 358px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -351,6 +364,60 @@ section {
 
 #card-1 {
 
+  .card-1-new-chart {
+    bottom: 15px;
+    -webkit-mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 3.98%, #fff 9.11%, #fff 90.63%, rgba(255, 255, 255, 0) 96.3%);
+    mask-image: linear-gradient(90deg, #fff0 3.98%, #fff 9.11%, #fff 90.63%, #fff0 96.3%);
+    -webkit-mask-position: -16px -16px;
+    mask-position: -16px -16px;
+    -webkit-mask-size: calc(100% + 32px);
+    mask-size: calc(100% + 32px);
+    position: absolute;
+    width: calc(100%);
+    z-index: 0;
+  }
+
+  .card-1-new-chart > div {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .card-1-new-chart > div img {
+      height: 130px;
+      object-fit: cover;
+      object-position: 0;
+      width: 670px;
+      display: block;
+      transition: 400ms ease;
+  }
+
+  .card-1-new-chart > div div {
+    --background-image: url(images/cards/card-seasonality-chart-border.png);
+    transition: .45s cubic-bezier(.6,.6,0,1) mask-position, 1s cubic-bezier(.6,.6,0,1) opacity, .45s cubic-bezier(.6,.6,0,1) -webkit-mask-position !important;
+    height: 98px;
+    left: 0;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    position: absolute;
+    top: 0;
+    width: 670px;
+    -webkit-mask-image: var(--background-image);
+    mask-image: var(--background-image);
+  }
+
+  .card-1-new-chart > div div:before {
+    background: linear-gradient(90deg, #713dff00, #713dff 3.89%, #713dff 51.81%, #713dff00 54.33%);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    --background-image: url(images/cards/card-seasonality-chart-border.png);
+  }
+
   .card-1-custom {
 
     .example {
@@ -387,59 +454,52 @@ section {
   }
 
   .season-dot {
+    z-index: 10;
     width: 26px;
     height: 26px;
     transition: .45s cubic-bezier(.6,.6,0,1) transform, 1s cubic-bezier(.6,.6,0,1) opacity !important;
   }
   #season-dot-1 {
     left: 134px;
-    top: 15px;
+    top: 14px;
   }
   #season-dot-2 {
     left: 163px;
-    top: 23px;
+    top: 20px;
   }
   #season-dot-3 {
     left: 190px;
     top: 6px;
   }
 
-}
-.card:hover #card-1-popup-1 {
-  opacity: 0;
-  transform: translateY(45px);
-}
-#card-1:hover #card-1-popup-2 {
-  opacity: 1;
-  top: 0;
-  transform: translateY(15px);
-}
-#chart-background {
-  transition: 400ms ease;
-  width: 670px;
-  height: 130px;
-  object-position: left top;
-  object-fit: cover;
-  left: 0;
-  top: 20px;
-  background-image: url("images/cards/card-seasonality-chart-border.png");
-  background-position: 0;
-  background-size: 670px 100%;
-  background-repeat: no-repeat;
-}
-.card:hover #chart-background {
-  object-position: -240px;
-  background-image: url("images/cards/card-seasonality-chart-border.png");
-  background-position: -240px -30px;
-}
-.card:hover #season-dot-1 {
-  transform: translate(-4px, 65px);
-}
-.card:hover #season-dot-2 {
-  transform: translate(4px, 80px);
-}
-.card:hover #season-dot-3 {
-  transform: translate(13px, 80px);
+  &:hover {
+    .card-1-new-chart > div img {
+      object-position: -248px;
+    }
+    .card-1-new-chart > div div {
+      mask-position: -248px 0;
+      -webkit-mask-position: -248px 0;
+    }
+    #card-1-popup-1 {
+      opacity: 0;
+      transform: translateY(45px);
+    }
+    #card-1-popup-2 {
+      opacity: 1;
+      top: 0;
+      transform: translateY(15px);
+    }
+    #season-dot-1 {
+      transform: translate(-10px, 70px);
+    }
+    #season-dot-2 {
+      transform: translate(-3px, 84px);
+    }
+    #season-dot-3 {
+      transform: translate(6px, 85px);
+    }
+  }
+
 }
 
 
@@ -910,31 +970,39 @@ section {
 
   }
 
-  .opportunity-chart:before {
+
+  .opportunity-chart {
+    height: 95px;
+    -webkit-mask-image: linear-gradient(180deg, #fff 55.88%, transparent 100%);
+    mask-image: linear-gradient(180deg, #fff 55.88%, transparent 100%);
+    position: absolute;
+    width: 234px;
+  }
+
+  .opportunity-chart div {
+    --background-image: url(images/cards/card-opportunity-chart.png);
+    height: 100%;
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    width: 100%;
+    -webkit-mask-image: var(--background-image);
+    mask-image: var(--background-image);
+    transition: 1s cubic-bezier(.6,.6,0,1) opacity;
+  }
+
+  .opportunity-chart div:before {
     background: linear-gradient(to right, #8666ff 90%, transparent 100%);
     content: "";
     display: block;
     height: 100%;
     transform: translate(-78%);
     transition: .8s cubic-bezier(.6,.6,0,1) transform;
-    width: -100%;
-  }
-
-  .opportunity-chart {
-    background-repeat: no-repeat;
-    object-position: 0;
-    width: 45px;
-    height: 95px;
-    background-image: url("images/cards/card-opportunity-chart.png");
-    background-size: cover;
+    width: 100%;
   }
 
   .opportunity-traffic {
-
     width: max-content;
-
     opacity: 0;
-
     right: -30px;
     top: 43px;
     transition: 400ms ease all;
@@ -944,8 +1012,8 @@ section {
     .opportunity-background {
       object-position: -83px -90px;
     }
-    .opportunity-chart {
-      width: 234px;
+    .opportunity-chart div:before {
+      transform: translate(0);
     }
     .opportunity-ball {
       animation: ball-bounce 700ms;
@@ -969,7 +1037,7 @@ section {
     }
     .opportunity-traffic {
       opacity: 1;
-      right: 37px;
+      right: 20px;
       top: 43px;
     }
   }
@@ -977,6 +1045,13 @@ section {
 
 }
 @media screen and (min-width: 1138px) {
+
+  .cards-description {
+    font-size: 28px;
+    line-height: 36px;
+    max-width: 744px;
+  }
+
   #card-6 {
 
     .opportunity-background {
@@ -1333,7 +1408,7 @@ footer {
       height: 138px;
     }
   }
-  main, header {
+  main, header, section {
     width: 1248px;
   }
 
