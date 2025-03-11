@@ -49,7 +49,7 @@ function findNodeValue(id, nodes) {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 // returns nearest streets node id and nodes
 function findStreets(lat, lon) {
-    return makeFetch(`[out:json]; way(around:50, ${lat}, ${lon})["highway"]; out body;`);
+    return makeFetch(`[out:json]; way(around:25, ${lat}, ${lon})["highway"]; out body;`);
 }
 
 const addMarker = (lat, lon, label) => {
@@ -66,7 +66,6 @@ function findIntersection(streetName) {
                               [out:json];
                               [bbox:{{bbox}}];
                               way[highway][name="${streetName}"]->.w1;
-                              way[highway][name="West 23rd Street"]->.w2;
                               node(w.w1)(w.w2);
                               out body;
     `);
@@ -74,12 +73,14 @@ function findIntersection(streetName) {
     // make sure intersection is in direction of target as per graph below.
 }
 
-function searchForRoute(lat, lon) {
+async function searchForRoute(lat, lon) {
+
+    console.log("searching for route");
 
     // below is the logic for finding street and then proper lowest (closest) lat/lon value (where the user should go) (all in relation to having to use the OverpassAPI),
     // possible if you have any position (but it's likely you would want to use the users location).
 
-    return new Promise(async (resolve) => {
+    let b = await new Promise(async (resolve) => {
         let l = await findStreets(lat, lon);
         if (l) {
 
@@ -158,8 +159,7 @@ function searchForRoute(lat, lon) {
 
                         } else {
                             console.log('still calculating streets');
-
-                            // recurse
+                            resolve(false);
                         }
 
                         // so we are here... sure! we have two points calculatable and a proper polyline between the two.
@@ -175,7 +175,17 @@ function searchForRoute(lat, lon) {
                 }
             }
         }
-    })
+    });
+
+
+    // check if full route found here
+    // if most recent point found is within 10 metres then route is good to go
+    // else keep looking for streets to get there.
+    if (b === 'bananaphone') {
+        return b;
+    } else {
+        await searchForRoute(dataStruct.targetLat, dataStruct.targetLon);
+    }
 
 }
 

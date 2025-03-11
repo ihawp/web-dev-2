@@ -32,7 +32,7 @@ const locationFinder = {
 
         locationFinder.latSign = Math.sign(position.coords.latitude);
         locationFinder.lonSign = Math.sign(position.coords.longitude);
-        return await fetcher(`[out:json]; way(around:50, ${locationFinder.latitude}, ${locationFinder.longitude})["highway"]; out body; `)
+        return await fetcher(`[out:json]; way(around:25, ${locationFinder.latitude}, ${locationFinder.longitude})["highway"]; out body; `)
             .then(data => {
 
                 /*
@@ -124,7 +124,7 @@ const main = async () => {
             routeFound = true;
             return 1;
         }
-        console.log('ran');
+        console.log(`ran ${run}`);
         run++;
 
 
