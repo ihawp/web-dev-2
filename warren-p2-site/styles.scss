@@ -268,6 +268,7 @@ section {
     clip-path: inset(-100px 3.25px 3.25px 3.25px);
     -webkit-clip-path: inset(-100px 3.25px 3.25px 3.25px);
     position: relative;
+    z-index: 10;
 
     .text, .title {
       font-weight: 500;
@@ -425,7 +426,7 @@ section {
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      z-index: 2;
+      z-index: 11;
       align-items: center;
     }
 
@@ -929,7 +930,273 @@ section {
 // ANIMATION FIVE
 
 #card-5 {
+  .market-circle {
+    width: 200px;
+    bottom: 5px;
+    left: 50%;
+    translate: -50%;
+  }
 
+  .market-circle-blur {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-radius: 9999px 9999px 0 0;
+    z-index: -1;
+  }
+
+  .card-animation-market-text {
+    bottom: 10px;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%);
+    z-index: 7;
+
+    .card-animation-market-text-label {
+      color: #d4d1dc;
+      text-transform: uppercase;
+      transition-delay: .1s;
+    }
+
+    .card-animation-market-text-label, .card-animation-market-text-value {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: .45s cubic-bezier(.6,.6,0,1) transform, .45s cubic-bezier(.6,.6,0,1) opacity;
+    }
+    .card-animation-market-text-label {
+      font-feature-settings: "ss14" on, "cv01" on, "cv02" on, "cv03" on, "cv04" on, "cv09" on, "cv10" on;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+
+    .card-animation-market-text-value {
+      font-feature-settings: "cv01" on, "cv02" on, "cv03" on, "cv09" on, "cv06" on, "cv04" on, "cv10" on, "calt" off, "liga" off;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 28px;
+      text-align: center;
+    }
+
+  }
+
+  .card-animation-market-circle-middle {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 186px;
+    left: 50%;
+    translate: -50%;
+    bottom: -55%;
+    mix-blend-mode: overlay;
+    position: absolute;
+    transform: scale(.5376344086);
+    transition: .45s cubic-bezier(.6,.6,0,1) transform;
+    width: 186px;
+    z-index: -1;
+  }
+
+  .card-animation-market-domains {
+
+    display: flex;
+    justify-content: center;
+    left: 18px;
+    position: absolute;
+    top: 28px;
+    .card-animation-market-domain:not(:last-child) {
+      margin-right: 12px;
+    }
+    .card-animation-market-domain {
+        align-items: center;
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        background: #0b021733;
+        border-radius: 99px;
+        opacity: 0;
+        padding: 4px 12px;
+        transform: translateY(96px);
+        transition: .45s cubic-bezier(.6,.6,0,1) transform, .45s cubic-bezier(.6,.6,0,1) opacity;
+        font-feature-settings: "cv06" on, "calt" off, "liga" off;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: -.01em;
+        line-height: 16px;
+
+      &:before {
+        border-radius: 50%;
+        content: "";
+        display: inline-block;
+        height: 6px;
+        margin-right: 8px;
+        position: relative;
+        top: -1px;
+        width: 6px;
+      }
+
+      &:after {
+        background: linear-gradient(180deg, #a9a3c233, #a9a3c20c), linear-gradient(0deg, #ffffff0d, #ffffff0d);
+        border-radius: 99px;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: xor;
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        padding: 1px;
+        pointer-events: none;
+        position: absolute;
+      }
+
+      &:nth-child(1) {
+        transform: translate(64px, 96px);
+      }
+      &:nth-child(1):before {
+        background-color: #f4db75;
+      }
+      &:nth-child(2) {
+        transition-delay: .1s;
+      }
+      &:nth-child(2):before {
+        background-color: #66d1ff;
+      }
+      &:nth-child(3) {
+        transform: translate(-64px, 96px);
+        transition-delay: .2s;
+      }
+      &:nth-child(3):before {
+        background-color: #713dff;
+      }
+    }
+  }
+
+  .card-animation-market-circle-borders {
+    left: 50%;
+    position: absolute;
+    top: 100%;
+
+    .card-animation-market-circle-border {
+      border: 1px solid #fff;
+      border-radius: 50%;
+      left: 50%;
+      mix-blend-mode: overlay;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      &:nth-child(1) {
+        height: 68px;
+        opacity: .35;
+        width: 68px;
+      }
+      &:nth-child(2) {
+        height: 84px;
+        opacity: .3;
+        width: 84px;
+      }
+      &:nth-child(3) {
+        height: 100px;
+        opacity: .25;
+        width: 100px;
+      }
+      &:nth-child(4) {
+        height: 116px;
+        opacity: .2;
+        width: 116px;
+      }
+      &:nth-child(5) {
+        height: 132px;
+        opacity: .15;
+        width: 132px;
+      }
+      &:nth-child(6) {
+        height: 148px;
+        opacity: .1;
+        width: 148px;
+      }
+      &:nth-child(7) {
+        height: 164px;
+        opacity: .05;
+        width: 164px;
+      }
+
+    }
+  }
+
+  .card-animation-market-pointers {
+
+    .card-animation-market-pointer {
+      align-items: center;
+      background: rgba(var(--color), .08);
+      border: 1px solid rgba(var(--color), .2);
+      border-radius: 50%;
+      display: flex;
+      height: 24px;
+      justify-content: center;
+      position: absolute;
+      transition: .45s cubic-bezier(.6,.6,0,1) transform, .45s cubic-bezier(.6,.6,0,1) opacity;
+      width: 24px;
+      z-index: -4;
+    }
+    .card-animation-market-pointer:before {
+      background-color: rgba(var(--color), .4);
+      border: 1px solid rgb(var(--color));
+      border-radius: 50%;
+      content: "";
+      height: 10px;
+      width: 10px;
+    }
+    .card-animation-market-pointer:nth-child(1) {
+      --color: 255, 231, 102;
+      left: 42px;
+      top: 94px;
+    }
+    .card-animation-market-pointer:nth-child(2) {
+      --color: 102, 209, 255;
+      left: 120px;
+      top: 42px;
+      transition-delay: .1s;
+    }
+    .card-animation-market-pointer:nth-child(3) {
+      --color: 113, 61, 255;
+      left: 328px;
+      top: 68px;
+      transition-delay: .2s;
+    }
+  }
+
+  &:hover {
+    .card-animation-market-text-label, .card-animation-market-text-value {
+      transform: translate(0, -18px);
+      opacity: 1;
+    }
+    .card-animation-market-domain {
+      transform: translate(0);
+      opacity: 1;
+      &:nth-child(1), &:nth-child(3) {
+        transform: translate(0);
+        opacity: 1;
+      }
+    }
+    .card-animation-market-pointer { opacity: 0; }
+    .card-animation-market-pointer:nth-child(1) {
+      transform: translate(127px, 48px);
+    }
+    .card-animation-market-pointer:nth-child(2) {
+      transform: translate(23px, 62px);
+    }
+    .card-animation-market-pointer:nth-child(3) {
+      transform: translate(-80px, 48px);
+    }
+
+    .card-animation-market-circle-middle { transform: scale(1); }
+  }
 }
 
 // ANIMATION SIX
@@ -946,30 +1213,73 @@ section {
     height: 204px;
     zoom: 550%;
     object-position: -20px -125px;
-    overflow: visible;
   }
 
   .opportunity-ball {
-    width: 57px;
-    height: 57px;
-    left: 50%;
-    bottom: 32px;
-    transform: translateX(-50%);
-    border-radius: 999px;
-    background: #fff;
+    left: 143px;
     position: absolute;
-    transition: 500ms ease;
+    top: 85px;
+    z-index: 9;
+    transition: .45s cubic-bezier(.6,.6,0,1) opacity, 400ms ease;
+    transform: translateY(var(--motion-translateY));
+    --motion-translateY: 0px;
 
+    .card-animation-opportunity-ball {
+      border-radius: 50%;
+      left: 0;
+      padding: 4px;
+      position: absolute;
+      top: 0;
+      transition: .45s cubic-bezier(.6,.6,0,1) opacity;
+      width: -moz-max-content;
+      width: max-content;
+
+      &:before {
+        border-radius: 50%;
+        content: "";
+        display: block;
+        height: 38px;
+        width: 38px;
+      }
+
+      &:nth-child(1) {
+        background: #ffffff1a;
+        border: 1px solid rgba(255, 255, 255, .4);
+      }
+
+      &:nth-child(1):before {
+        background: #ffffffbf;
+        border: 1px solid rgba(255, 255, 255, .2);
+      }
+      &:nth-child(2) {
+        background-color: #713dff3d;
+        opacity: 0;
+        padding: 5px;
+        position: relative;
+      }
+      &:nth-child(2):before {
+        background: radial-gradient(74.8% 147.82% at 50% 90.28%, #fff3, #fff0), radial-gradient(66.44% 77.38% at 50% 116.67%, #887dff, #887dff00), #713dff;
+        border: 1px solid rgba(255, 255, 255, .2);
+      }
+      &:nth-child(2):after {
+        background: radial-gradient(74.8% 147.82% at 50% 90.28%, #fff3, #fff0), radial-gradient(66.44% 77.38% at 50% 116.67%, #887dff, #887dff00), linear-gradient(0deg, #713dff, #713dff);
+        border-radius: 50%;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: xor;
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        padding: 2px;
+        pointer-events: none;
+        position: absolute;
+      }
+    }
   }
-
-  .opportunity-ball:before {
-
-  }
-
-  .opportunity-ball:after {
-
-  }
-
 
   .opportunity-chart {
     height: 95px;
@@ -1003,12 +1313,28 @@ section {
   .opportunity-traffic {
     width: max-content;
     opacity: 0;
-    right: -30px;
-    top: 43px;
     transition: 400ms ease all;
+    transition-delay: .1s;
+    padding-right: 23px;
+
+    .svg {
+      margin-right: 8px;
+    }
+
+    .traffic-title {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      line-height: 16px;
+      opacity: .5;
+      text-transform: uppercase;
+    }
   }
 
   &:hover {
+    .card-animation-opportunity-ball:nth-child(2) {
+      opacity: 1;
+    }
     .opportunity-background {
       object-position: -83px -90px;
     }
@@ -1016,29 +1342,39 @@ section {
       transform: translate(0);
     }
     .opportunity-ball {
-      animation: ball-bounce 700ms;
-      bottom: 70px;
-      background: #713dff3d;
-      @keyframes ball-bounce {
+      animation: bounce 900ms ease;
+      @keyframes bounce {
         0% {
-          bottom: 32px;
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-70px);
+        }
+        60% {
+          transform: translateY(-33px);
         }
         70% {
-          bottom: 100px;
-        }
-        90% {
-          bottom: 65px;
+          transform: translateY(-42px);
         }
         100% {
-          opacity: 1;
-          bottom: 70px;
+          transform: translateY(-38px);
         }
       }
+      --motion-translateY: -38px;
     }
     .opportunity-traffic {
       opacity: 1;
-      right: 20px;
-      top: 43px;
+      right: 12px;
+      top: 58px;
+    }
+  }
+
+  &:not(:hover) {
+    .opportunity-traffic {
+      opacity: 0;
+      right: -500px;
+      top: -100px;
+      transition-delay: 0s;
     }
   }
 
@@ -1057,6 +1393,9 @@ section {
     .opportunity-background {
       object-position: -16px -124.5px;
     }
+    .opportunity-ball {
+      left: 163px;
+    }
     &:hover {
       .opportunity-background {
         object-position: -79px -90px;
@@ -1064,22 +1403,8 @@ section {
       .opportunity-chart {
         width: 234px;
       }
-      .opportunity-ball {
-        animation: ball-bounce 700ms;
-        bottom: 70px;
-        @keyframes ball-bounce {
-          50% {
-            bottom: 100px;
-            background: #713dff3d;
-          }
-          90% {
-            bottom: 65px;
-          }
-          100% {
-            opacity: 1;
-            bottom: 70px;
-          }
-        }
+      .opportunity-traffic {
+        right: 23px;
       }
     }
 
