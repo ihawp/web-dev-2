@@ -18,8 +18,6 @@
     --hue-lum: 50;
 }
 
-@layer magical-borders;
-
 
 .magical-borders-inner {
     background-color: #0a0118;
@@ -28,7 +26,7 @@
     flex-direction: column;
     flex-grow: 1;
     /* forces browser to use 1px at min (chrome would not show magical border on one side when set to 1px zzz */
-    --val: 1.1px;
+    --val: 1.000000000000000000000000000000px;
     top: var(--val);
     right: var(--val);
     bottom: var(--val);
@@ -55,8 +53,7 @@
 
     .magical-borders {
         --alpha: calc(var(--active, 0) * 0.15);
-        --radial-bg: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1%) calc(var(--hue-lum, 100) * 1%) / var(--alpha)), transparent calc(var(--spotlight-size) * 1px)
-        );
+        --radial-bg: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1%) calc(var(--hue-lum, 100) * 1%) / var(--alpha)), transparent calc(var(--spotlight-size) * 1px));
         aspect-ratio: 4 / 5;
         background: var(--radial-bg), var(--card-bg);
         background-attachment: fixed;
@@ -64,7 +61,6 @@
         flex-direction: column;
         justify-content: space-evenly;
         border-radius: var(--border-radius);
-
         overflow: hidden;
     }
 

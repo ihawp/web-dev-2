@@ -7,7 +7,7 @@ const alert = document.getElementById('alert');
 
 /*
 
-    The api intakes these options to determine how it should act.
+    The API intakes these options to determine how it should act.
 
     enableHighAccuracy: true;
     Causes more power consumption and slower response time, but

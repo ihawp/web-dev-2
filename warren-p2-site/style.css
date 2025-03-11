@@ -356,7 +356,6 @@ section {
   transition: 400ms ease;
 }
 #card-1 .card-1-new-chart > div div {
-  --background-image: url(images/cards/card-seasonality-chart-border.png);
   transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) mask-position, 1s cubic-bezier(0.6, 0.6, 0, 1) opacity, 0.45s cubic-bezier(0.6, 0.6, 0, 1) -webkit-mask-position !important;
   height: 98px;
   left: 0;
@@ -367,8 +366,8 @@ section {
   position: absolute;
   top: 0;
   width: 670px;
-  -webkit-mask-image: var(--background-image);
-  mask-image: var(--background-image);
+  -webkit-mask-image: url(images/cards/card-seasonality-chart-border.png);
+  mask-image: url(images/cards/card-seasonality-chart-border.png);
 }
 #card-1 .card-1-new-chart > div div:before {
   background: linear-gradient(90deg, rgba(113, 61, 255, 0), #713dff 3.89%, #713dff 51.81%, rgba(113, 61, 255, 0) 54.33%);
@@ -932,7 +931,7 @@ section {
   background-color: #66d1ff;
 }
 #card-5 .card-animation-market-domains .card-animation-market-domain:nth-child(3) {
-  transform: translate(-64px, 96px);
+  transform: translate(64px, 96px);
   transition-delay: 0.2s;
 }
 #card-5 .card-animation-market-domains .card-animation-market-domain:nth-child(3):before {
@@ -1021,7 +1020,7 @@ section {
 }
 #card-5 .card-animation-market-pointers .card-animation-market-pointer:nth-child(3) {
   --color: 113, 61, 255;
-  left: 328px;
+  left: 300px;
   top: 68px;
   transition-delay: 0.2s;
 }
@@ -1230,6 +1229,9 @@ section {
   }
   #card-6:hover .opportunity-traffic {
     right: 23px;
+  }
+  #card-5 .card-animation-market-domains {
+    left: 38px;
   }
 }
 .mb--0-5 {
