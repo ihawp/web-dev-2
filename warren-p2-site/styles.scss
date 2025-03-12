@@ -1,5 +1,6 @@
 @use "sass:meta";
 @use "sass:string";
+@use 'magical-borders';
 
 html {
   scroll-behavior: smooth;
@@ -1223,8 +1224,7 @@ section {
     top: 85px;
     z-index: 9;
     transition: .45s cubic-bezier(.6,.6,0,1) opacity, 400ms ease;
-    transform: translateY(var(--motion-translateY));
-    --motion-translateY: 0px;
+    transform: translateY(0);
 
     .card-animation-opportunity-ball {
       border-radius: 50%;
@@ -1345,24 +1345,26 @@ section {
     }
     .opportunity-ball {
       animation: bounce 900ms ease;
-      @keyframes bounce {
-        0% {
-          transform: translateY(0);
-        }
-        40% {
-          transform: translateY(-70px);
-        }
-        60% {
-          transform: translateY(-33px);
-        }
-        70% {
-          transform: translateY(-42px);
-        }
-        100% {
-          transform: translateY(-38px);
+      transform: translateY(-38px);
+      & {
+        @keyframes bounce {
+          0% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-70px);
+          }
+          60% {
+            transform: translateY(-33px);
+          }
+          70% {
+            transform: translateY(-42px);
+          }
+          100% {
+            transform: translateY(-38px);
+          }
         }
       }
-      --motion-translateY: -38px;
     }
     .opportunity-traffic {
       opacity: 1;

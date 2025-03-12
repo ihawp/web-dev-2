@@ -1,3 +1,144 @@
+:root {
+  --x: 0;
+  --y: 0;
+}
+
+.magical-borders-container > * {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
+  border-radius: 16px;
+  position: relative;
+}
+.magical-borders-container .magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  z-index: 2;
+  position: absolute;
+}
+
+.mouse-dot {
+  position: absolute;
+  box-shadow: 0 0 100px 100px rgba(0, 255, 255, 0.075);
+  border-radius: 100%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@layer magical-borders {
+  .magical-borders {
+    aspect-ratio: 4/5;
+    background: fixed radial-gradient(circle at calc(--x * 1px) calc(--y * 1px), hsl(var(0, 240), calc(var(25, 0) * 1%), calc(var(50, 100) * 1%), calc(var(1, 0) * 0.15)), transparent 150px), #0a0118;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .magical-borders:before {
+    content: "";
+    inset: -3px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 22px;
+    background: fixed radial-gradient(circle at calc(--x * 1px) calc(--y * 1px), hsl(var(--hue-val, 240), calc(var(25, 0) * 1.5%), calc(var(50, 100) * 1.5%), 0.5), transparent 150px);
+  }
+  .magical-borders:after {
+    display: none;
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+    border-radius: 22px;
+    background: fixed radial-gradient(circle at calc(--x * 1px) calc(--y * 1px), hsl(var(0, 240), calc(var(25, 0) * 1.5%), calc(var(50, 100) * 1%), 0.5), transparent 150px);
+    filter: blur(1.5rem);
+  }
+}
+:root {
+  --bg: #0a0118;
+  --card-bg: #0a0118;
+  --color: hsl(240 18% 80%);
+  --x: 0;
+  --y: 0;
+  --border-size: -3px;
+  --border-radius: 20px;
+  --outer-border-radius: 22px;
+  --spotlight-size: 150;
+  --active: 1;
+  --hue-val: 0;
+  --hue-sat: 25;
+  --hue-lum: 50;
+}
+
+.magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* forces browser to use 1px at min (chrome would not show magical border on one side when set to 1px zzz */
+  --val: 1.000000000000000000000000000000px;
+  top: var(--val);
+  right: var(--val);
+  bottom: var(--val);
+  left: var(--val);
+  z-index: 2;
+  position: absolute;
+}
+
+.magical-borders-container > * {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
+  border-radius: 16px;
+  position: relative;
+}
+
+.mouse-dot {
+  position: absolute;
+  box-shadow: 0 0 150px 150px rgba(0, 255, 255, 0.075);
+  border-radius: 100%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@layer magical-borders {
+  .magical-borders {
+    --alpha: calc(var(--active, 0) * 0.15);
+    --radial-bg: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1%) calc(var(--hue-lum, 100) * 1%) / var(--alpha)), transparent calc(var(--spotlight-size) * 1px));
+    aspect-ratio: 4/5;
+    background: fixed var(--radial-bg), var(--card-bg);
+    position: relative;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  .magical-borders::before {
+    content: "";
+    inset: var(--border-size);
+    position: absolute;
+    z-index: -1;
+    border-radius: var(--outer-border-radius);
+    background: fixed radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240), calc(var(--hue-sat, 0) * 1.5%), calc(var(--hue-lum, 100) * 1.5%), 0.5), transparent calc(var(--spotlight-size) * 1px));
+  }
+  .magical-borders::after {
+    display: none;
+    --alpha: 0.5;
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+    border-radius: var(--outer-border-radius);
+    background: fixed radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240), calc(var(--hue-sat, 0) * 1.5%), calc(var(--hue-lum, 100) * 1%), 0.5), transparent calc(var(--spotlight-size) * 1px));
+    filter: blur(1.5rem);
+  }
+}
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
@@ -1068,8 +1209,7 @@ section {
   top: 85px;
   z-index: 9;
   transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) opacity, 400ms ease;
-  transform: translateY(var(--motion-translateY));
-  --motion-translateY: 0px;
+  transform: translateY(0);
 }
 #card-6 .opportunity-ball .card-animation-opportunity-ball {
   border-radius: 50%;
@@ -1178,7 +1318,7 @@ section {
 }
 #card-6:hover .opportunity-ball {
   animation: bounce 900ms ease;
-  --motion-translateY: -38px;
+  transform: translateY(-38px);
 }
 @keyframes bounce {
   0% {
@@ -1625,8 +1765,6 @@ footer .footer-bottom svg {
   #card-1 #card-1-popup-1, #card-1 #card-1-popup-2 {
     left: 40px;
   }
-}
-@media (max-width: 1248px) {
   body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
   }

@@ -4,38 +4,6 @@ const presentationContainer = document.getElementById('presentation-container');
 const selection = document.getElementById('selection');
 const view = document.getElementById('view');
 const presentation = document.getElementById("presentation");
-
-
-
-
-
-
-
-view.addEventListener("click", submitPresentation);
-document.addEventListener('keydown', keyDown);
-
-
-function submitPresentation(event) {
-    event.preventDefault();
-    currentSlide = 0;
-    currentPresentation = selection.value;
-    if (presentationData[currentPresentation] !== undefined) {
-        present(currentSlide);
-        presentationContainer.requestFullscreen()
-            .then(response => response)
-            .catch(error => console.error(error));
-    }
-}
-
-
-function keyDown(event) {
-    if (event.key === "ArrowRight") {
-        nextSlideClick();
-    } else if (event.key === "ArrowLeft") {
-        lastSlideClick();
-    }
-}
-
 const presentationData = {
     0: {
         0: {
@@ -113,37 +81,49 @@ const presentationData = {
     }
 }
 
+view.addEventListener('click', submitPresentation);
+document.addEventListener('keydown', keyDown);
+
+function submitPresentation(event) {
+    event.preventDefault();
+    currentSlide = 0;
+    currentPresentation = selection.value;
+    if (presentationData[currentPresentation] !== undefined) {
+        present(currentSlide);
+        presentationContainer.requestFullscreen()
+            .then(response => response)
+            .catch(error => console.error(error));
+    }
+}
+
+function keyDown(event) {
+    switch (event.key) {
+        case ("ArrowRight"): nextSlideClick(); break;
+        case ("ArrowLeft"): lastSlideClick(); break;
+    }
+}
+
 function present(value) {
-    let l = presentationData[currentPresentation][value];
+    let slide = presentationData[currentPresentation][value];
 
     presentation.innerHTML = `
-        <h1>${l.title}</h1>
+        <h1>${slide.title}</h1>
         <div class="flex w-full flex-row-sm items-center justify-between"><div></div></div>
     `;
 
     // add all content (with more specific titling) paragraph
-    for (const i in l.content) {
-        let lContent = l.content[i];
+    for (const i in slide.content) {
+        let lContent = slide.content[i];
         presentation.lastElementChild.firstElementChild.innerHTML += `<h2>${lContent.title}</h2>`;
         for (const q in lContent.content) presentation.lastElementChild.firstElementChild.innerHTML += `<p>${lContent.content[q]}</p></br>`;
     }
-    if (l.image.length > 0) {
-        presentation.lastElementChild.innerHTML += `<img alt="Presentation Image" src="images/${presentationData[currentPresentation][value].image}">`;
-    }
-    if (l.video.length > 0) {
-        presentation.lastElementChild.innerHTML += `
-            <video src="videos/${l.video}"></video>
-        `;
-    }
+    if (slide.image.length > 0) presentation.lastElementChild.innerHTML += `<img alt="Presentation Image" src="images/${slide.image}">`;
+    if (slide.video.length > 0) presentation.lastElementChild.innerHTML += `<video src="videos/${slide.video}"></video>`;
 }
 
 function nextSlideClick() {
-    if (presentationData[currentPresentation][currentSlide + 1] !== undefined) {
-        present(currentSlide += 1);
-    }
+    if (presentationData[currentPresentation][currentSlide + 1] !== undefined) present(currentSlide += 1);
 }
 function lastSlideClick() {
-    if (presentationData[currentPresentation][currentSlide - 1] !== undefined) {
-        present(currentSlide -= 1);
-    }
+    if (presentationData[currentPresentation][currentSlide - 1] !== undefined) present(currentSlide -= 1);
 }

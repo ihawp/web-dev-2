@@ -1,5 +1,10 @@
+
+
+
 const magicalBorders = document.querySelectorAll('.magical-borders');
-const cards = document.querySelectorAll('.magical-borders-container');
+const cards = document.querySelectorAll('[class*="magical-borders-c"]');
+console.log(cards);
+
 
 
 const placeCursor = ({ x, y }) => {
@@ -8,7 +13,7 @@ const placeCursor = ({ x, y }) => {
 };
 
 cards.forEach(item => {
-    item.addEventListener("pointermove", placeCursor);
+    item.addEventListener('pointermove', placeCursor);
     item.addEventListener('mouseout', () => {
         document.documentElement.style.setProperty("--x", "-10000");
         document.documentElement.style.setProperty("--y", "-10000");
@@ -21,7 +26,6 @@ magicalBorders.forEach(item => {
     mouseDot.style.transition = '400ms ease opacity';
     mouseDot.style.opacity = '0';
     item.appendChild(mouseDot);
-
     item.addEventListener('mousemove', (event) => {
         mouseDot.style.opacity = '1';
         const bounds = item.getBoundingClientRect();
