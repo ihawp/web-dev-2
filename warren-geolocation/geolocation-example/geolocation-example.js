@@ -78,7 +78,19 @@ function initialSuccess(pos) {
     id = navigator.geolocation.watchPosition(success, error, options);
 
     // Set up the map
-    mapstuffone();
+    map.setView([userLocation.latitude, userLocation.longitude], 18);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add initial markers (location, target location)
+    marker = addMarker(userLocation.latitude, userLocation.longitude, 'Your Location');
+    addMarker(targetLocation.latitude, targetLocation.longitude, 'Target Location');
+
+    // Display a line (polyline) from the users start location to the target location
+    polyline = L.polyline([[userLocation.latitude, userLocation.longitude], [targetLocation.latitude, targetLocation.longitude]], {color: 'red'}).addTo(map);
+    map.fitBounds(polyline.getBounds());
+
 }
 
 // Used by watchPosition as the success callback function
@@ -90,7 +102,22 @@ function success(pos) {
         userLocation.latitude = pos.coords.latitude;
         userLocation.longitude = pos.coords.longitude;
 
-        mapstufftwo();
+        // Set new map view
+        map.setView([userLocation.latitude, userLocation.longitude], 18);
+
+        // Remove last polyline
+        map.removeLayer(polyline);
+
+        // Remove last position marker
+        map.removeLayer(marker);
+
+        // Add new polyline
+        polyline = L.polyline([[userLocation.latitude, userLocation.longitude], [targetLocation.latitude, targetLocation.longitude]], {color: 'red'}).addTo(map);
+        map.fitBounds(polyline.getBounds());
+
+        // Add new position marker
+        marker = addMarker(userLocation.latitude, userLocation.longitude, 'Your Location');
+
     }
 
     // Determine if you reached the target location are within X metres!
@@ -105,36 +132,6 @@ function success(pos) {
         alert.style.backgroundColor = 'green';
 
     }
-}
-
-function mapstuffone() {
-    // Set up the map
-    map.setView([userLocation.latitude, userLocation.longitude], 18);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // Add initial markers (location, target location)
-    marker = addMarker(userLocation.latitude, userLocation.longitude, 'Your Location');
-    addMarker(targetLocation.latitude, targetLocation.longitude, 'Target Location');
-
-    // Display a line (polyline) from the users start location to the target location
-    polyline = L.polyline([[userLocation.latitude, userLocation.longitude], [targetLocation.latitude, targetLocation.longitude]], {color: 'red'}).addTo(map);
-    map.fitBounds(polyline.getBounds());
-}
-function mapstufftwo() {
-    // Set new map view
-    map.setView([userLocation.latitude, userLocation.longitude], 18);
-
-    // Remove last polyline
-    map.removeLayer(polyline);
-
-    // Remove last position marker
-    map.removeLayer(marker);
-
-    // Add new position marker
-    marker = addMarker(userLocation.latitude, userLocation.longitude, 'Your Location');
-
 }
 
 function error(error) {

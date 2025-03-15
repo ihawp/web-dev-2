@@ -26,7 +26,7 @@ const presentationData = {
                     ]
                 },
             },
-            image: "discord.jpg",
+            image: "geo-1.png",
             video: ""
         },
         1: {
@@ -47,7 +47,7 @@ const presentationData = {
                     ]
                 }
             },
-            image: "discord.jpg",
+            image: "geo-4.png",
             video: ""
         },
         2: {
@@ -76,7 +76,7 @@ const presentationData = {
                     ]
                 }
             },
-            image: "discord.jpg",
+            image: "geo-3.jpg",
             video: ""
         },
         3: {
@@ -109,7 +109,7 @@ const presentationData = {
                     ]
                 }
             },
-            image: "discord.jpg",
+            image: "geo-2.avif",
             video: ""
         }
     },
