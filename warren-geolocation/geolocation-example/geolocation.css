@@ -1,0 +1,422 @@
+:root {
+  --x: 0;
+  --y: 0;
+}
+
+.magical-borders-container > * {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
+  border-radius: 16px;
+  position: relative;
+}
+
+.magical-borders-container-2 > * {
+  background: rgba(169, 163, 194, 0.2);
+  border-radius: 16px;
+  position: relative;
+}
+
+.magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  z-index: 2;
+  position: absolute;
+}
+
+.mouse-dot {
+  position: absolute;
+  box-shadow: 0 0 100px 100px rgba(0, 255, 255, 0.075);
+  border-radius: 100%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@layer magical-borders {
+  .magical-borders {
+    aspect-ratio: 4/5;
+    background: fixed radial-gradient(circle at calc(--x * 1px) calc(--y * 1px), hsl(var(0, 240), calc(var(25, 0) * 1%), calc(var(50, 100) * 1%), calc(var(1, 0) * 0.15)), transparent 150px), #0a0118;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .magical-borders:before {
+    content: "";
+    inset: -3px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 22px;
+    background: fixed radial-gradient(circle at calc(--x * 1px) calc(--y * 1px), hsl(var(--hue-val, 240), calc(var(25, 0) * 1.5%), calc(var(50, 100) * 1.5%), 0.5), transparent 150px);
+  }
+  .magical-borders:after {
+    display: none;
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+    border-radius: 22px;
+    background: fixed radial-gradient(circle at calc(--x * 1px) calc(--y * 1px), hsl(var(0, 240), calc(var(25, 0) * 1.5%), calc(var(50, 100) * 1%), 0.5), transparent 150px);
+    filter: blur(1.5rem);
+  }
+}
+:root {
+  --bg: #0a0118;
+  --card-bg: #0a0118;
+  --color: hsl(240 18% 80%);
+  --x: 0;
+  --y: 0;
+  --border-size: -3px;
+  --border-radius: 20px;
+  --outer-border-radius: 22px;
+  --spotlight-size: 150;
+  --active: 1;
+  --hue-val: 0;
+  --hue-sat: 25;
+  --hue-lum: 50;
+}
+
+.magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* forces browser to use 1px at min (chrome would not show magical border on one side when set to 1px zzz */
+  --val: 1.000000000000000000000000000000px;
+  top: var(--val);
+  right: var(--val);
+  bottom: var(--val);
+  left: var(--val);
+  z-index: 2;
+  position: absolute;
+}
+
+.magical-borders-container > * {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
+  border-radius: 16px;
+  position: relative;
+}
+
+.mouse-dot {
+  position: absolute;
+  box-shadow: 0 0 150px 150px rgba(0, 255, 255, 0.075);
+  border-radius: 100%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@layer magical-borders {
+  .magical-borders {
+    --alpha: calc(var(--active, 0) * 0.15);
+    --radial-bg: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1%) calc(var(--hue-lum, 100) * 1%) / var(--alpha)), transparent calc(var(--spotlight-size) * 1px));
+    aspect-ratio: 4/5;
+    background: fixed var(--radial-bg), var(--card-bg);
+    position: relative;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  .magical-borders::before {
+    content: "";
+    inset: var(--border-size);
+    position: absolute;
+    z-index: -1;
+    border-radius: var(--outer-border-radius);
+    background: fixed radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240), calc(var(--hue-sat, 0) * 1.5%), calc(var(--hue-lum, 100) * 1.5%), 0.5), transparent calc(var(--spotlight-size) * 1px));
+  }
+  .magical-borders::after {
+    display: none;
+    --alpha: 0.5;
+    content: "";
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+    border-radius: var(--outer-border-radius);
+    background: fixed radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240), calc(var(--hue-sat, 0) * 1.5%), calc(var(--hue-lum, 100) * 1%), 0.5), transparent calc(var(--spotlight-size) * 1px));
+    filter: blur(1.5rem);
+  }
+}
+@font-face {
+  font-family: "Lato";
+  src: url("Lato/Lato-Regular.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("Lato/Lato-Black.ttf");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("Lato/Lato-Bold.ttf");
+  font-weight: 700;
+}
+html {
+  scroll-behaviour: smooth;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #0a0118;
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+body, body a {
+  color: #e4e4e4;
+}
+body a {
+  text-decoration: none;
+}
+body a:hover {
+  text-decoration: underline;
+}
+body h1 {
+  line-height: 28px;
+  font-size: 24px;
+  margin: 0;
+  font-weight: 800;
+}
+body h2 {
+  font-size: 24px;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid white;
+  line-height: 4rem;
+  font-weight: 800;
+}
+body h3 {
+  line-height: 24px;
+  font-size: 20px;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+body p {
+  font-weight: 300;
+}
+body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.disc {
+  list-style: disc;
+}
+
+.br-4 {
+  border-radius: 4px;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.grow-1 {
+  flex-grow: 1;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: start;
+}
+
+.items-end {
+  align-items: end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-half {
+  gap: 0.5rem;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+.gap-4 {
+  gap: 4rem;
+}
+
+.gap-5 {
+  gap: 5rem;
+}
+
+#map, .map {
+  width: 100%;
+  height: 300px;
+}
+
+#thanks {
+  height: 55px;
+}
+#thanks:before {
+  content: "Try opening it on your mobile to reach the target location!";
+}
+#thanks:hover:before {
+  content: "...or bring your laptop outside?";
+}
+
+.content-card {
+  width: 100%;
+  height: 3875px;
+}
+.content-card .card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+#alert {
+  height: 50px;
+  width: 100%;
+  background-color: red;
+  font-size: 0.9rem;
+}
+
+.alert-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.example {
+  background: #222;
+  padding: 1rem;
+  overflow: auto;
+  height: max-content;
+  margin-bottom: 2rem;
+}
+.example .indent {
+  margin-left: 1rem;
+}
+.example .red {
+  background: red;
+}
+.example .green {
+  background: green;
+}
+.example .yellow {
+  background: yellow;
+}
+.example .orange {
+  background: orange;
+}
+
+main,
+header,
+footer {
+  width: 20.625rem;
+}
+
+header {
+  height: max-content;
+  padding: 2rem 0 1rem 0;
+}
+
+footer {
+  margin-bottom: 1rem;
+}
+
+.display-sm {
+  display: none;
+}
+
+@media (min-width: 50em) {
+  #thanks {
+    height: 22.5px;
+  }
+  #alert {
+    font-size: inherit;
+  }
+  .example {
+    margin-bottom: 0;
+  }
+  .content-card {
+    height: 2235px;
+  }
+  .display-sm {
+    display: flex;
+  }
+  main, header, footer {
+    width: 50rem;
+  }
+}
+
+/*# sourceMappingURL=geolocation.css.map */

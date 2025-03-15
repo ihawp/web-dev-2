@@ -12,6 +12,7 @@ html {
 body {
   background-color: #222;
   color: white;
+  font-size: 1rem;
 }
 
 body, select, input, textarea {
@@ -92,12 +93,20 @@ body, select, input, textarea {
 
 #presentation-container h2 {
   font-weight: 600;
-  line-height: 3rem;
-  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  line-height: 7rem;
+}
+
+#presentation-container p {
+  font-size: 1.25rem;
+  line-height: 2.25rem;
+  opacity: 0.8;
 }
 
 #presentation-container img, #presentation-container video {
   min-width: 45%;
+  object-fit: cover;
+  height: 80%;
   margin-left: 2rem;
 }
 
