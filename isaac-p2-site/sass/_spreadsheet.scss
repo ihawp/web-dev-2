@@ -1,0 +1,196 @@
+.section-header {
+    position: relative;
+    width: 100%;
+    
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+
+    .spreadsheet-header {
+        padding: 30% 1rem  1rem  1rem ;
+    }
+
+    .header-text {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        z-index: 1000;
+        
+
+        @media (min-width: 75rem) {
+            top: 60%;
+            left: 40%;
+            right: 40%;
+            width: 20%;
+        }
+    }
+        
+    .title-badge {
+        text-transform: uppercase;
+        backdrop-filter: blur(5rem);
+        border: 1px solid rgb(72, 72, 72);
+        font-size: clamp(.75rem, 1.25vw, 1.75rem);
+        border-radius: 5rem;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+    }
+}
+
+.svg-inactive {
+    display: none;
+}
+
+.text-inactive {
+    display: none;
+    background-color: #282333;
+    height: 1rem;
+    width: 90%;
+    margin: 8px;
+}
+
+.unfocused {
+    .progress {
+        display: none;
+    }
+    
+    .svg-active {
+        display: none;
+    }
+
+    .svg-inactive {
+        display: block;
+    }
+    
+    p {
+        display: none;
+    }
+    
+    .text-inactive {
+        display: block;
+    }
+}
+
+.sliding-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.sliding-tabs {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin-top: 20%;
+    padding: 0;
+    margin: 0;
+
+    .tab {
+        display: inline-block;
+        vertical-align: top;
+        white-space: normal;
+        text-align: left;
+        border: 1px solid rgb(72, 72, 72);
+        width: 20rem;
+        margin: 1rem ;
+        padding: 1rem;
+        border-radius: 5%;
+        position: relative;
+        height: 15rem;
+
+        @media (min-width: 75rem) {
+            width: 50rem;
+            height: 20rem;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+
+        svg {
+            padding: 3px;
+            border: 1px solid rgb(72, 72, 72);
+            border-radius: 50%;
+            height: 3rem;
+            width: 3rem;
+            margin: 1rem;
+        }
+
+        p,
+        h4 {
+            margin: 1rem;
+        }
+
+        .progress {
+            width: 90%;
+            height: 5px;
+            margin: 1rem;
+            background-color: #948ba5;
+
+            .complete {
+                height: 5px;
+                width: 100%;
+                background-color: #e5e4ea;
+            }
+        }
+    }
+}
+
+.table-section {
+    background-image: url('../images/spreadsheets-table-grid.png');
+    margin-top: 2rem;
+    width: 80%;
+    height: fit-content;
+    justify-self: center;
+
+    @media (min-width: 75rem) {
+        width: 100%;
+    }
+
+    .table-wrapper {
+        gap: 0;
+        aspect-ratio: 12 / 5;
+
+        .magical-borders-inner {
+            align-items: center;
+        }
+
+        img {
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+            object-position: left ;
+
+            @media (min-width: 75rem) {
+                width: 80%;
+                height: auto;
+            }
+        }
+    }
+    
+    .table-info {
+        h3 {
+            font-size: clamp(1.25rem, 2vw, 2.75rem);
+        }
+    }
+}
+
+    
+
+
+    
+
+
+
+
