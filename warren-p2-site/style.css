@@ -1548,6 +1548,7 @@ footer .footer-bottom svg {
   top: 50px;
 }
 #header-navigation .details details {
+  transition: all 400ms ease;
   width: 100%;
 }
 #header-navigation .details details summary {
@@ -1555,9 +1556,6 @@ footer .footer-bottom svg {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-#header-navigation .details details summary svg {
-  color: white;
 }
 #header-navigation .details details summary h2 {
   font-size: 18px;
@@ -1575,9 +1573,31 @@ footer .footer-bottom svg {
 }
 
 @media screen and (min-width: 1128px) {
+  #header-navigation {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+  }
+  #header-navigation .details {
+    display: flex;
+    flex-direction: row;
+  }
+  #header-navigation .details details {
+    background: red;
+    width: max-content;
+    height: max-content;
+  }
   #header-navigation.h-0, #header-navigation.h-5 {
     opacity: 1;
     top: 50px;
+  }
+  header {
+    display: flex;
+    flex-direction: row;
+  }
+  header > div:first-of-type {
+    width: max-content;
   }
   .none-sm {
     display: none;

@@ -1712,6 +1712,8 @@ footer {
 
     details {
 
+      transition: all 400ms ease;
+
       width: 100%;
 
       summary {
@@ -1719,10 +1721,6 @@ footer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
-        svg {
-          color: white;
-        }
 
         h2 {
           font-size: 18px;
@@ -1748,12 +1746,32 @@ footer {
 .none-sm {
   display: flex;
 }
-
 @media screen and (min-width: 1128px) {
   #header-navigation {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+      .details {
+        display: flex;
+        flex-direction: row;
+        details {
+          background: red;
+          width: max-content;
+          height: max-content;
+        }
+    }
     &.h-0, &.h-5 {
       opacity: 1;
       top: 50px;
+    }
+  }
+  header {
+    display: flex;
+    flex-direction: row;
+
+    & > div:first-of-type {
+      width: max-content;
     }
   }
   .none-sm {

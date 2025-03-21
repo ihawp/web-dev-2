@@ -26,4 +26,4 @@ window.addEventListener('resize', function() {
     } else {
         closeNavigation();
     }
-})
+});
