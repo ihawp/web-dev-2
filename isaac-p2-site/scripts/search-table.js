@@ -106,7 +106,6 @@ mainChecker.addEventListener("click", function () {
 // Sets the hover states foro the final column of the rows
 function setHoverStates() {
   rows = document.querySelectorAll(".table-row");
-  console.log(rows[0].lastElementChild);
 
   rows.forEach(function (row) {
     let isPositive = row.innerHTML.includes(positive);
@@ -309,9 +308,7 @@ function createRow(row) {
 }
 
 function selectOtherToggle(selected, rowToSelect) {
-  console.log(selected);
   selected.addEventListener("click", function () {
-    console.log('event');
     let checked = selected.classList.contains("table-checkbox-checked");
     if (checked) {
       rowToSelect
