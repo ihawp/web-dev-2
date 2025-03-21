@@ -101,24 +101,17 @@ async function searchForRoute(lat, lon) {
                 let o = d.elements;
 
                 for (const g in o) {
-
                     let k = o[g];
-
                     console.log(k);
-
                     let newLat = Math.abs(dataStruct.startLat - k.lat);
                     let newLon = Math.abs(dataStruct.startLon - k.lon);
-
                     let dataStructClosest = dataStruct.closest;
-
                     if (newLat < dataStructClosest.latVal && newLon < dataStructClosest.lonVal) {
-
                         dataStructClosest.latitude = k.lat;
                         dataStructClosest.longitude = k.lon;
                         dataStructClosest.latVal = newLat;
                         dataStructClosest.lonVal = newLon;
                         dataStructClosest.streetName = c.tags.name;
-
                     }
 
                     if (p[q] === p[p.length - 1] && o[g] === o[o.length - 1]) {
@@ -149,8 +142,8 @@ async function searchForRoute(lat, lon) {
     // check if full route found here
     // if most recent point found is within 10 metres then route is good to go
     // else keep looking for streets to get there.
-    if (run === 3) {
-        return b;
+    if (run === 1) {
+        return true;
     } else {
         return await searchForRoute(dataStruct.closest.latitude, dataStruct.closest.longitude);
     }
@@ -208,7 +201,7 @@ async function start() {
         // Has a full route been found?
         if (routeFound) {
 
-            // Store route in local storage for 7 days.
+            route.push([dataStruct.targetLat, dataStruct.targetLon]);
 
             // Print the route line between the markers (polyline).
             let polyline = L.polyline(route, {color: 'red'}).addTo(map);

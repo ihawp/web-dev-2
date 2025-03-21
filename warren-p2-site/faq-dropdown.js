@@ -1,4 +1,4 @@
-let items = document.querySelectorAll('details');
+let items = document.querySelectorAll('footer details');
 let open = items[0];
 
 function updateArrowState(item, openState) {

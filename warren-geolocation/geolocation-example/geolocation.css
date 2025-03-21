@@ -208,6 +208,26 @@ body h3 {
 body p {
   font-weight: 300;
 }
+body button {
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+body button#start {
+  background: green;
+}
+body button#start:hover {
+  background: #8ce800;
+}
+body button#stop {
+  background: red;
+}
+body button#stop:hover {
+  background: orangered;
+}
 body ul {
   margin: 0;
   padding: 0;

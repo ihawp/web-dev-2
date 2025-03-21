@@ -3,8 +3,6 @@
 
 const magicalBorders = document.querySelectorAll('.magical-borders');
 const cards = document.querySelectorAll('[class*="magical-borders-c"]');
-console.log(cards);
-
 
 
 const placeCursor = ({ x, y }) => {
