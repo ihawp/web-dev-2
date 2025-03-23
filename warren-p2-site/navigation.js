@@ -55,9 +55,13 @@ function alterDom() {
 let headerDetailsOpen;
 let color = '#d2d0dd';
 document.querySelectorAll('header details').forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (event) => {
+
+        event.preventDefault();
 
         updateArrowState(item, !item.open, color);
+
+        item.open = !item.open;
 
         if (headerDetailsOpen === item) {
             return headerDetailsOpen = undefined;
@@ -66,7 +70,7 @@ document.querySelectorAll('header details').forEach(item => {
         if (headerDetailsOpen) {
             Reset(headerDetailsOpen, false, color);
         }
-    
+
         headerDetailsOpen = item;
     });
 });
