@@ -1,0 +1,33 @@
+
+@font-face {
+    font-family: Rebond Grotesque;
+    src: url(bold.woff2);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Inter V;
+    src: url(medium.woff2);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #0a0018;
+    text-align: center;
+    font-family: "Inter V", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: clamp(.75rem, 1.25vw, 1.75rem);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #e5e4ea;
+    font-family: "Rebond Grotesque", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+p {
+    color: #948ba5;
+}
