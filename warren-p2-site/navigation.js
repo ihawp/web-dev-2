@@ -16,7 +16,7 @@ svg.ham = `
 
 navButton.addEventListener('click', function() {
         if (!isOpen) {
-            return openNavigation();
+            return openNavigation('hidden');
         }
         closeNavigation();
 });
@@ -27,9 +27,9 @@ const UpdateNavigation = (bool, svg, overflow) => {
     document.body.style.overflow = overflow;
 }
 
-function openNavigation() {
+function openNavigation(bodyOverflow) {
     headerNav.classList.add('h-max');
-    UpdateNavigation(true, `${svg.x} Close`, 'hidden');
+    UpdateNavigation(true, `${svg.x} Close`, bodyOverflow);
 }
 
 function closeNavigation() {
@@ -39,7 +39,7 @@ function closeNavigation() {
 
 window.addEventListener('resize', function() {
     if (window.innerWidth > 1128) {
-        openNavigation();
+        openNavigation('auto');
 
         alterDom();
 
@@ -52,15 +52,21 @@ function alterDom() {
     console.log('dom being altered!');
 }
 
-let headerDetailsOpen = undefined;
-let headerDetails = document.querySelectorAll('header details');
-
-headerDetails.forEach(item => {
+let headerDetailsOpen;
+let color = '#d2d0dd';
+document.querySelectorAll('header details').forEach(item => {
     item.addEventListener('click', () => {
-        if (headerDetailsOpen !== undefined) {
-            Reset(headerDetailsOpen, false, '#d2d0dd');
+
+        updateArrowState(item, !item.open, color);
+
+        if (headerDetailsOpen === item) {
+            return headerDetailsOpen = undefined;
         }
-        updateArrowState(item, true, '#d2d0dd');
+
+        if (headerDetailsOpen) {
+            Reset(headerDetailsOpen, false, color);
+        }
+    
         headerDetailsOpen = item;
     });
 });

@@ -50,7 +50,7 @@ export function Reset(item, bool, color) {
     item.open = bool;
     let q = item.firstElementChild;
     q.firstElementChild.style.color = color;
-    updateArrowState(item, bool);
+    updateArrowState(item, bool, color);
 }
 
 window.addEventListener('resize', handleResize);
