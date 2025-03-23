@@ -16,6 +16,7 @@ p {
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 svg, img, video, .not-button, #cards-section-title {
   user-select: none;
@@ -2300,6 +2301,7 @@ footer {
         ul {
           list-style: none;
           margin-right: 140px;
+
           padding: 0;
 
           gap: 2rem;
@@ -2365,7 +2367,6 @@ footer {
             ul {
               gap: .5rem;
               top: 90px;
-              left: 300px;
               transform: scale(.9) translate(-50%);
               position: absolute;
               border-radius: 12px;
@@ -2378,9 +2379,17 @@ footer {
               z-index: 10;
               transform-origin: top left;
               width: 852px;
+              position: absolute;
               display: flex;
               flex-wrap: wrap;
               flex-direction: row;
+
+              &.first {
+                left: 300px;
+              }
+              &.last {
+                left: 150px;
+              }
 
               .h-4 {
                 color: #9b96b0;

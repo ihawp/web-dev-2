@@ -57,14 +57,14 @@ headerSummary.forEach(item => {
 
         let details = item.parentElement;
 
+
+        // animate ul
+        console.log(item.nextElementSibling);
+
+        
         updateArrowState(details, !details.open, color);
 
         if (headerDetailsOpen === details) {
-
-            // for resize > width; new event(click);
-            if (window.innerWidth > width) {
-                Reset(headerDetailsOpen, false, color);
-            }
             return headerDetailsOpen = undefined;
         }
 
