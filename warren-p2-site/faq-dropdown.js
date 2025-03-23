@@ -1,8 +1,8 @@
-let items = document.querySelectorAll('footer details');
-let open = items[0];
+let items = document.querySelectorAll('footer summary');
+let open = items[0].parentElement;
 export const width = 1248;
 
-export function updateArrowState(item, openState, color) {
+export function updateArrowState(item, openState, color, rotation) {
     let q = item.firstElementChild;
     let arrowIcon = q.lastElementChild;
 
@@ -19,19 +19,21 @@ items.forEach((item) => {
     item.addEventListener('click', (event) => {
         event.preventDefault();
 
+        let details = item.parentElement;
+
         if (window.innerWidth < width) {
-            if (item.open) {
-                updateArrowState(item, false, '#676182');
-                item.open = false;
+            if (details.open) {
+                updateArrowState(details, false, '#676182');
+                details.open = false;
             } else {
-                if (open !== item) {
+                if (open !== details) {
                     updateArrowState(open, false, '#676182');
                     open.open = false;
                 }
-                updateArrowState(item, true, '#d2d0dd');
-                item.open = true;
+                updateArrowState(details, true, '#d2d0dd');
+                details.open = true;
             }
-            open = item;
+            open = details;
         }
     });
 });
@@ -39,9 +41,9 @@ items.forEach((item) => {
 
 function handleResize() {
     if (window.innerWidth < width) {
-        items.forEach((item) => Reset(item, false, '#676182'));
+        items.forEach((item) => Reset(item.parentElement, false, '#676182'));
     } else {
-        items.forEach((item) => Reset(item, true, '#fff'));
+        items.forEach((item) => Reset(item.parentElement, true, '#fff'));
     }
 }
 

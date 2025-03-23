@@ -588,6 +588,7 @@ p {
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 svg, img, video, .not-button, #cards-section-title {
@@ -2593,7 +2594,6 @@ footer .footer-bottom svg {
   .header-main #header-navigation .hn-inner > ul details ul {
     gap: 0.5rem;
     top: 90px;
-    left: 300px;
     transform: scale(0.9) translate(-50%);
     position: absolute;
     border-radius: 12px;
@@ -2606,9 +2606,16 @@ footer .footer-bottom svg {
     z-index: 10;
     transform-origin: top left;
     width: 852px;
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+  }
+  .header-main #header-navigation .hn-inner > ul details ul.first {
+    left: 300px;
+  }
+  .header-main #header-navigation .hn-inner > ul details ul.last {
+    left: 150px;
   }
   .header-main #header-navigation .hn-inner > ul details ul .h-4 {
     color: #9b96b0;
