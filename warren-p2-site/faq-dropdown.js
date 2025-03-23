@@ -18,10 +18,8 @@ export function updateArrowState(item, openState, color, rotation) {
 items.forEach((item) => {
     item.addEventListener('click', (event) => {
         event.preventDefault();
-
-        let details = item.parentElement;
-
         if (window.innerWidth < width) {
+            let details = item.parentElement;
             if (details.open) {
                 updateArrowState(details, false, '#676182');
                 details.open = false;
@@ -41,7 +39,9 @@ items.forEach((item) => {
 
 function handleResize() {
     if (window.innerWidth < width) {
-        items.forEach((item) => Reset(item.parentElement, false, '#676182'));
+        items.forEach((item) => {
+            Reset(item.parentElement, false, '#676182')
+        });
     } else {
         items.forEach((item) => Reset(item.parentElement, true, '#fff'));
     }

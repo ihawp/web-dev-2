@@ -2278,7 +2278,7 @@ footer {
       }
   
       .p-0-05 {
-        padding: 0 .5rem;
+        padding: 0 1.5rem;
       }
 
       #header-card {
@@ -2298,17 +2298,17 @@ footer {
 
         width: max-content;
 
+
         ul {
           list-style: none;
-          margin-right: 140px;
+          margin-right: 100px;
 
           padding: 0;
-
-          gap: 2rem;
 
           display: flex;
           flex-direction: row;
           align-items: center;
+          gap: 0;
         }
   
         & > ul {
@@ -2319,7 +2319,7 @@ footer {
           & > li {
             border-bottom: none;
             &:not(.p-0-05) {
-              padding: 1rem .5rem;
+              padding: 0 2rem;
             }
             &:first-of-type {
               margin-top: 0;
@@ -2374,7 +2374,7 @@ footer {
               background: #140b25;
               -webkit-backdrop-filter: blur(12px);
               backdrop-filter: blur(12px);
-              opacity: 1;
+              opacity: 0;
               transition: all .2s ease;
               z-index: 10;
               transform-origin: top left;
@@ -2388,7 +2388,7 @@ footer {
                 left: 300px;
               }
               &.last {
-                left: 150px;
+                left: 158px;
               }
 
               .h-4 {
@@ -2450,12 +2450,26 @@ footer {
               display: flex;
               align-items: center;
               justify-content: space-between;
-              gap: 1rem;
+              gap: .5rem;
+              padding: 0;
               line-height: 0;
+
               svg {
                 rotate: 90deg;
                 width: 16px;
                 height: 16px;
+                transition: 200ms ease all;
+              }
+            }
+
+            &[open] {
+              summary {
+                svg {
+                  rotate: 270deg;
+                }
+              }
+              ul {
+                opacity: 1;
               }
             }
           }

@@ -43,35 +43,148 @@ window.addEventListener('resize', function() {
     if (window.innerWidth > width) {
         openNavigation('auto');
 
+        headerSummary.forEach(item => {
+            item.parentElement.open = true;
+        });
+
     } else {
 
         closeNavigation();
     }
 });
 
-
 let headerDetailsOpen;
 let color = '#d2d0dd';
-headerSummary.forEach(item => {
-    item.addEventListener('click', () => {
-
-        let details = item.parentElement;
-
-
-        // animate ul
-        console.log(item.nextElementSibling);
-
+if (window.innerWidth < width) {
+    headerSummary.forEach(item => {
+        item.addEventListener('click', () => {
+            let details = item.parentElement;
         
-        updateArrowState(details, !details.open, color);
-
-        if (headerDetailsOpen === details) {
-            return headerDetailsOpen = undefined;
-        }
-
-        if (headerDetailsOpen) {
-            Reset(headerDetailsOpen, false, color);
-        }
-    
-        headerDetailsOpen = details;
+            // animate ul
+            updateArrowState(details, !details.open, color);
+        
+            if (headerDetailsOpen === details) {
+                return headerDetailsOpen = undefined;
+            }
+        
+            if (headerDetailsOpen) {
+                Reset(headerDetailsOpen, false, color);
+            }
+        
+            headerDetailsOpen = details;
+        });
     });
-});
+}
+
+
+
+if (window.innerWidth > width) {
+
+
+    let openDropdown;
+
+    headerSummary.forEach((item) => {
+
+        item.addEventListener('click', event => event.preventDefault());
+
+        item.addEventListener('mouseover', (event) => {
+
+            event.preventDefault();
+
+            if (openDropdown && openDropdown !== item) {
+                openDropdown.parentElement.open = false;
+            }
+            item.parentElement.open = true;
+            openDropdown = item;
+
+            const handle = (event) => {
+
+                console.log('wow');
+
+
+                const screenWidth = window.innerWidth;
+                const leftEdge = (screenWidth - width) / 2;
+
+                let mouseX = event.clientX;
+                let mouseY = event.clientY;
+
+                // make numbers more magical
+                // need to work for any total screen width 
+                // essentially they need to start from the left edge of the max content width (1248px, everything is centered in body)
+
+                let q = item.nextElementSibling;
+                console.log({q});
+
+                if (mouseY < 5
+                    || mouseY > 84 && mouseX < leftEdge + 200
+                    || mouseX < leftEdge + 16
+                    || mouseX > (leftEdge + item.nextElementSibling.clientWidth + 120) 
+                    || mouseX > leftEdge + 588 && mouseY < 84
+                    || mouseY > 70 + item.nextElementSibling.clientHeight) {
+                    document.documentElement.removeEventListener('pointermove', handle);
+                    item.parentElement.open = false;
+                }
+            }
+
+            document.documentElement.addEventListener('pointermove', handle);
+        
+        });
+
+        /*
+        item.removeEventListener('click', () => {
+            let details = item.parentElement;
+        
+            // animate ul
+            updateArrowState(details, !details.open, color);
+        
+            if (headerDetailsOpen === details) {
+                return headerDetailsOpen = undefined;
+            }
+        
+            if (headerDetailsOpen) {
+                Reset(headerDetailsOpen, false, color);
+            }
+        
+            headerDetailsOpen = details;
+        });
+
+        item.addEventListener('click', (event) => event.preventDefault());
+
+        item.addEventListener('mouseover', (event) => {
+            event.preventDefault(); 
+            parent.open = true;
+        });
+
+        item.addEventListener('mouseout', () => {
+            id = setTimeout(() => {
+                parent.open = false;
+                clearTimeout(id);
+            }, 1000);
+        });
+
+        item.nextElementSibling.addEventListener('mouseover', () => {
+            clearTimeout(id);
+        });
+
+        item.nextElementSibling.addEventListener('mouseout', () => {
+            parent.open = false;
+        });
+
+        item.addEventListener('mouseout', () => {
+
+            let l = setTimeout(() => {
+                item.parentElement.open = false;
+                clearTimeout(l);
+            }, 1000);
+
+            item.nextElementSibling.addEventListener('mouseover', () => {
+                clearTimeout(l);
+            });
+
+            item.nextElementSibling.addEventListener('mouseout', () => {
+
+            });
+        });
+        */
+    });
+}
