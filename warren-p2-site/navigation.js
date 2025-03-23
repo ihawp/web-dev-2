@@ -57,9 +57,8 @@ let headerDetails = document.querySelectorAll('header details');
 
 headerDetails.forEach(item => {
     item.addEventListener('click', () => {
-        if (headerDetailsOpen !== undefined && item !== headerDetailsOpen) {
-            updateArrowState(item, true, '#d2d0dd');
-            Reset(headerDetailsOpen, false, 'inherit')
+        if (headerDetailsOpen !== undefined) {
+            Reset(headerDetailsOpen, false, '#d2d0dd');
         }
         updateArrowState(item, true, '#d2d0dd');
         headerDetailsOpen = item;
