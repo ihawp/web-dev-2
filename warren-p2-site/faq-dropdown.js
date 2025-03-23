@@ -1,16 +1,18 @@
 let items = document.querySelectorAll('footer details');
 let open = items[0];
 
-function updateArrowState(item, openState) {
+export function updateArrowState(item, openState, color) {
     let q = item.firstElementChild;
     let arrowIcon = q.lastElementChild;
 
     if (openState) {
+        arrowIcon.style.transition = 'all 200ms ease';
         arrowIcon.style.transform = 'rotate(90deg)';
-        q.firstElementChild.style.color = '#d2d0dd';
+        q.firstElementChild.style.color = color;
     } else {
+        arrowIcon.style.transition = 'all 200ms ease';
         arrowIcon.style.transform = 'rotate(0deg)';
-        q.firstElementChild.style.color = '#676182';
+        q.firstElementChild.style.color = color;
     }
 }
 
@@ -20,14 +22,14 @@ items.forEach((item) => {
 
         if (window.innerWidth < 1128) {
             if (item.open) {
-                updateArrowState(item, false);
+                updateArrowState(item, false, '#676182');
                 item.open = false;
             } else {
                 if (open !== item) {
-                    updateArrowState(open, false);
+                    updateArrowState(open, false, '#676182');
                     open.open = false;
                 }
-                updateArrowState(item, true);
+                updateArrowState(item, true, '#d2d0dd');
                 item.open = true;
             }
             open = item;
@@ -44,7 +46,7 @@ function handleResize() {
     }
 }
 
-function Reset(item, bool, color) {
+export function Reset(item, bool, color) {
     item.open = bool;
     let q = item.firstElementChild;
     q.firstElementChild.style.color = color;

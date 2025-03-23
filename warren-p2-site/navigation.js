@@ -2,6 +2,8 @@ let navButton = document.getElementById('nav-button');
 let headerNav = document.getElementById('header-navigation');
 let isOpen = false;
 
+import { updateArrowState, Reset } from './faq-dropdown.js';
+
 let svg = {};
 
 svg.x = `
@@ -46,7 +48,20 @@ window.addEventListener('resize', function() {
     }
 });
 
-
 function alterDom() {
-    
+    console.log('dom being altered!');
 }
+
+let headerDetailsOpen = undefined;
+let headerDetails = document.querySelectorAll('header details');
+
+headerDetails.forEach(item => {
+    item.addEventListener('click', () => {
+        if (headerDetailsOpen !== undefined && item !== headerDetailsOpen) {
+            updateArrowState(item, true, '#d2d0dd');
+            Reset(headerDetailsOpen, false, 'inherit')
+        }
+        updateArrowState(item, true, '#d2d0dd');
+        headerDetailsOpen = item;
+    });
+});
