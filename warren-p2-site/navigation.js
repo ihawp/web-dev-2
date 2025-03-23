@@ -52,7 +52,7 @@ function alterDom() {
     console.log('dom being altered!');
 }
 
-let headerDetailsOpen = undefined;
+let headerDetailsOpen;
 let color = '#d2d0dd';
 document.querySelectorAll('header summary').forEach(item => {
     item.addEventListener('click', () => {
