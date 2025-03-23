@@ -52,25 +52,23 @@ function alterDom() {
     console.log('dom being altered!');
 }
 
-let headerDetailsOpen;
+let headerDetailsOpen = undefined;
 let color = '#d2d0dd';
-document.querySelectorAll('header details').forEach(item => {
-    item.addEventListener('click', (event) => {
+document.querySelectorAll('header summary').forEach(item => {
+    item.addEventListener('click', () => {
 
-        event.preventDefault();
+        let details = item.parentElement;
 
-        updateArrowState(item, !item.open, color);
+        updateArrowState(details, !details.open, color);
 
-        item.open = !item.open;
-
-        if (headerDetailsOpen === item) {
+        if (headerDetailsOpen === details) {
             return headerDetailsOpen = undefined;
         }
 
         if (headerDetailsOpen) {
             Reset(headerDetailsOpen, false, color);
         }
-
-        headerDetailsOpen = item;
+    
+        headerDetailsOpen = details;
     });
 });
