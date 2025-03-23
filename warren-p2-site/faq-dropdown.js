@@ -1,4 +1,4 @@
-let items = document.querySelectorAll('details');
+let items = document.querySelectorAll('footer details');
 let open = items[0];
 
 function updateArrowState(item, openState) {
@@ -36,26 +36,20 @@ items.forEach((item) => {
 });
 
 
-const footerItems = document.querySelectorAll('footer details')
-
 function handleResize() {
     if (window.innerWidth < 1128) {
-        footerItems.forEach((item) => {
-            item.open = false;
-            let q = item.firstElementChild;
-            q.firstElementChild.style.color = '#676182';
-            updateArrowState(item, false);
-        });
+        items.forEach((item) => Reset(item, false, '#676182'));
     } else {
-        footerItems.forEach((item) => {
-            item.open = true;
-            let q = item.firstElementChild;
-            q.firstElementChild.style.color = '#fff';
-            updateArrowState(item, true);
-        });
+        items.forEach((item) => Reset(item, true, '#fff'));
     }
 }
 
-window.addEventListener('resize', handleResize);
+function Reset(item, bool, color) {
+    item.open = bool;
+    let q = item.firstElementChild;
+    q.firstElementChild.style.color = color;
+    updateArrowState(item, bool);
+}
 
-handleResize();
+window.addEventListener('resize', handleResize);
+document.addEventListener('DOMContentLoaded', handleResize);
