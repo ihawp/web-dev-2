@@ -2,8 +2,14 @@
 .data-percpective-section {
   width: 50%;
   margin-left: 25%;
-  margin-right: 25%;
+  overflow-x: hidden;
+  margin-right: 0;
+  min-width: -webkit-fill-available;
   background-image: url(../images/tags-quick-action-grid.png);
+
+  @media (min-width: 75rem) {
+    margin-right: 25%;
+  }
 }
 
 .searchable-table {
