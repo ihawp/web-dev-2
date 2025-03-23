@@ -74,8 +74,8 @@ function progressBarLoad(bar) {
       if (index == 4) {
         scrollList.scrollLeft -= 10000;
       } else {
-        let {right} = tabList[index].getBoundingClientRect();
-        scrollList.scrollLeft += right;
+        // let {right} = tabList[index].getBoundingClientRect();
+        scrollList.scrollLeft += 375;
       }
       index++;
       if (index < tabList.length) {

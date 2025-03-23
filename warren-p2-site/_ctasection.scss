@@ -1,14 +1,17 @@
 
 .cta-section-container {
+    padding-bottom: 170px;
+    padding-top: 132px;
     position: relative;
     background-image: url('images/cta-background.png');
+    background-size:  cover;
     background-position: top;
-
-    border-radius: 16px;
-
+    max-width: 100%;
     margin: 5rem auto;
     overflow: hidden;
     position: relative;
+    width: 100%;
+    min-height: 40rem;
 
     z-index: 0;
 
@@ -26,13 +29,12 @@
         top: 50%;
         transform: translate(-50%, -50%);
         white-space: nowrap;
-
-        border-radius: 16px;
+        z-index: 100;
+        text-wrap: wrap;
 
         img {
             height: 8rem;
             width: 8rem;
-            border-radius: 16px;
         }
         
         h2 {
