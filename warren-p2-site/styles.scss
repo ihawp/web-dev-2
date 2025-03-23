@@ -1715,6 +1715,7 @@ footer {
 
   .header-top {
     height: 100%;
+    width: 100%;
     z-index: 10;
     position: relative;
   }
@@ -1886,11 +1887,6 @@ footer {
     }
   }
 
-  .log-reg {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-  }
 }
 
 
@@ -1911,7 +1907,7 @@ footer {
 .none-sm {
   display: flex;
 }
-@media screen and (min-width: 1128px) {
+@media screen and (min-width: 1248px) {
   footer .footer-top .right .nav-group summary {
     cursor: default;
   }
@@ -2188,6 +2184,8 @@ footer {
 
       height: max-content;
 
+      width: max-content;
+
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -2251,14 +2249,15 @@ footer {
         left: unset;
         transform: unset;
 
+        padding: 0;
+
         background-color: transparent;
   
         display: flex;
-        align-items: end;
-  
+        align-items: center;
+        justify-content: end;
+
         width: max-content;
-  
-        padding: 1rem;
   
         .lr-inner {
           width: 100%;
@@ -2269,7 +2268,7 @@ footer {
   
         .glowing-box-button {
           height: max-content;
-          width: calc(var(--global-width) / 2.5);
+          width: max-content;
 
           &.ghost {
             border: none;
@@ -2293,13 +2292,18 @@ footer {
 
         background-color: transparent;
 
-        width: max-content;
+        flex-grow: 1;
 
-        justify-content: space-between;
+        justify-content: end;
+
+        width: max-content;
 
         ul {
           list-style: none;
+          margin-right: 140px;
           padding: 0;
+
+          gap: 2rem;
 
           display: flex;
           flex-direction: row;
@@ -2337,6 +2341,8 @@ footer {
               align-items: center;
               gap: 24px;
 
+              margin-top: 20px;
+
               .text {
                 margin-top: 20px;
                 margin-left: 36px;
@@ -2359,8 +2365,8 @@ footer {
             }
             ul {
               gap: .5rem;
-              position: absolute;
               top: 90px;
+              left: 300px;
               transform: scale(.9) translate(-50%);
               position: absolute;
               border-radius: 12px;
@@ -2383,8 +2389,9 @@ footer {
                 font-size: 16px;
                 letter-spacing: .08em;
                 line-height: 24px;
-                padding-top: 10px;
+                padding-top: 4px;
                 margin-left: 25px;
+                margin-bottom: 4px;
               }
 
           
@@ -2403,15 +2410,28 @@ footer {
                   background: #ffffff0d;
                 }
 
+                .inner-text {
+                  a {
+                    font-size: 18px;
+                    line-height: 28px;
+                    color: #fff;
+                    margin-bottom: 8px;
+                  }
+                  div {
+                    color: #d2d0dd;
+                  }
+                }
+
                 svg {
                   border-radius: 10px;
                   border: 1px solid rgba(255, 255, 255, .1);
                   background: #ffffff0d;
-                  width: 52px;
-                  height: 52px;
+                  width: 36px;
+                  height: 36px;
                   display: flex;
                   align-items: center;
                   justify-content: center;
+                  padding: .75rem;
                 }
                 &:last-of-type {
                   margin-bottom: 0;
@@ -2428,11 +2448,6 @@ footer {
       }
     }
   
-    .log-reg {
-      display: flex;
-      flex-direction: row;
-      gap: 1rem;
-    }
   }
 
   .thing {

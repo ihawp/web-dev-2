@@ -1,5 +1,6 @@
 let items = document.querySelectorAll('footer details');
 let open = items[0];
+const width = 1248;
 
 export function updateArrowState(item, openState, color) {
     let q = item.firstElementChild;
@@ -20,7 +21,7 @@ items.forEach((item) => {
     item.addEventListener('click', (event) => {
         event.preventDefault();
 
-        if (window.innerWidth < 1128) {
+        if (window.innerWidth < width) {
             if (item.open) {
                 updateArrowState(item, false, '#676182');
                 item.open = false;
@@ -39,7 +40,7 @@ items.forEach((item) => {
 
 
 function handleResize() {
-    if (window.innerWidth < 1128) {
+    if (window.innerWidth < width) {
         items.forEach((item) => Reset(item, false, '#676182'));
     } else {
         items.forEach((item) => Reset(item, true, '#fff'));
