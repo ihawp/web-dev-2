@@ -2661,6 +2661,13 @@ footer .footer-bottom svg {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    line-height: 0;
+  }
+  .header-main #header-navigation .hn-inner > ul details summary svg {
+    rotate: 90deg;
+    width: 16px;
+    height: 16px;
   }
   .thing {
     position: relative;

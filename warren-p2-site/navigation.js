@@ -2,7 +2,7 @@ let navButton = document.getElementById('nav-button');
 let headerNav = document.getElementById('header-navigation');
 let isOpen = false;
 
-import { updateArrowState, Reset } from './faq-dropdown.js';
+import { updateArrowState, Reset, width } from './faq-dropdown.js';
 
 let svg = {};
 
@@ -37,9 +37,22 @@ function closeNavigation() {
     UpdateNavigation(false, `${svg.ham} Menu`, 'auto');
 }
 
+
+let headerSummary = document.querySelectorAll('header summary');
+window.addEventListener('resize', function() {
+    if (window.innerWidth > width) {
+        openNavigation('auto');
+
+    } else {
+
+        closeNavigation();
+    }
+});
+
+
 let headerDetailsOpen;
 let color = '#d2d0dd';
-document.querySelectorAll('header summary').forEach(item => {
+headerSummary.forEach(item => {
     item.addEventListener('click', () => {
 
         let details = item.parentElement;
@@ -47,6 +60,11 @@ document.querySelectorAll('header summary').forEach(item => {
         updateArrowState(details, !details.open, color);
 
         if (headerDetailsOpen === details) {
+
+            // for resize > width; new event(click);
+            if (window.innerWidth > width) {
+                Reset(headerDetailsOpen, false, color);
+            }
             return headerDetailsOpen = undefined;
         }
 

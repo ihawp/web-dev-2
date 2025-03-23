@@ -1,19 +1,17 @@
 let items = document.querySelectorAll('footer details');
 let open = items[0];
-const width = 1248;
+export const width = 1248;
 
 export function updateArrowState(item, openState, color) {
     let q = item.firstElementChild;
     let arrowIcon = q.lastElementChild;
 
+    arrowIcon.style.transition = 'all 200ms ease';
+    q.firstElementChild.style.color = color;
     if (openState) {
-        arrowIcon.style.transition = 'all 200ms ease';
-        arrowIcon.style.transform = 'rotate(90deg)';
-        q.firstElementChild.style.color = color;
+        arrowIcon.style.transform = `rotate(90deg)`;
     } else {
-        arrowIcon.style.transition = 'all 200ms ease';
         arrowIcon.style.transform = 'rotate(0deg)';
-        q.firstElementChild.style.color = color;
     }
 }
 
