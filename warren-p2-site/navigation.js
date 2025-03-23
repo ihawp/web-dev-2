@@ -37,21 +37,6 @@ function closeNavigation() {
     UpdateNavigation(false, `${svg.ham} Menu`, 'auto');
 }
 
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 1128) {
-        openNavigation('auto');
-
-        alterDom();
-
-    } else {
-        closeNavigation();
-    }
-});
-
-function alterDom() {
-    console.log('dom being altered!');
-}
-
 let headerDetailsOpen;
 let color = '#d2d0dd';
 document.querySelectorAll('header summary').forEach(item => {

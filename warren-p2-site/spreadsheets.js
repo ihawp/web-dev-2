@@ -3,7 +3,6 @@
 const scrollList = document.querySelector(".sliding-tabs");
 const completeBar = document.querySelectorAll(".complete");
 const tabList = document.querySelectorAll(".tab");
-const cards = document.querySelectorAll('.magical-borders-container');
 
 // Setting the index of the side scroller
 let index = 0;
@@ -90,22 +89,7 @@ function progressBarLoad(bar) {
       return
     } else {
       width++;
-      bar.style.width = width + "px";
+      bar.style.width = width + "%";
     }
   }
 }
-
-// For magic borders
-const placeCursor = ({ x, y }) => {
-  document.documentElement.style.setProperty("--x", x.toFixed(2));
-  document.documentElement.style.setProperty("--y", y.toFixed(2));
-};
-
-// For magic borders
-cards.forEach(item => {
-  item.addEventListener("pointermove", placeCursor);
-  item.addEventListener('mouseout', () => {
-      document.documentElement.style.setProperty("--x", "-10000");
-      document.documentElement.style.setProperty("--y", "-10000");
-  });
-});

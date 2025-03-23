@@ -89,31 +89,28 @@
     overflow-x: hidden;
     overflow-y: hidden;
     white-space: nowrap;
+    margin-top: 20%;
     padding: 0;
     margin: 0;
+
+    display: flex;
+    gap: 1rem;
 
     .tab {
         display: inline-block;
         vertical-align: top;
         white-space: normal;
         text-align: left;
-        width: 20rem;
-        margin: 1rem;
+        width: 382px;
         padding: 1rem;
         border-radius: 16px;
         position: relative;
-        height: 15rem;
-
-        @media (min-width: 75rem) {
-            width: 50rem;
-            height: 20rem;
-        }
+        height: 252px;
 
         img {
             position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
+            top: 5px;
+            right: 7px;
         }
 
         svg {
@@ -146,10 +143,11 @@
 }
 
 .table-section {
-    background-image: url('../images/spreadsheets-table-grid.png');
+    background-image: url('images/spreadsheets-table-grid.png');
+    background-size: 100vw 100vh;
     margin-top: 2rem;
     width: 80%;
-    height: fit-content;
+    height: max-content;
     justify-self: center;
 
     @media (min-width: 75rem) {
@@ -166,6 +164,7 @@
 
         img {
             width: 100%;
+            margin-top: 1rem;
             height: 20rem;
             object-fit: cover;
             object-position: left ;

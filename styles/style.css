@@ -1,7 +1,17 @@
+@font-face {
+  font-family: Rebond Grotesque;
+  src: url("bold.woff2");
+  font-weight: bold;
+}
+@font-face {
+  font-family: Inter V;
+  src: url("medium.woff2");
+}
 body {
   padding: 0;
   margin: 0;
   background-color: #0a0018;
+  text-align: center;
   font-family: "Inter V", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: clamp(0.75rem, 1.25vw, 1.75rem);
 }
@@ -35,6 +45,74 @@ p {
   --hue-lum: 50;
 }
 
+@layer magical-borders {}
+.magical-borders-inner {
+  background-color: #0a0118;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* forces browser to use 1px at min (chrome would not show magical border on one side when set to 1px zzz */
+  --val: 1.1px ;
+  top: var(--val);
+  right: var(--val);
+  bottom: var(--val);
+  left: var(--val);
+  z-index: 2;
+  position: absolute;
+}
+
+.magical-borders-container > * {
+  background: linear-gradient(180deg, rgba(169, 163, 194, 0.2), rgba(169, 163, 194, 0.0470588235));
+  border-radius: 16px;
+  position: relative;
+}
+
+.mouse-dot {
+  position: absolute;
+  box-shadow: 0 0 150px 150px rgba(0, 255, 255, 0.075);
+  border-radius: 100%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@layer magical-borders {}
+.magical-borders {
+  --alpha: calc(var(--active, 0) * 0.15) ;
+  --radial-bg: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240) calc(var(--hue-sat, 0) * 1%) calc(var(--hue-lum, 100) * 1%) / var(--alpha)), transparent calc(var(--spotlight-size) * 1px)) ;
+  aspect-ratio: 4/5;
+  background: var(--radial-bg), var(--card-bg);
+  background-attachment: fixed;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.magical-borders::before {
+  content: "";
+  inset: var(--border-size);
+  position: absolute;
+  z-index: -1;
+  border-radius: var(--outer-border-radius);
+  background: fixed radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240), calc(var(--hue-sat, 0) * 1.5%), calc(var(--hue-lum, 100) * 1.5%), 0.5), transparent calc(var(--spotlight-size) * 1px));
+}
+
+.magical-borders::after {
+  display: none;
+  --alpha: 0.5 ;
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+  border-radius: var(--outer-border-radius);
+  background: radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(var(--hue-val, 240), calc(var(--hue-sat, 0) * 1.5%), calc(var(--hue-lum, 100) * 1%), 0.5), transparent calc(var(--spotlight-size) * 1px));
+  background-attachment: fixed;
+  filter: blur(1.5rem);
+}
+
 .section-header {
   position: relative;
   width: 100%;
@@ -57,6 +135,7 @@ p {
   flex-direction: column;
   width: 100%;
   position: relative;
+  z-index: 1000;
 }
 @media (min-width: 75rem) {
   .section-header .header-text {
@@ -113,7 +192,6 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
   white-space: nowrap;
-  margin-top: 20%;
   padding: 0;
   margin: 0;
 }
@@ -122,11 +200,10 @@ p {
   vertical-align: top;
   white-space: normal;
   text-align: left;
-  border: 1px solid rgb(72, 72, 72);
   width: 20rem;
   margin: 1rem;
   padding: 1rem;
-  border-radius: 5%;
+  border-radius: 16px;
   position: relative;
   height: 15rem;
 }
