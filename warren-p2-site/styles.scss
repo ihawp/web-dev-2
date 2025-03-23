@@ -200,6 +200,11 @@ section {
   width: 100%;
 }
 
+
+.display-sm {
+  display: none;
+}
+
 // below is first section stuff.
 
 .text-align-center {
@@ -1712,7 +1717,9 @@ footer {
 
   #header-navigation {
 
-    background-color: #0a0118;
+    background: #0a0118b8;
+    -webkit-backdrop-filter: blur(36px);
+    backdrop-filter: blur(36px);
 
     z-index: 9;
 
@@ -1722,7 +1729,7 @@ footer {
 
     position: fixed;
 
-    transition: 400ms ease;
+    transition: 200ms ease;
 
     width: 100vw;
 
@@ -1761,7 +1768,7 @@ footer {
 
     .log-reg {
       position: fixed;
-      bottom: 0;
+      bottom: 5%;
 
       left: 50%;
 
@@ -1769,8 +1776,6 @@ footer {
 
       display: flex;
       align-items: end;
-
-      background-color: #0a0118;
 
       width: 100%;
 
@@ -1785,7 +1790,7 @@ footer {
 
       .glowing-box-button {
         height: max-content;
-        width: calc(var(--global-width) / 2.5);
+        width: calc(var(--global-width) / 2);
 
         &.ghost {
           border: none;
@@ -1867,6 +1872,7 @@ footer {
             }
           }
           summary {
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -2339,8 +2345,28 @@ footer {
 
 
 
+  .display-sm {
+    display: flex;
+  }
 
+  .fixed-svg {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 
+    width: 48px;
+    height: 48px;
+    background-color: #D155DE;
+    padding: 1rem;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      fill: #fff;
+    }
+  }
 
 
 }
