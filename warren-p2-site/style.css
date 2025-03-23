@@ -257,7 +257,7 @@ section {
   align-items: center;
 }
 
-.w:before {
+.header-top:before {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1607843137), rgba(255, 255, 255, 0));
   bottom: 0;
   content: "";
@@ -1565,6 +1565,7 @@ footer .footer-bottom svg {
 .header-main .header-top {
   height: 100%;
   z-index: 10;
+  position: relative;
 }
 .header-main #header-navigation {
   background-color: #0a0118;
@@ -1586,7 +1587,7 @@ footer .footer-bottom svg {
   min-height: 100vh;
   max-height: 100vh;
   opacity: 1;
-  top: 78px;
+  top: 43px;
 }
 .header-main #header-navigation a {
   color: #d2d0dd;
@@ -1920,12 +1921,29 @@ footer .footer-bottom svg {
   .header-main {
     background-color: #0a0118;
     height: max-content;
+    padding: 0 1rem 0 1rem;
     display: flex;
     flex-direction: row;
+    position: relative;
+  }
+  .header-main:before {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1607843137), rgba(255, 255, 255, 0));
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
   }
   .header-main .header-top {
     height: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     z-index: 10;
+  }
+  .header-main .header-top:before {
+    all: unset;
   }
   .header-main #header-navigation {
     background-color: transparent;
@@ -1964,6 +1982,7 @@ footer .footer-bottom svg {
     bottom: unset;
     left: unset;
     transform: unset;
+    background-color: transparent;
     display: flex;
     align-items: end;
     width: max-content;
@@ -1985,6 +2004,9 @@ footer .footer-bottom svg {
   }
   .header-main #header-navigation .p-0-05 {
     padding: 0 0.5rem;
+  }
+  .header-main #header-navigation #header-card {
+    display: none;
   }
   .header-main #header-navigation .hn-inner {
     display: flex;

@@ -2,8 +2,6 @@ let navButton = document.getElementById('nav-button');
 let headerNav = document.getElementById('header-navigation');
 let isOpen = false;
 
-
-
 let svg = {};
 
 svg.x = `
@@ -15,14 +13,10 @@ svg.ham = `
 `;
 
 navButton.addEventListener('click', function() {
-    if (window.innerWidth < 1128) {
         if (!isOpen) {
-            UpdateNavigation(true, `${svg.x} Close`, 'hidden');
             return openNavigation();
         }
-        UpdateNavigation(false, `${svg.ham} Menu`, 'auto');
         closeNavigation();
-    }
 });
 
 const UpdateNavigation = (bool, svg, overflow) => {
@@ -33,16 +27,26 @@ const UpdateNavigation = (bool, svg, overflow) => {
 
 function openNavigation() {
     headerNav.classList.add('h-max');
+    UpdateNavigation(true, `${svg.x} Close`, 'hidden');
 }
 
 function closeNavigation() {
     headerNav.classList.remove('h-max');
+    UpdateNavigation(false, `${svg.ham} Menu`, 'auto');
 }
 
 window.addEventListener('resize', function() {
-    if (window.innerWidth > 1128 && isOpen === false) {
+    if (window.innerWidth > 1128) {
         openNavigation();
+
+        alterDom();
+
     } else {
         closeNavigation();
     }
 });
+
+
+function alterDom() {
+    
+}
