@@ -90,7 +90,7 @@ function progressBarLoad(bar) {
       return
     } else {
       width++;
-      bar.style.width = width + "px";
+      bar.style.width = width + "%";
     }
   }
 }

@@ -294,10 +294,12 @@ function createRow(row) {
   tagsColumn.appendChild(nameToken);
 
   let volumeColumn = document.createElement("td");
+  volumeColumn.classList.add('center-column');
   volumeColumn.innerHTML = volume;
 
   let visColumn = document.createElement("td");
   visColumn.classList.add("percentage-col");
+  visColumn.classList.add("center-column");
   visColumn.innerHTML = visibility;
 
   tableRow.appendChild(tagsColumn);
