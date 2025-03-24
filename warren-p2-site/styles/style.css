@@ -79,19 +79,25 @@
   padding-bottom: 170px;
   padding-top: 132px;
   position: relative;
-  background-image: url("images/cta-background.png");
-  background-size: 100% 100%;
+  background-image: url("../images/cta-background.png");
+  background-size: 105% 100%;
   background-position: left;
   max-width: 100%;
   margin: 5rem auto;
   overflow: hidden;
   width: 100%;
   min-height: 40rem;
-  border-radius: 16px;
+  border-radius: 12px 0 0 16px;
   z-index: 0;
 }
+@media (min-width: 78em) {
+  .cta-section-container {
+    border-radius: 16px;
+    background-size: 102% 102%;
+    background-position: center;
+  }
+}
 .cta-section-container .cta-section {
-  border-radius: 1000px;
   left: 50%;
   position: absolute;
   text-align: center;
@@ -541,7 +547,7 @@ input:checked + .slider:before {
   line-height: 44px;
   font-weight: 700;
 }
-@media (min-width: 75rem) {
+@media (min-width: 78em) {
   .section-header h2 {
     font-size: 56px;
     line-height: 64px;
@@ -604,7 +610,7 @@ input:checked + .slider:before {
   height: 254px;
   width: 342px;
 }
-@media (min-width: 75rem) {
+@media (min-width: 78em) {
   .sliding-tabs .tab {
     border-radius: 16px;
     cursor: pointer;
@@ -662,6 +668,7 @@ input:checked + .slider:before {
   padding: 1px;
   text-align: center;
   width: 100%;
+  width: 1198px;
   height: 40rem;
 }
 .table-section .table-wrapper .magical-borders-inner {
@@ -670,7 +677,6 @@ input:checked + .slider:before {
 .table-section .table-wrapper .table-inner {
   background-color: radial-gradient(47.16% 90.82% at 50% 0%, rgba(133, 102, 255, 0.0784313725), rgba(133, 102, 255, 0)), radial-gradient(67.49% 100% at 50% 0%, rgba(255, 255, 255, 0.0392156863), rgba(255, 255, 255, 0)), #0a0118;
   border-radius: inherit;
-  padding: 0 35px;
   overflow: hidden;
   height: 99.7%;
 }
@@ -684,18 +690,17 @@ input:checked + .slider:before {
   margin-bottom: 0;
 }
 .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image {
-  background-image: url("images/spreadsheets-table-grid.png");
+  background-image: url("../images/spreadsheets-table-grid.png");
   background-size: 1130px 405px;
   object-fit: cover;
   object-position: left;
-  margin-bottom: 80px;
   transition: 1s cubic-bezier(0.6, 0.6, 0, 1) opacity;
   background-position: left;
-  background-position-x: -80px;
-  background-position-y: -25px;
+  background-position-x: -30px;
+  background-position-y: -22px;
   background-repeat: no-repeat;
   min-height: 27rem;
-  width: 90%;
+  width: 100%;
   height: auto;
 }
 @media (min-width: 78em) {
@@ -703,14 +708,14 @@ input:checked + .slider:before {
     background-position-x: unset;
     background-position-y: unset;
     background-position: center top;
-    background-size: 1130px 405px;
+    background-size: 1130px 410px;
     margin-bottom: 49px;
     padding: 28px 68px 17px;
   }
 }
 .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image .spreadsheet-image-container {
+  margin-left: 55px;
   height: 367px;
-  margin: 0 auto;
   -webkit-mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 6.62%, #fff 19.85%);
   mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 6.62%, #fff 19.85%);
   -webkit-mask-position: -20%;
@@ -723,6 +728,11 @@ input:checked + .slider:before {
   object-fit: cover;
   object-position: left;
 }
+@media (min-width: 78rem) {
+  .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image .spreadsheet-image-container {
+    margin: 0 auto;
+  }
+}
 .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image .spreadsheet-image-container img {
   display: block;
   height: 100%;
@@ -730,7 +740,7 @@ input:checked + .slider:before {
   object-fit: cover;
   object-position: left;
 }
-@media (min-width: 75rem) {
+@media (min-width: 78em) {
   .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image {
     margin-bottom: 32px;
     padding: 23px 12px 17px;
@@ -782,12 +792,12 @@ svg, img, video, .not-button, #cards-section-title {
 
 @font-face {
   font-family: "Rebond Grotesque";
-  src: url("fonts/bold.woff2") format("woff2");
+  src: url("../fonts/bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "Inter V";
-  src: url("fonts/medium.woff2") format("woff2");
-  src: url("fonts/regular.woff2") format("woff2");
+  src: url("../fonts/medium.woff2") format("woff2");
+  src: url("../fonts/regular.woff2") format("woff2");
 }
 .w-full {
   width: 100%;
@@ -883,14 +893,10 @@ body {
   background: #0a0118;
   color: #fff;
   font-size: 14px;
-}
-
-.site-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1178,8 +1184,8 @@ section {
   position: absolute;
   top: 0;
   width: 670px;
-  -webkit-mask-image: url(images/cards/card-seasonality-chart-border.png);
-  mask-image: url(images/cards/card-seasonality-chart-border.png);
+  -webkit-mask-image: url(../images/cards/card-seasonality-chart-border.png);
+  mask-image: url(../images/cards/card-seasonality-chart-border.png);
 }
 #card-1 .card-1-new-chart > div div:before {
   background: linear-gradient(90deg, rgba(113, 61, 255, 0), #713dff 3.89%, #713dff 51.81%, rgba(113, 61, 255, 0) 54.33%);
@@ -1189,7 +1195,7 @@ section {
   position: absolute;
   top: 0;
   width: 100%;
-  --background-image: url(images/cards/card-seasonality-chart-border.png);
+  --background-image: url(../images/cards/card-seasonality-chart-border.png);
 }
 #card-1 .card-1-custom .example {
   bottom: 10px;
@@ -1511,7 +1517,7 @@ section {
 #card-4 .cannibal-chart {
   width: 100%;
   height: 138px;
-  background-image: url("images/cards/card-cannibalization-chart-1.png");
+  background-image: url("../images/cards/card-cannibalization-chart-1.png");
   background-size: cover;
   transition: 400ms ease;
   background-position: 0 10px;
@@ -1582,7 +1588,7 @@ section {
   right: 31px;
 }
 #card-4:hover .cannibal-chart {
-  background-image: url("images/cards/card-cannibalization-chart-2.png");
+  background-image: url("../images/cards/card-cannibalization-chart-2.png");
   background-position: -75px 10px;
 }
 #card-4:hover .cannibal-chart-left {
@@ -1942,7 +1948,7 @@ section {
   width: 234px;
 }
 #card-6 .opportunity-chart div {
-  --background-image: url(images/cards/card-opportunity-chart.png);
+  --background-image: url(../images/cards/card-opportunity-chart.png);
   height: 100%;
   -webkit-mask-size: cover;
   mask-size: cover;

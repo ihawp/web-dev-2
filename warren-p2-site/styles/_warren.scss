@@ -40,13 +40,13 @@
   
   @font-face {
     font-family: 'Rebond Grotesque';
-    src: url('fonts/bold.woff2') format('woff2');
+    src: url('../fonts/bold.woff2') format('woff2');
   }
   
   @font-face {
     font-family: 'Inter V';
-    src: url('fonts/medium.woff2') format('woff2');
-    src: url('fonts/regular.woff2') format('woff2');
+    src: url('../fonts/medium.woff2') format('woff2');
+    src: url('../fonts/regular.woff2') format('woff2');
   }
   .w-full {
     width: 100%;
@@ -138,14 +138,11 @@
     background: $backgroundColor;
     color: $mainColor;
     font-size: 14px;
-  }
-  
-  .site-wrapper {
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    overflow-x: auto;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -447,7 +444,7 @@
     }
   
     .card-1-new-chart > div div {
-      $background-image: url(images/cards/card-seasonality-chart-border.png);
+      $background-image: url(../images/cards/card-seasonality-chart-border.png);
       transition: .45s cubic-bezier(.6,.6,0,1) mask-position, 1s cubic-bezier(.6,.6,0,1) opacity, .45s cubic-bezier(.6,.6,0,1) -webkit-mask-position !important;
       height: 98px;
       left: 0;
@@ -470,7 +467,7 @@
       position: absolute;
       top: 0;
       width: 100%;
-      --background-image: url(images/cards/card-seasonality-chart-border.png);
+      --background-image: url(../images/cards/card-seasonality-chart-border.png);
     }
   
     .card-1-custom {
@@ -863,7 +860,7 @@
   
     .cannibal-chart {
       width: 100%; height: 138px;
-      background-image: url("images/cards/card-cannibalization-chart-1.png");
+      background-image: url("../images/cards/card-cannibalization-chart-1.png");
       background-size: cover;
       transition: 400ms ease;
       background-position: 0 10px;
@@ -943,7 +940,7 @@
   
     &:hover {
       .cannibal-chart {
-        background-image: url("images/cards/card-cannibalization-chart-2.png");
+        background-image: url("../images/cards/card-cannibalization-chart-2.png");
         background-position: -75px 10px;
       }
       .cannibal-chart-left {
@@ -1345,7 +1342,7 @@
     }
   
     .opportunity-chart div {
-      --background-image: url(images/cards/card-opportunity-chart.png);
+      --background-image: url(../images/cards/card-opportunity-chart.png);
       height: 100%;
       -webkit-mask-size: cover;
       mask-size: cover;
