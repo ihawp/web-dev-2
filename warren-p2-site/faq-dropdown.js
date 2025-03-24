@@ -1,48 +1,49 @@
-let items = document.querySelectorAll('footer details');
-let open = items[0];
+let items = document.querySelectorAll('footer summary');
+let open = items[0].parentElement;
+export const width = 1248;
 
-export function updateArrowState(item, openState, color) {
+export function updateArrowState(item, openState, color, rotation) {
     let q = item.firstElementChild;
     let arrowIcon = q.lastElementChild;
 
+    arrowIcon.style.transition = 'all 200ms ease';
+    q.firstElementChild.style.color = color;
     if (openState) {
-        arrowIcon.style.transition = 'all 200ms ease';
-        arrowIcon.style.transform = 'rotate(90deg)';
-        q.firstElementChild.style.color = color;
+        arrowIcon.style.transform = `rotate(90deg)`;
     } else {
-        arrowIcon.style.transition = 'all 200ms ease';
         arrowIcon.style.transform = 'rotate(0deg)';
-        q.firstElementChild.style.color = color;
     }
 }
 
 items.forEach((item) => {
     item.addEventListener('click', (event) => {
         event.preventDefault();
-
-        if (window.innerWidth < 1128) {
-            if (item.open) {
-                updateArrowState(item, false, '#676182');
-                item.open = false;
+        if (window.innerWidth < width) {
+            let details = item.parentElement;
+            if (details.open) {
+                updateArrowState(details, false, '#676182');
+                details.open = false;
             } else {
-                if (open !== item) {
+                if (open !== details) {
                     updateArrowState(open, false, '#676182');
                     open.open = false;
                 }
-                updateArrowState(item, true, '#d2d0dd');
-                item.open = true;
+                updateArrowState(details, true, '#d2d0dd');
+                details.open = true;
             }
-            open = item;
+            open = details;
         }
     });
 });
 
 
 function handleResize() {
-    if (window.innerWidth < 1128) {
-        items.forEach((item) => Reset(item, false, '#676182'));
+    if (window.innerWidth < width) {
+        items.forEach((item) => {
+            Reset(item.parentElement, false, '#676182')
+        });
     } else {
-        items.forEach((item) => Reset(item, true, '#fff'));
+        items.forEach((item) => Reset(item.parentElement, true, '#fff'));
     }
 }
 

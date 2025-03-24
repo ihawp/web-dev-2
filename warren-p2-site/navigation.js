@@ -2,7 +2,7 @@ let navButton = document.getElementById('nav-button');
 let headerNav = document.getElementById('header-navigation');
 let isOpen = false;
 
-import { updateArrowState, Reset } from './faq-dropdown.js';
+import { updateArrowState, Reset, width } from './faq-dropdown.js';
 
 let svg = {};
 
@@ -37,38 +37,105 @@ function closeNavigation() {
     UpdateNavigation(false, `${svg.ham} Menu`, 'auto');
 }
 
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 1128) {
-        openNavigation('auto');
 
-        alterDom();
+// REFACTOR BELOW SO THAT MOBILE AND DESKTOP WORKS upon load AND when screen resized.
+
+let headerSummary = document.querySelectorAll('header summary');
+window.addEventListener('resize', function() {
+    if (window.innerWidth > width) {
+        openNavigation('auto');
+        
+        // look at again
+        headerSummary.forEach(item => {
+            item.parentElement.open = true;
+        });
 
     } else {
+
         closeNavigation();
+        /*
+        headerSummary.forEach(item => {
+            item.parentElement.open = false ;
+        });
+        */
     }
 });
 
-function alterDom() {
-    console.log('dom being altered!');
+let headerDetailsOpen;
+let color = '#d2d0dd';
+if (window.innerWidth < width) {
+    headerSummary.forEach(item => {
+        item.addEventListener('click', () => {
+            let details = item.parentElement;
+        
+            // animate ul
+            updateArrowState(details, !details.open, color);
+        
+            if (headerDetailsOpen === details) {
+                return headerDetailsOpen = undefined;
+            }
+        
+            if (headerDetailsOpen) {
+                Reset(headerDetailsOpen, false, color);
+            }
+        
+            headerDetailsOpen = details;
+        });
+    });
 }
 
-let headerDetailsOpen = undefined;
-let color = '#d2d0dd';
-document.querySelectorAll('header summary').forEach(item => {
-    item.addEventListener('click', () => {
 
-        let details = item.parentElement;
 
-        updateArrowState(details, !details.open, color);
+if (window.innerWidth > width) {
 
-        if (headerDetailsOpen === details) {
-            return headerDetailsOpen = undefined;
-        }
 
-        if (headerDetailsOpen) {
-            Reset(headerDetailsOpen, false, color);
-        }
-    
-        headerDetailsOpen = details;
+    let openDropdown;
+
+    headerSummary.forEach((item) => {
+
+        item.addEventListener('click', event => event.preventDefault());
+
+        item.addEventListener('mouseover', (event) => {
+
+            event.preventDefault();
+
+            if (openDropdown && openDropdown !== item) {
+                openDropdown.parentElement.open = false;
+            }
+            item.parentElement.open = true;
+            openDropdown = item;
+
+            const handle = (event) => {
+
+                console.log('wow');
+
+
+                const screenWidth = window.innerWidth;
+                const leftEdge = (screenWidth - width) / 2;
+
+                let mouseX = event.clientX;
+                let mouseY = event.clientY;
+
+                // make numbers more magical
+                // need to work for any total screen width 
+                // essentially they need to start from the left edge of the max content width (1248px, everything is centered in body)
+
+                let q = item.nextElementSibling;
+                console.log({q});
+
+                if (mouseY < 5
+                    || mouseY > 84 && mouseX < leftEdge + 200
+                    || mouseX < leftEdge + 16
+                    || mouseX > (leftEdge + item.nextElementSibling.clientWidth + 120) 
+                    || mouseX > leftEdge + 588 && mouseY < 84
+                    || mouseY > 70 + item.nextElementSibling.clientHeight) {
+                    document.documentElement.removeEventListener('pointermove', handle);
+                    item.parentElement.open = false;
+                }
+            }
+
+            document.documentElement.addEventListener('pointermove', handle);
+        
+        });
     });
-});
+}
