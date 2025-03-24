@@ -41,101 +41,127 @@ function closeNavigation() {
 // REFACTOR BELOW SO THAT MOBILE AND DESKTOP WORKS upon load AND when screen resized.
 
 let headerSummary = document.querySelectorAll('header summary');
-window.addEventListener('resize', function() {
+let headerDetailsOpen;
+let openDropdown;
+let color = '#d2d0dd';
+
+const Mobile = (item) => {
+    let details = item.parentElement;
+
+    // animate ul
+    updateArrowState(details, !details.open, color);
+
+    if (headerDetailsOpen === details) {
+        return headerDetailsOpen = undefined;
+    }
+
+    if (headerDetailsOpen) {
+        Reset(headerDetailsOpen, false, color);
+    }
+
+    headerDetailsOpen = details;
+}
+
+function preventIt(event) {
+    event.preventDefault();
+}
+
+function Desktop(event, item) {
+    event.preventDefault();
+
+    if (openDropdown && openDropdown !== item) {
+        openDropdown.parentElement.open = false;
+    }
+    item.parentElement.open = true;
+    openDropdown = item;
+
+    const handle = (event) => {
+
+        let screenWidth = window.innerWidth;
+        let leftEdge = (screenWidth - width) / 2;
+
+        let mouseX = event.clientX;
+        let mouseY = event.clientY;
+
+        // make numbers more magical
+        // need to work for any total screen width 
+        // essentially they need to start from the left edge of the max content width (1248px, everything is centered in body)
+
+        let q = item.nextElementSibling;
+        console.log({q});
+
+        if (mouseY < 5
+            || mouseY > 84 && mouseX < leftEdge + 200
+            || mouseX < leftEdge + 16
+            || mouseX > (leftEdge + item.nextElementSibling.clientWidth + 120) 
+            || mouseX > leftEdge + 588 && mouseY < 84
+            || mouseY > 70 + item.nextElementSibling.clientHeight) {
+            document.documentElement.removeEventListener('pointermove', handle);
+            item.parentElement.open = false;
+        }
+    }
+
+    document.documentElement.addEventListener('pointermove', handle);
+
+}
+
+const handleDesking = (item) => {
+    return function(event) {
+        Desktop(event, item);
+    }
+}
+
+const handleMobile = (item) => {
+    return function() {
+        Mobile(item);
+    }
+}
+
+function NavigationResize() {
+
+    headerSummary.forEach(item => {
+        item.parentElement.open = false;
+    });
+
     if (window.innerWidth > width) {
         openNavigation('auto');
-        
-        // look at again
-        headerSummary.forEach(item => {
-            item.parentElement.open = true;
-        });
 
+        headerSummary.forEach(item => {
+            if (item._handleMobile) {
+                item.removeEventListener('click', item._handleMobile);
+            }
+
+            updateArrowState(item.parentElement, false, '#d2d0dd', 'rotate(90deg)');
+
+            item.addEventListener('click', preventIt);
+
+            const deskingHandler = handleDesking(item);
+            item._handleDesking = deskingHandler;
+
+            item.addEventListener('mouseover', deskingHandler);
+        });
     } else {
 
-        closeNavigation();
-        /*
         headerSummary.forEach(item => {
-            item.parentElement.open = false ;
+            if (item._handleDesking) {
+                item.removeEventListener('mouseover', item._handleDesking);
+            }
+            item.removeEventListener('click', preventIt);
+
+            updateArrowState(item.parentElement, false, '#d2d0dd', 'rotate(0deg)');
+
+            const mobileHandler = handleMobile(item);
+            item._handleMobile = mobileHandler;
+            
+            item.addEventListener('click', mobileHandler);
         });
-        */
+
+        closeNavigation();
     }
-});
-
-let headerDetailsOpen;
-let color = '#d2d0dd';
-if (window.innerWidth < width) {
-    headerSummary.forEach(item => {
-        item.addEventListener('click', () => {
-            let details = item.parentElement;
-        
-            // animate ul
-            updateArrowState(details, !details.open, color);
-        
-            if (headerDetailsOpen === details) {
-                return headerDetailsOpen = undefined;
-            }
-        
-            if (headerDetailsOpen) {
-                Reset(headerDetailsOpen, false, color);
-            }
-        
-            headerDetailsOpen = details;
-        });
-    });
 }
 
 
+window.addEventListener('resize', NavigationResize);
 
-if (window.innerWidth > width) {
-
-
-    let openDropdown;
-
-    headerSummary.forEach((item) => {
-
-        item.addEventListener('click', event => event.preventDefault());
-
-        item.addEventListener('mouseover', (event) => {
-
-            event.preventDefault();
-
-            if (openDropdown && openDropdown !== item) {
-                openDropdown.parentElement.open = false;
-            }
-            item.parentElement.open = true;
-            openDropdown = item;
-
-            const handle = (event) => {
-
-                console.log('wow');
-
-
-                const screenWidth = window.innerWidth;
-                const leftEdge = (screenWidth - width) / 2;
-
-                let mouseX = event.clientX;
-                let mouseY = event.clientY;
-
-                // make numbers more magical
-                // need to work for any total screen width 
-                // essentially they need to start from the left edge of the max content width (1248px, everything is centered in body)
-
-                let q = item.nextElementSibling;
-                console.log({q});
-
-                if (mouseY < 5
-                    || mouseY > 84 && mouseX < leftEdge + 200
-                    || mouseX < leftEdge + 16
-                    || mouseX > (leftEdge + item.nextElementSibling.clientWidth + 120) 
-                    || mouseX > leftEdge + 588 && mouseY < 84
-                    || mouseY > 70 + item.nextElementSibling.clientHeight) {
-                    document.documentElement.removeEventListener('pointermove', handle);
-                    item.parentElement.open = false;
-                }
-            }
-
-            document.documentElement.addEventListener('pointermove', handle);
-        
-        });
-    });
-}
+// setup
+window.dispatchEvent(new Event('resize'));
