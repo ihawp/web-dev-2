@@ -2,7 +2,7 @@ let items = document.querySelectorAll('footer summary');
 let open = items[0].parentElement;
 export const width = 1248;
 
-export function updateArrowState(item, openState, color, rotation) {
+export function updateArrowState(item, openState, color) {
     let q = item.firstElementChild;
     let arrowIcon = q.lastElementChild;
 

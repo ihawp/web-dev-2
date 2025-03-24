@@ -2,6 +2,12 @@ let navButton = document.getElementById('nav-button');
 let headerNav = document.getElementById('header-navigation');
 let isOpen = false;
 
+
+let headerSummary = document.querySelectorAll('header summary');
+let headerDetailsOpen = undefined;
+let openDropdown = undefined;
+let color = '#d2d0dd';
+
 import { updateArrowState, Reset, width } from './faq-dropdown.js';
 
 let svg = {};
@@ -14,14 +20,14 @@ svg.ham = `
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 4H16M4 10H16M4 16H16" stroke="url(#paint0_linear_2514_2120)" stroke-width="1.5" stroke-linecap="square"></path><defs><linearGradient id="paint0_linear_2514_2120" x1="3.5" y1="-3.5" x2="16" y2="17" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0.3"></stop><stop offset="0.796875" stop-color="white"></stop></linearGradient></defs></svg>
 `;
 
-navButton.addEventListener('click', function() {
-        if (!isOpen) {
-            return openNavigation('hidden');
-        }
-        closeNavigation();
-});
+function ControlNav() {
+    if (!isOpen) {
+        return openNavigation('hidden');
+    }
+    closeNavigation();
+}
 
-const UpdateNavigation = (bool, svg, overflow) => {
+function UpdateNavigation(bool, svg, overflow) {
     isOpen = bool;
     navButton.innerHTML = svg;
     document.body.style.overflow = overflow;
@@ -40,11 +46,6 @@ function closeNavigation() {
 
 // REFACTOR BELOW SO THAT MOBILE AND DESKTOP WORKS upon load AND when screen resized.
 
-let headerSummary = document.querySelectorAll('header summary');
-let headerDetailsOpen;
-let openDropdown;
-let color = '#d2d0dd';
-
 const Mobile = (item) => {
 
     let details = item.parentElement;
@@ -55,7 +56,7 @@ const Mobile = (item) => {
         return headerDetailsOpen = undefined;
     }
 
-    if (headerDetailsOpen) {
+    if (headerDetailsOpen && headerDetailsOpen !== details) {
         Reset(headerDetailsOpen, false, color);
     }
 
@@ -110,19 +111,21 @@ const handleMobile = (item) => {
     }
 }
 
+// To force nothing to happen (other then reassignment of lasting, lasting2 when NavigationResize is called by window resize event listener and the screen has not had to update css via media query)
+let lasting = !(window.innerWidth > width);
+let lasting2 = !(window.innerWidth < width);
+
 function NavigationResize() {
 
-    headerSummary.forEach(item => {
-        item.parentElement.open = false;
-    });
-
-    if (window.innerWidth > width) {
+    if (window.innerWidth > width && !lasting && lasting2) {
         openNavigation('auto');
 
         headerSummary.forEach(item => {
             if (item._handleMobile) {
                 item.removeEventListener('click', item._handleMobile);
             }
+
+            item.parentElement.open = false;
 
             updateArrowState(item.parentElement, false, '#d2d0dd', 'rotate(90deg)');
 
@@ -133,16 +136,20 @@ function NavigationResize() {
 
             item.addEventListener('mouseover', deskingHandler);
         });
-    } else {
 
-        // Reset (breaks after resize from mobile-to-desktop-to-mobile if not)
-        headerDetailsOpen = undefined;
+        navButton.removeEventListener('click', ControlNav);
+
+    }
+    if (window.innerWidth < width && lasting && !lasting2) {
 
         headerSummary.forEach(item => {
             if (item._handleDesking) {
                 item.removeEventListener('mouseover', item._handleDesking);
+                item.removeEventListener('click', preventIt);
             }
-            item.removeEventListener('click', preventIt);
+
+            item.parentElement.open = false;
+            headerDetailsOpen = undefined;
 
             updateArrowState(item.parentElement, false, '#d2d0dd', 'rotate(0deg)');
 
@@ -152,8 +159,10 @@ function NavigationResize() {
             item.addEventListener('click', mobileHandler);
         });
 
-        closeNavigation();
+        navButton.addEventListener('click', ControlNav);
     }
+    lasting = window.innerWidth > width;
+    lasting2 = window.innerWidth < width;
 }
 
 
