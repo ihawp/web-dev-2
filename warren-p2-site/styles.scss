@@ -145,13 +145,14 @@ body {
   background: $backgroundColor;
   color: $mainColor;
   font-size: 14px;
-  overflow-x: hidden;
+}
 
-  // delete probably
+.site-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -205,7 +206,7 @@ section {
 }
 
 #cards-video {
-  width: 100%;
+  width: 672px;
 }
 
 
@@ -1441,10 +1442,6 @@ section {
     }
   }
 
-
-}
-@media screen and (min-width: 1138px) {
-
   .cards-description {
     font-size: 28px;
     line-height: 36px;
@@ -1907,7 +1904,7 @@ footer {
 .none-sm {
   display: flex;
 }
-@media screen and (min-width: 1248px) {
+@media screen and (min-width: 78em) {
   footer .footer-top .right .nav-group summary {
     cursor: default;
   }

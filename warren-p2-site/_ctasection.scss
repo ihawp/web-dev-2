@@ -4,25 +4,25 @@
     padding-top: 132px;
     position: relative;
     background-image: url('images/cta-background.png');
-    background-size:  cover;
-    background-position: top;
+    background-size: 100% 100%;
+    background-position: left;
     max-width: 100%;
     margin: 5rem auto;
     overflow: hidden;
-    position: relative;
     width: 100%;
     min-height: 40rem;
 
+    border-radius: 16px;
+
     z-index: 0;
 
-    @media (min-width: 75rem) {
-        background-size:  1128px 642px;
-        background-position: center;
-        height: 642px;
-        width: 1128px;
+    @media (min-width: 78em) {
+        padding: 1rem;
+        border: none;
     }
 
     .cta-section {
+        border-radius: 16px;
         left: 50%;
         position: absolute;
         text-align: center;
@@ -71,7 +71,7 @@
                 z-index: 1;
                 min-width: 20rem;
 
-                @media (min-width: 75rem) {
+                @media (min-width: 78em) {
                     min-width: 40rem;
                 }
             }

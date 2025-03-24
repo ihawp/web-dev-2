@@ -46,6 +46,7 @@ let openDropdown;
 let color = '#d2d0dd';
 
 const Mobile = (item) => {
+
     let details = item.parentElement;
 
     // animate ul
@@ -88,7 +89,6 @@ function Desktop(event, item) {
         // essentially they need to start from the left edge of the max content width (1248px, everything is centered in body)
 
         let q = item.nextElementSibling;
-        console.log({q});
 
         if (mouseY < 5
             || mouseY > 84 && mouseX < leftEdge + 200
@@ -128,6 +128,7 @@ function NavigationResize() {
 
         headerSummary.forEach(item => {
             if (item._handleMobile) {
+                console.log('removed');
                 item.removeEventListener('click', item._handleMobile);
             }
 
@@ -142,8 +143,12 @@ function NavigationResize() {
         });
     } else {
 
+        // Reset (breaks after resize from mobile-to-desktop-to-mobile if not)
+        headerDetailsOpen = undefined;
+
         headerSummary.forEach(item => {
             if (item._handleDesking) {
+                console.log('removedDesking');
                 item.removeEventListener('mouseover', item._handleDesking);
             }
             item.removeEventListener('click', preventIt);
@@ -163,5 +168,4 @@ function NavigationResize() {
 
 window.addEventListener('resize', NavigationResize);
 
-// setup
 window.dispatchEvent(new Event('resize'));

@@ -80,25 +80,24 @@
   padding-top: 132px;
   position: relative;
   background-image: url("images/cta-background.png");
-  background-size: cover;
-  background-position: top;
+  background-size: 100% 100%;
+  background-position: left;
   max-width: 100%;
   margin: 5rem auto;
   overflow: hidden;
-  position: relative;
   width: 100%;
   min-height: 40rem;
+  border-radius: 16px;
   z-index: 0;
 }
-@media (min-width: 75rem) {
+@media (min-width: 78em) {
   .cta-section-container {
-    background-size: 1128px 642px;
-    background-position: center;
-    height: 642px;
-    width: 1128px;
+    padding: 1rem;
+    border: none;
   }
 }
 .cta-section-container .cta-section {
+  border-radius: 16px;
   left: 50%;
   position: absolute;
   text-align: center;
@@ -145,7 +144,7 @@
   z-index: 1;
   min-width: 20rem;
 }
-@media (min-width: 75rem) {
+@media (min-width: 78em) {
   .cta-section-container .cta-section .domain-form #cta-text-input {
     min-width: 40rem;
   }
@@ -880,11 +879,14 @@ body {
   background: #0a0118;
   color: #fff;
   font-size: 14px;
-  overflow-x: hidden;
+}
+
+.site-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -939,7 +941,7 @@ section {
 }
 
 #cards-video {
-  width: 100%;
+  width: 672px;
 }
 
 .display-sm {
@@ -2013,32 +2015,30 @@ section {
   top: -100px;
   transition-delay: 0s;
 }
-
-@media screen and (min-width: 1138px) {
-  .cards-description {
-    font-size: 28px;
-    line-height: 36px;
-    max-width: 744px;
-  }
-  #card-6 .opportunity-background {
-    object-position: -16px -124.5px;
-  }
-  #card-6 .opportunity-ball {
-    left: 163px;
-  }
-  #card-6:hover .opportunity-background {
-    object-position: -79px -90px;
-  }
-  #card-6:hover .opportunity-chart {
-    width: 234px;
-  }
-  #card-6:hover .opportunity-traffic {
-    right: 23px;
-  }
-  #card-5 .card-animation-market-domains {
-    left: 38px;
-  }
+#card-6 .cards-description {
+  font-size: 28px;
+  line-height: 36px;
+  max-width: 744px;
 }
+#card-6 #card-6 .opportunity-background {
+  object-position: -16px -124.5px;
+}
+#card-6 #card-6 .opportunity-ball {
+  left: 163px;
+}
+#card-6 #card-6:hover .opportunity-background {
+  object-position: -79px -90px;
+}
+#card-6 #card-6:hover .opportunity-chart {
+  width: 234px;
+}
+#card-6 #card-6:hover .opportunity-traffic {
+  right: 23px;
+}
+#card-6 #card-5 .card-animation-market-domains {
+  left: 38px;
+}
+
 .mb--0-5 {
   margin-bottom: -0.5rem;
 }
@@ -2390,7 +2390,7 @@ footer .footer-bottom svg {
   display: flex;
 }
 
-@media screen and (min-width: 1248px) {
+@media screen and (min-width: 78em) {
   footer .footer-top .right .nav-group summary {
     cursor: default;
   }
