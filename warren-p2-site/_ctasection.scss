@@ -13,16 +13,14 @@
     min-height: 40rem;
 
     border-radius: 16px;
-
+    
     z-index: 0;
 
     @media (min-width: 78em) {
-        padding: 1rem;
-        border: none;
     }
 
     .cta-section {
-        border-radius: 16px;
+        border-radius: 1000px;
         left: 50%;
         position: absolute;
         text-align: center;

@@ -90,14 +90,8 @@
   border-radius: 16px;
   z-index: 0;
 }
-@media (min-width: 78em) {
-  .cta-section-container {
-    padding: 1rem;
-    border: none;
-  }
-}
 .cta-section-container .cta-section {
-  border-radius: 16px;
+  border-radius: 1000px;
   left: 50%;
   position: absolute;
   text-align: center;
@@ -674,8 +668,7 @@ input:checked + .slider:before {
   align-items: center;
 }
 .table-section .table-wrapper .table-inner {
-  background-image: url("images/spreadsheets-table-grid.png");
-  background: radial-gradient(47.16% 90.82% at 50% 0%, rgba(133, 102, 255, 0.0784313725), rgba(133, 102, 255, 0)), radial-gradient(67.49% 100% at 50% 0%, rgba(255, 255, 255, 0.0392156863), rgba(255, 255, 255, 0)), #0a0118;
+  background-color: radial-gradient(47.16% 90.82% at 50% 0%, rgba(133, 102, 255, 0.0784313725), rgba(133, 102, 255, 0)), radial-gradient(67.49% 100% at 50% 0%, rgba(255, 255, 255, 0.0392156863), rgba(255, 255, 255, 0)), #0a0118;
   border-radius: inherit;
   padding: 0 35px;
   overflow: hidden;
@@ -692,17 +685,28 @@ input:checked + .slider:before {
 }
 .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image {
   background-image: url("images/spreadsheets-table-grid.png");
+  background-size: 1130px 405px;
   object-fit: cover;
   object-position: left;
-  margin-bottom: 49px;
+  margin-bottom: 80px;
   transition: 1s cubic-bezier(0.6, 0.6, 0, 1) opacity;
-  background-position: center top;
+  background-position: left;
+  background-position-x: -80px;
+  background-position-y: -25px;
   background-repeat: no-repeat;
-  background-size: contain;
-  padding: 28px 68px 17px;
   min-height: 27rem;
   width: 90%;
   height: auto;
+}
+@media (min-width: 78em) {
+  .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image {
+    background-position-x: unset;
+    background-position-y: unset;
+    background-position: center top;
+    background-size: 1130px 405px;
+    margin-bottom: 49px;
+    padding: 28px 68px 17px;
+  }
 }
 .table-section .table-wrapper .table-inner .table-items #spreadsheet-table-image .spreadsheet-image-container {
   height: 367px;
@@ -2831,6 +2835,9 @@ footer .footer-bottom svg {
     gap: 0.5rem;
     padding: 0;
     line-height: 0;
+  }
+  .header-main #header-navigation .hn-inner > ul details summary:hover p {
+    color: #fff;
   }
   .header-main #header-navigation .hn-inner > ul details summary svg {
     rotate: 90deg;

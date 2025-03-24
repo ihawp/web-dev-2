@@ -197,14 +197,14 @@
       }
   
       .table-inner {
-        background-image: url("images/spreadsheets-table-grid.png");
-        background: radial-gradient(47.16% 90.82% at 50% 0%, #8566ff14, #8566ff00),
+        background-color: radial-gradient(47.16% 90.82% at 50% 0%, #8566ff14, #8566ff00),
           radial-gradient(67.49% 100% at 50% 0%, #ffffff0a, #fff0), #0a0118;
         border-radius: inherit;
         padding: 0 35px;
         overflow: hidden;
         height: 99.7%;
-  
+
+
         .table-items {
           width: 100%;
           display: flex;
@@ -216,18 +216,31 @@
           }
   
           #spreadsheet-table-image {
+
             background-image: url("images/spreadsheets-table-grid.png");
+
+            background-size: 1130px 405px;
+
             object-fit: cover;
             object-position: left;
-            margin-bottom: 49px;
+            margin-bottom: 80px;
             transition: 1s cubic-bezier(0.6, 0.6, 0, 1) opacity;
-            background-position: center top;
+            background-position: left;
+            background-position-x: -80px;
+            background-position-y: -25px;
             background-repeat: no-repeat;
-            background-size: contain;
-            padding: 28px 68px 17px;
             min-height: 27rem;
             width: 90%;
             height: auto;
+
+            @media (min-width: 78em) {
+              background-position-x: unset;
+              background-position-y: unset;
+              background-position: center top;
+              background-size: 1130px 405px;
+              margin-bottom: 49px;
+              padding: 28px 68px 17px;
+            }
   
             .spreadsheet-image-container {
               height: 367px;
