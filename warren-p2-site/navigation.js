@@ -49,7 +49,6 @@ const Mobile = (item) => {
 
     let details = item.parentElement;
 
-    // animate ul
     updateArrowState(details, !details.open, color);
 
     if (headerDetailsOpen === details) {
@@ -83,12 +82,6 @@ function Desktop(event, item) {
 
         let mouseX = event.clientX;
         let mouseY = event.clientY;
-
-        // make numbers more magical
-        // need to work for any total screen width 
-        // essentially they need to start from the left edge of the max content width (1248px, everything is centered in body)
-
-        let q = item.nextElementSibling;
 
         if (mouseY < 5
             || mouseY > 84 && mouseX < leftEdge + 200
@@ -128,7 +121,6 @@ function NavigationResize() {
 
         headerSummary.forEach(item => {
             if (item._handleMobile) {
-                console.log('removed');
                 item.removeEventListener('click', item._handleMobile);
             }
 
@@ -148,7 +140,6 @@ function NavigationResize() {
 
         headerSummary.forEach(item => {
             if (item._handleDesking) {
-                console.log('removedDesking');
                 item.removeEventListener('mouseover', item._handleDesking);
             }
             item.removeEventListener('click', preventIt);
