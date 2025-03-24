@@ -16,6 +16,7 @@
         <img
           src="images/spreadsheets-background.png"
           alt="Grid defined dark image in the background, decorated with shapes and letters"
+          class="spreadsheet-header-image"
         />
         <div class="header-text spreadsheet-header">
           <p class="title-badge">spreadsheet-like experience</p>
@@ -656,18 +657,24 @@
       </div>
       <div class="table-section magical-borders-container">
         <div class="table-wrapper magical-borders">
-          <div class="magical-borders-inner">
-            <img
-              src="images/spreadsheets-table-preview.png"
-              alt="a table showing data on different gaming consoles"
-            />
-            <section class="table-info">
-              <h3>Genius mode for choosing whatever you want</h3>
-              <p>
-                The keyword selection engine can be fully customized by advanced
-                users.
-              </p>
-            </section>
+          <div class="magical-borders-inner table-inner">
+            <div class="table-items">
+              <div id="spreadsheet-table-image">
+                <div class="spreadsheet-image-container">
+                  <img
+                    src="images/spreadsheets-table-preview.png"
+                    alt="A preview of the kind of data recieved."
+                  />
+                </div>
+              </div>
+              <section class="table-info">
+                <h3>Genius mode for choosing whatever you want</h3>
+                <p>
+                  The keyword selection engine can be fully customized by
+                  advanced users.
+                </p>
+              </section>
+            </div>
           </div>
         </div>
       </div>
@@ -814,7 +821,7 @@
               </div>
               <div class="tags-quick-action-shortcut">
                 <div class="tags-quick-action-shortcut-label">More</div>
-                <div class="tags-quick-action-shortcut-badge"></div>
+                <div class="tags-quick-action-shortcut-badge">⌥ .</div>
               </div>
             </div>
           </div>
@@ -831,8 +838,12 @@
             Get started with Wope and stay on top of your rankings in no time!
           </p>
           <div class="domain-form">
-            <input id="cta-text-input" type="text" placeholder="Enter your domain" >
-            <input id="cta-button-input" type="button" value="Try Demo">
+            <input
+              id="cta-text-input"
+              type="text"
+              placeholder="Enter your domain"
+            />
+            <input id="cta-button-input" type="button" value="Try Demo" />
           </div>
           <p>
             No credit card required
