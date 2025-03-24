@@ -38,11 +38,14 @@ function closeNavigation() {
 }
 
 
+// REFACTOR BELOW SO THAT MOBILE AND DESKTOP WORKS upon load AND when screen resized.
+
 let headerSummary = document.querySelectorAll('header summary');
 window.addEventListener('resize', function() {
     if (window.innerWidth > width) {
         openNavigation('auto');
-
+        
+        // look at again
         headerSummary.forEach(item => {
             item.parentElement.open = true;
         });
@@ -50,6 +53,11 @@ window.addEventListener('resize', function() {
     } else {
 
         closeNavigation();
+        /*
+        headerSummary.forEach(item => {
+            item.parentElement.open = false ;
+        });
+        */
     }
 });
 
@@ -129,62 +137,5 @@ if (window.innerWidth > width) {
             document.documentElement.addEventListener('pointermove', handle);
         
         });
-
-        /*
-        item.removeEventListener('click', () => {
-            let details = item.parentElement;
-        
-            // animate ul
-            updateArrowState(details, !details.open, color);
-        
-            if (headerDetailsOpen === details) {
-                return headerDetailsOpen = undefined;
-            }
-        
-            if (headerDetailsOpen) {
-                Reset(headerDetailsOpen, false, color);
-            }
-        
-            headerDetailsOpen = details;
-        });
-
-        item.addEventListener('click', (event) => event.preventDefault());
-
-        item.addEventListener('mouseover', (event) => {
-            event.preventDefault(); 
-            parent.open = true;
-        });
-
-        item.addEventListener('mouseout', () => {
-            id = setTimeout(() => {
-                parent.open = false;
-                clearTimeout(id);
-            }, 1000);
-        });
-
-        item.nextElementSibling.addEventListener('mouseover', () => {
-            clearTimeout(id);
-        });
-
-        item.nextElementSibling.addEventListener('mouseout', () => {
-            parent.open = false;
-        });
-
-        item.addEventListener('mouseout', () => {
-
-            let l = setTimeout(() => {
-                item.parentElement.open = false;
-                clearTimeout(l);
-            }, 1000);
-
-            item.nextElementSibling.addEventListener('mouseover', () => {
-                clearTimeout(l);
-            });
-
-            item.nextElementSibling.addEventListener('mouseout', () => {
-
-            });
-        });
-        */
     });
 }
