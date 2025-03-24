@@ -1,96 +1,109 @@
-
 .cta-section-container {
-    padding-bottom: 170px;
-    padding-top: 132px;
-    position: relative;
-    background-image: url('../images/cta-background.png');
-    background-size:  cover;
-    background-position: top;
-    max-width: 100%;
-    margin: 5rem auto;
-    overflow: hidden;
-    position: relative;
+  padding-bottom: 170px;
+  padding-top: 132px;
+  position: relative;
+  background-image: url("../images/cta-background.png");
+  background-size: cover;
+  background-position: top;
+  max-width: 100%;
+  margin: 5rem auto;
+  overflow: hidden;
+  position: relative;
+  height: 588px;
+  width: 358px;
 
-    z-index: 0;
+  z-index: 0;
+
+  @media (min-width: 75rem) {
+    background-size: 1128px 642px;
+    background-position: center;
+    height: 642px;
+    width: 1128px;
+  }
+
+  .cta-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @media (min-width: 75rem) {
-        background-size:  1128px 642px;
-        background-position: center;
-        height: 642px;
-        width: 1128px;
+      left: 50%;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      z-index: 100;
     }
 
-    .cta-section {
-        left: 50%;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        white-space: nowrap;
-        z-index: 100;
-
-        img {
-            height: 8rem;
-            width: 8rem;
-        }
-        
-        h2 {
-            background: linear-gradient(180deg, #fff 22.5%, #ffffffb3);
-            background-clip: text;
-            color: transparent;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
-            font-size: clamp(1.5rem, 2.5vw, 3.5rem);
-        }
-
-        .domain-form {
-            isolation: isolate;
-            overflow: hidden;
-            border-radius: 999px;
-            display: inline-block;
-            position: relative;
-
-            #cta-text-input {
-                color: #948ba5;
-                backdrop-filter: blur(4px);
-                isolation: isolate;
-                overflow: hidden;
-                border-radius: 999px;
-                display: inline-block;
-                background-color: transparent;
-                border: 1px solid rgba(255, 255, 255, .1);
-                font-family: inherit;
-                font-size: 100%;
-                line-height: 1.15;
-                margin: 0;
-                padding: 1rem;
-                position: relative;
-                z-index: 1;
-                min-width: 20rem;
-
-                @media (min-width: 75rem) {
-                    min-width: 40rem;
-                }
-            }
-            
-            #cta-button-input {
-                background: #0b0119;
-                border: 1px solid rgba(255, 255, 255, .1);
-                border-radius: 999px;
-                cursor: pointer;
-                padding: 7px 24px;
-                color: #948ba5;
-                backdrop-filter: blur(4px);
-                position: absolute !important;
-                right: 8px;
-                top: 8px;
-                z-index: 4;
-                transition: .4s;
-            
-                &:hover {
-                    background: linear-gradient(#0f051e, #2a2038)
-                }
-            }
-        }
+    img {
+      height: 8rem;
+      width: 8rem;
     }
+
+    h2 {
+      background: linear-gradient(180deg, #fff 22.5%, #ffffffb3);
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+      font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+    }
+
+    h2,
+    p {
+      text-wrap: wrap;
+    }
+
+    .domain-form {
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: 999px;
+      display: inline-block;
+      position: relative;
+
+      #cta-text-input {
+        color: #948ba5;
+        backdrop-filter: blur(4px);
+        isolation: isolate;
+        overflow: hidden;
+        border-radius: 999px;
+        display: inline-block;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+        padding: 1rem;
+        position: relative;
+        z-index: 1;
+        min-width: 20rem;
+
+        @media (min-width: 75rem) {
+          min-width: 40rem;
+        }
+      }
+
+      #cta-button-input {
+        background: #0b0119;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        cursor: pointer;
+        padding: 7px 24px;
+        color: #948ba5;
+        backdrop-filter: blur(4px);
+        position: absolute !important;
+        right: 8px;
+        top: 8px;
+        z-index: 4;
+        transition: 0.4s;
+
+        &:hover {
+          background: linear-gradient(#0f051e, #2a2038);
+        }
+      }
+    }
+  }
 }

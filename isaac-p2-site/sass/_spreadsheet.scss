@@ -1,194 +1,283 @@
 .section-header {
-    position: relative;
+  position: relative;
+  width: 100%;
+
+  .spreadsheet-header-image {
     width: 100%;
-    
+    object-fit: cover;
+    object-position: top;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
 
-    img {
-        width: 100%;
-        object-fit: cover;
-        object-position: top;
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-    }
+  .spreadsheet-header {
+    padding: 30% 1rem 1rem 1rem;
+  }
 
-    .spreadsheet-header {
-        padding: 30% 1rem  1rem  1rem ;
-    }
+  .header-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    z-index: 1000;
+    align-items: center;
 
-    .header-text {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        position: relative;
-        z-index: 1000;
-        
+    p {
+      max-width: 626px;
+    }
+  }
 
-        @media (min-width: 75rem) {
-            top: 60%;
-            left: 40%;
-            right: 40%;
-            width: 20%;
-        }
-    }
-        
-    .title-badge {
-        text-transform: uppercase;
-        backdrop-filter: blur(5rem);
-        border: 1px solid rgb(72, 72, 72);
-        font-size: clamp(.75rem, 1.25vw, 1.75rem);
-        border-radius: 5rem;
-    }
+  .title-badge {
+    background: #ffffff0a;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+    margin: 0 auto 12px;
+    padding: 4px 14px;
+    width: -moz-max-content;
+    width: max-content;
+    font-size: clamp(0.75rem, 1.25vw, 1.75rem);
+  }
 
-    h2 {
-        font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+  h2 {
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 700;
+
+    @media (min-width: 75rem) {
+      font-size: 56px;
+      line-height: 64px;
     }
+  }
 }
 
 .svg-inactive {
-    display: none;
+  display: none;
 }
 
 .text-inactive {
-    display: none;
-    background-color: #282333;
-    height: 1rem;
-    width: 90%;
-    margin: 8px;
+  display: none;
+  background-color: #282333;
+  height: 1rem;
+  width: 90%;
+  margin: 8px;
 }
 
 .unfocused {
-    .progress {
-        display: none;
-    }
-    
-    .svg-active {
-        display: none;
-    }
+  .progress {
+    display: none;
+  }
 
-    .svg-inactive {
-        display: block;
-    }
-    
-    p {
-        display: none;
-    }
-    
-    .text-inactive {
-        display: block;
-    }
+  .svg-active {
+    display: none;
+  }
+
+  .svg-inactive {
+    display: block;
+  }
+
+  p {
+    display: none;
+  }
+
+  .text-inactive {
+    display: block;
+  }
+
+  img {
+    opacity: 0;
+  }
 }
 
 .sliding-tabs::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .sliding-tabs {
-    overflow-x: hidden;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 0;
-    margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-top: 20%;
+  padding: 0;
+  margin: 0;
 
-    .tab {
-        display: inline-block;
-        vertical-align: top;
-        white-space: normal;
-        text-align: left;
-        width: 20rem;
-        margin: 1rem;
-        padding: 1rem;
-        border-radius: 16px;
-        position: relative;
-        height: 15rem;
+  .tab {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+    text-align: left;
+    border: 1px solid rgb(72, 72, 72);
+    width: 20rem;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5%;
+    position: relative;
+    height: 254px;
+    width: 342px;
 
-        @media (min-width: 75rem) {
-            width: 50rem;
-            height: 20rem;
-        }
-
-        img {
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-        }
-
-        svg {
-            padding: 3px;
-            border: 1px solid rgb(72, 72, 72);
-            border-radius: 50%;
-            height: 3rem;
-            width: 3rem;
-            margin: 1rem;
-        }
-
-        p,
-        h4 {
-            margin: 1rem;
-        }
-
-        .progress {
-            width: 90%;
-            height: 5px;
-            margin: 1rem;
-            background-color: #948ba5;
-
-            .complete {
-                height: 5px;
-                width: 100%;
-                background-color: #e5e4ea;
-            }
-        }
+    @media (min-width: 75rem) {
+      border-radius: 16px;
+      cursor: pointer;
+      height: 254px;
+      position: relative;
+      width: 384px;
     }
+
+    img {
+      height: 139.2px;
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      width: 322px;
+      z-index: 100;
+    }
+
+    svg {
+      padding: 3px;
+      border: 1px solid rgb(72, 72, 72);
+      border-radius: 50%;
+      height: 3rem;
+      width: 3rem;
+      margin: 1rem;
+    }
+
+    p,
+    h4 {
+      margin: 1rem 1rem 0 1rem;
+      padding: 0;
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 24px;
+    }
+
+    p {
+      font-feature-settings: "cv06" on, "calt" off, "liga" off;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 24px;
+    }
+
+    .progress {
+      width: 90%;
+      height: 5px;
+      margin: 1rem;
+      background-color: #948ba5;
+
+      .complete {
+        height: 5px;
+        width: 100%;
+        background-color: #e5e4ea;
+      }
+    }
+  }
 }
 
 .table-section {
-    background-image: url('../images/spreadsheets-table-grid.png');
-    margin-top: 2rem;
-    width: 80%;
-    height: fit-content;
-    justify-self: center;
+  margin-top: 2rem;
+  width: 80%;
+  height: fit-content;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  margin-bottom: 5rem;
 
-    @media (min-width: 75rem) {
+  //   @media (min-width: 75rem) {
+  //     width: 100%;
+  //   }
+
+  .table-wrapper {
+    gap: 0;
+    aspect-ratio: 12 / 5;
+    background: linear-gradient(90deg, #bab3ff00, #bab3ff99, #bab3ff00 34.04%),
+      linear-gradient(180deg, #a9a3c233, #a9a3c20c);
+    border-radius: 16px;
+    // height: 588px;
+    padding: 1px;
+    text-align: center;
+    width: 100%;
+    height: 40rem;
+
+    @media (min-width: 100rem) {
+      height: 52rem;
+    }
+
+    .magical-borders-inner {
+      align-items: center;
+    }
+
+    .table-inner {
+      background-image: url("../images/spreadsheets-table-grid.png");
+      background: radial-gradient(47.16% 90.82% at 50% 0%, #8566ff14, #8566ff00),
+        radial-gradient(67.49% 100% at 50% 0%, #ffffff0a, #fff0), #0a0118;
+      border-radius: inherit;
+      padding: 0 35px;
+      overflow: hidden;
+      height: 99.7%;
+
+      .table-items {
         width: 100%;
-    }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-    .table-wrapper {
-        gap: 0;
-        aspect-ratio: 12 / 5;
+        #spreadsheet-table-image {
+          background-image: url("../images/spreadsheets-table-grid.png");
+          object-fit: cover;
+          object-position: left;
+          margin-bottom: 49px;
+          transition: 1s cubic-bezier(0.6, 0.6, 0, 1) opacity;
+          background-position: center top;
+          background-repeat: no-repeat;
+          background-size: contain;
+          padding: 28px 68px 17px;
+          min-width: 1128px;
+          min-height: 27rem;
+          width: 90%;
+          height: auto;
 
-        .magical-borders-inner {
-            align-items: center;
-        }
+          .spreadsheet-image-container {
+            height: 367px;
+            margin: 0 auto;
+            -webkit-mask-image: linear-gradient(
+              180deg,
+              rgba(255, 255, 255, 0) 6.62%,
+              #fff 19.85%
+            );
+            mask-image: linear-gradient(180deg, #fff0 6.62%, #fff 19.85%);
+            -webkit-mask-position: -20%;
+            mask-position: -20%;
+            -webkit-mask-size: 100% 120%;
+            mask-size: 100% 120%;
+            min-width: 959px;
+            width: 80%;
+            height: auto;
 
-        img {
-            width: 100%;
-            height: 20rem;
-            object-fit: cover;
-            object-position: left ;
-
-            @media (min-width: 75rem) {
-                width: 80%;
-                height: auto;
+            img {
+              height: 100%;
+              width: 100%;
             }
+          }
+
+          @media (min-width: 75rem) {
+            margin-bottom: 32px;
+            padding: 23px 12px 17px;
+          }
         }
+      }
     }
-    
-    .table-info {
-        h3 {
-            font-size: clamp(1.25rem, 2vw, 2.75rem);
-        }
+  }
+
+  .table-info {
+    h3 {
+      font-size: clamp(1.25rem, 2vw, 2.75rem);
     }
+  }
 }
-
-    
-
-
-    
-
-
-
-
