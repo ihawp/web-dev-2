@@ -1889,10 +1889,9 @@
         }
       }
     }
-  
   }
 
-  details summary {
+  summary::marker {
     list-style-type: none;
     list-style: none;
     -webkit-appearance: none;
