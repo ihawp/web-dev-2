@@ -1274,11 +1274,6 @@ section {
   top: -100px;
   transition-delay: 0s;
 }
-#card-6 .cards-description {
-  font-size: 28px;
-  line-height: 36px;
-  max-width: 744px;
-}
 #card-6 #card-6 .opportunity-background {
   object-position: -16px -124.5px;
 }
@@ -1651,6 +1646,23 @@ footer .footer-bottom svg {
 }
 
 @media screen and (min-width: 78em) {
+  .cards-description {
+    font-size: 28px;
+    line-height: 36px;
+    max-width: 674px;
+  }
+  .section-header .header-text p:last-of-type {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 28px;
+  }
+  .font-size-16 {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 10px 0 0 0;
+    font-family: "Inter V", sans-serif;
+  }
   footer .footer-top .right .nav-group summary {
     cursor: default;
   }
@@ -2014,6 +2026,9 @@ footer .footer-bottom svg {
     height: min-content;
     width: max-content;
   }
+  .header-main #header-navigation .hn-inner > ul details svg path {
+    stroke-width: 1px;
+  }
   .header-main #header-navigation .hn-inner > ul details ul {
     gap: 0.5rem;
     top: 90px;
@@ -2025,14 +2040,18 @@ footer .footer-bottom svg {
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     opacity: 0;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease-in;
     z-index: 10;
     transform-origin: top left;
     width: 852px;
     position: absolute;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
+  }
+  .header-main #header-navigation .hn-inner > ul details ul.one-open {
+    transition: none;
   }
   .header-main #header-navigation .hn-inner > ul details ul.first {
     left: 300px;
@@ -2049,29 +2068,45 @@ footer .footer-bottom svg {
     padding-top: 4px;
     margin-left: 25px;
     margin-bottom: 4px;
+    font-weight: 500;
+    font-family: "Inter V", sans-serif;
+    font-feature-settings: "cv06" on, "calt" off, "liga" off;
+    letter-spacing: 0.08em;
   }
   .header-main #header-navigation .hn-inner > ul details ul li {
     display: flex;
     align-items: center;
     padding: 6px;
     border-radius: 12px;
-    transition: all 0.2s ease;
-    gap: 12px;
+    transition: all 0.4s ease-out;
+    gap: 6px;
     width: calc(50% - 3rem);
     cursor: pointer;
     margin-left: calc(35px - 1rem);
   }
+  .header-main #header-navigation .hn-inner > ul details ul li svg path {
+    stroke-width: 1px;
+  }
   .header-main #header-navigation .hn-inner > ul details ul li:hover {
     background: rgba(255, 255, 255, 0.0509803922);
   }
+  .header-main #header-navigation .hn-inner > ul details ul li .inner-text {
+    font-family: "Inter V", sans-serif;
+    font-feature-settings: "cv06" on, "calt" off, "liga" off;
+    letter-spacing: -0.01em;
+  }
   .header-main #header-navigation .hn-inner > ul details ul li .inner-text a {
     font-size: 18px;
-    line-height: 28px;
+    line-height: 24px;
     color: #fff;
     margin-bottom: 8px;
   }
   .header-main #header-navigation .hn-inner > ul details ul li .inner-text div {
-    color: #d2d0dd;
+    font-size: 14px;
+    color: #9b96b0;
+  }
+  .header-main #header-navigation .hn-inner > ul details ul li .inner-text a, .header-main #header-navigation .hn-inner > ul details ul li .inner-text div {
+    font-weight: 500;
   }
   .header-main #header-navigation .hn-inner > ul details ul li svg {
     border-radius: 10px;
@@ -2095,10 +2130,6 @@ footer .footer-bottom svg {
     padding: 0;
     line-height: 0;
   }
-  .header-main #header-navigation .hn-inner > ul details summary:hover p {
-    opacity: 1;
-    color: #fff !important;
-  }
   .header-main #header-navigation .hn-inner > ul details summary svg {
     rotate: 90deg;
     width: 16px;
@@ -2107,6 +2138,9 @@ footer .footer-bottom svg {
   }
   .header-main #header-navigation .hn-inner > ul details[open] summary svg {
     rotate: 270deg;
+  }
+  .header-main #header-navigation .hn-inner > ul details[open] summary svg path {
+    stroke: #fff;
   }
   .header-main #header-navigation .hn-inner > ul details[open] ul {
     opacity: 1;
@@ -2228,22 +2262,20 @@ footer .footer-bottom svg {
 }
 
 .cta-section-container {
-  padding-bottom: 170px;
-  padding-top: 132px;
   position: relative;
   background-image: url("../images/cta-background.png");
-  background-size: 105% 100%;
-  background-position: left;
+  background-size: 300% 100%;
+  background-position: -16px;
   max-width: 100%;
   margin: 5rem auto;
+  width: 358px;
   overflow: hidden;
-  width: 100%;
   min-height: 40rem;
   border-radius: 12px 0 0 16px;
-  z-index: 0;
 }
 @media (min-width: 78em) {
   .cta-section-container {
+    width: 100%;
     border-radius: 16px;
     background-size: 102% 102%;
     background-position: center;
@@ -2313,7 +2345,7 @@ footer .footer-bottom svg {
   right: 8px;
   top: 8px;
   z-index: 4;
-  transition: 0.4s;
+  transition: all 0.4s ease;
 }
 .cta-section-container .cta-section .domain-form #cta-button-input:hover {
   background: linear-gradient(#0f051e, #2a2038);
@@ -2328,7 +2360,7 @@ footer .footer-bottom svg {
   max-width: 654px;
   object-fit: cover;
   object-position: left;
-  background-image: url("images/tags-quick-action-grid.png");
+  background-image: url("../images/tags-quick-action-grid.png");
 }
 .searchable-table {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1215686275), rgba(255, 255, 255, 0.0039215686) 57.81%) no-repeat;
@@ -2658,20 +2690,38 @@ input:checked + .slider:before {
 .section-header {
   position: relative;
   width: 100%;
+  margin-top: 50px;
+}
+@media (min-width: 78em) {
+  .section-header {
+    margin-top: 100px;
+  }
 }
 .section-header .spreadsheet-header-image {
-  width: 100%;
+  width: 519px;
+  max-width: max-content;
   object-fit: cover;
   object-position: top;
   position: absolute;
   top: 0;
   right: 0;
-  left: 0;
+  left: 50%;
+  zoom: 140%;
+  transform: translateX(-50%);
+  clip-path: inset(0 0 62px 0);
+}
+@media (min-width: 78rem) {
+  .section-header .spreadsheet-header-image {
+    clip-path: none;
+    height: unset;
+    width: 85%;
+  }
 }
 .section-header .spreadsheet-header {
   padding: 30% 1rem 1rem 1rem;
 }
 .section-header .header-text {
+  margin-top: 115px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -2680,24 +2730,48 @@ input:checked + .slider:before {
   text-align: center;
   z-index: 1000;
   align-items: center;
+  margin-top: 126px;
+}
+@media (min-width: 78rem) {
+  .section-header .header-text {
+    margin-top: -46px;
+  }
+}
+.section-header .header-text .not-button {
+  margin-bottom: 30px;
+}
+@media (min-width: 78rem) {
+  .section-header .header-text .not-button {
+    margin-bottom: 10px;
+  }
 }
 .section-header .header-text p {
-  max-width: 626px;
+  margin: 0;
 }
-.section-header .title-badge {
-  background: rgba(255, 255, 255, 0.0392156863);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 999px;
-  margin: 0 auto 12px;
-  padding: 4px 14px;
-  width: -moz-max-content;
-  width: max-content;
-  font-size: clamp(0.75rem, 1.25vw, 1.75rem);
+.section-header .header-text p:first-of-type {
+  color: #fff;
+}
+.section-header .header-text p:last-of-type {
+  margin-top: 20px;
+  line-height: 24px;
+  font-size: 16px;
+  min-width: 360px;
+  max-width: 360px;
+}
+@media (min-width: 78rem) {
+  .section-header .header-text p:last-of-type {
+    line-height: 28px;
+    font-size: 20px;
+    max-width: 678px;
+    margin-top: 0;
+  }
 }
 .section-header h2 {
-  font-size: 36px;
-  line-height: 44px;
+  font-size: 32px;
+  line-height: 42px;
   font-weight: 700;
+  max-width: 100%;
+  margin: 0 0 0.5rem 0;
 }
 @media (min-width: 78em) {
   .section-header h2 {
@@ -2733,6 +2807,9 @@ input:checked + .slider:before {
 .unfocused .text-inactive {
   display: block;
 }
+.unfocused .text-inactive:last-of-type {
+  width: 70%;
+}
 .unfocused img {
   opacity: 0;
 }
@@ -2748,7 +2825,6 @@ input:checked + .slider:before {
   padding: 0;
   margin: 0;
   width: 100%;
-  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, #fff 8.66%, #fff 91.34%, rgba(255, 255, 255, 0));
 }
 .sliding-tabs .tab {
   display: inline-block;
@@ -2778,6 +2854,7 @@ input:checked + .slider:before {
   top: 8px;
   width: 322px;
   z-index: 100;
+  mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, #fff 8.66%, #fff 91.34%, rgba(255, 255, 255, 0));
 }
 .sliding-tabs .tab svg {
   padding: 3px;
@@ -2899,7 +2976,13 @@ input:checked + .slider:before {
   }
 }
 .table-section .table-info h3 {
-  font-size: clamp(1.25rem, 2vw, 2.75rem);
+  font-size: 24px;
+  line-height: 32px;
+}
+.table-section .table-info p {
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
 }
 
 /*# sourceMappingURL=style.css.map */

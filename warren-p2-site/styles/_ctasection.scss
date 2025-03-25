@@ -1,22 +1,19 @@
 
 .cta-section-container {
-    padding-bottom: 170px;
-    padding-top: 132px;
     position: relative;
     background-image: url('../images/cta-background.png');
-    background-size: 105% 100%;
-    background-position: left;
+    background-size: 300% 100%;
+    background-position: -16px;
     max-width: 100%;
     margin: 5rem auto;
+    width: 358px;
     overflow: hidden;
-    width: 100%;
     min-height: 40rem;
 
     border-radius: 12px 0 0 16px;
 
-    z-index: 0;
-
     @media (min-width: 78em) {
+        width: 100%;
         border-radius: 16px;
         background-size: 102% 102%;
         background-position: center;
@@ -88,10 +85,10 @@
                 right: 8px;
                 top: 8px;
                 z-index: 4;
-                transition: .4s;
+                transition: all .4s ease;
             
                 &:hover {
-                    background: linear-gradient(#0f051e, #2a2038)
+                    background: linear-gradient(#0f051e, #2a2038);
                 }
             }
         }

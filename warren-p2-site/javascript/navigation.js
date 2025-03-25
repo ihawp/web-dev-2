@@ -67,13 +67,26 @@ function preventIt(event) {
     event.preventDefault();
 }
 
+const setPColor = (item, color) => {
+    let q = item.childNodes[1];
+    q.style.color = color;
+}
+
 function Desktop(event, item) {
     event.preventDefault();
 
     if (openDropdown && openDropdown !== item) {
         openDropdown.parentElement.open = false;
+        setPColor(openDropdown, '#d2d0dd');
     }
     item.parentElement.open = true;
+    setPColor(item, '#fff');
+    headerSummary.forEach((item) => {
+        let q = item.parentElement.childNodes[3];
+        q.classList.add('one-open');
+    });
+    
+
     openDropdown = item;
 
     const handle = (event) => {
@@ -90,9 +103,14 @@ function Desktop(event, item) {
             || mouseX > (leftEdge + item.nextElementSibling.clientWidth + 120) 
             || mouseX > leftEdge + 588 && mouseY < 84
             || mouseY > 70 + item.nextElementSibling.clientHeight) {
-            document.documentElement.removeEventListener('pointermove', handle);
-            item.parentElement.open = false;
-        }
+                headerSummary.forEach((item) => {
+                    let q = item.parentElement.childNodes[3];
+                    setPColor(openDropdown, '#d2d0dd');
+                    q.classList.remove('one-open');
+                });
+                document.documentElement.removeEventListener('pointermove', handle);
+                item.parentElement.open = false;
+            }
     }
 
     document.documentElement.addEventListener('pointermove', handle);
@@ -160,6 +178,7 @@ function NavigationResize() {
         });
 
         navButton.addEventListener('click', ControlNav);
+        closeNavigation();
     }
     lasting = window.innerWidth > width;
     lasting2 = window.innerWidth < width;

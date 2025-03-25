@@ -1433,12 +1433,6 @@
       }
     }
   
-    .cards-description {
-      font-size: 28px;
-      line-height: 36px;
-      max-width: 744px;
-    }
-  
     #card-6 {
   
       .opportunity-background {
@@ -1897,6 +1891,23 @@
     display: flex;
   }
   @media screen and (min-width: 78em) {
+    .cards-description {
+      font-size: 28px;
+      line-height: 36px;
+      max-width: 674px;
+    }
+    .section-header .header-text p:last-of-type {
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -.01em;
+      line-height: 28px;
+    }
+    .font-size-16 {
+      font-size: 16px;
+      line-height: 24px;
+      margin: 10px 0 0 0;
+      font-family: 'Inter V', sans-serif;
+    }
     footer .footer-top .right .nav-group summary {
       cursor: default;
     }
@@ -2357,6 +2368,11 @@
                   width: max-content;
                 }
               }
+              svg {
+                path {
+                  stroke-width: 1px;
+                }
+              }
               ul {
                 gap: .5rem;
                 top: 90px;
@@ -2368,14 +2384,19 @@
                 -webkit-backdrop-filter: blur(12px);
                 backdrop-filter: blur(12px);
                 opacity: 0;
-                transition: all .2s ease;
+                transition: all .2s ease-in;
                 z-index: 10;
                 transform-origin: top left;
                 width: 852px;
                 position: absolute;
                 display: flex;
+                align-items: center;
                 flex-wrap: wrap;
                 flex-direction: row;
+
+                &.one-open {
+                  transition: none;
+                }
   
                 &.first {
                   left: 300px;
@@ -2393,6 +2414,10 @@
                   padding-top: 4px;
                   margin-left: 25px;
                   margin-bottom: 4px;
+                  font-weight: 500;
+                  font-family: 'Inter V', sans-serif;
+                  font-feature-settings: "cv06" on,"calt" off,"liga" off;
+                  letter-spacing: .08em;
                 }
   
             
@@ -2401,25 +2426,38 @@
                   align-items: center;
                   padding: 6px;
                   border-radius: 12px;
-                  transition: all .2s ease;
-                  gap: 12px;
+                  transition: all .4s ease-out;
+                  gap: 6px;
                   width: calc(50% - 3rem);
                   cursor: pointer;
                   margin-left: calc(35px - 1rem);
-  
+
+                  svg {
+                    path {
+                      stroke-width: 1px;
+                    }
+                  }
+
                   &:hover {
                     background: #ffffff0d;
                   }
-  
+
                   .inner-text {
+                    font-family: 'Inter V', sans-serif;
+                    font-feature-settings: "cv06" on,"calt" off,"liga" off;
+                    letter-spacing: -.01em;
                     a {
                       font-size: 18px;
-                      line-height: 28px;
+                      line-height: 24px;
                       color: #fff;
                       margin-bottom: 8px;
                     }
                     div {
-                      color: #d2d0dd;
+                      font-size: 14px;
+                      color: #9b96b0;
+                    }
+                    a, div {
+                      font-weight: 500;
                     }
                   }
   
@@ -2447,14 +2485,6 @@
                 padding: 0;
                 line-height: 0;
 
-                &:hover {
-                  p {
-                    opacity: 1;
-                    color: #fff !important;
-                  }
-
-                }
-  
                 svg {
                   rotate: 90deg;
                   width: 16px;
@@ -2467,6 +2497,9 @@
                 summary {
                   svg {
                     rotate: 270deg;
+                    path {
+                      stroke: #fff;
+                    }
                   }
                 }
                 ul {
