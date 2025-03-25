@@ -30,7 +30,7 @@ function ControlNav() {
 function UpdateNavigation(bool, svg, overflow) {
     isOpen = bool;
     navButton.innerHTML = svg;
-    document.body.style.overflow = overflow;
+    document.body.style.overflowY = overflow;
 }
 
 function openNavigation(bodyOverflow) {

@@ -1,12 +1,11 @@
 .section-header {
-    position: relative;
-    width: 100%;
 
     margin-top: 50px;
+    z-index: 0;
     @media (min-width: 78em) {
       margin-top: 100px;
     }
-  
+
     .spreadsheet-header-image {
       width: 519px;
       max-width: max-content;
@@ -330,3 +329,66 @@
     }
   }
   
+  .section-header, .section-header-2 {
+    position: relative;
+    width: 100%;
+  }
+
+  .section-header, .section-header-2 {
+      &:before {
+        background: linear-gradient(270deg, #3d354e00 28.87%, #3d354e 45.39%, #3d354e 53.54%, #3d354e00 70.06%);
+        top: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        z-index: 10;
+      }
+      &:after {
+        content: "";
+        height: 100%;
+        left: 50%;
+        max-width: 1680px;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        transform: translate(-50%);
+        width: 100vw;
+        z-index: 9;
+        background: radial-gradient(40.23% 36.93% at 50% 0%, #8566ff0a, #8566ff00 100%, #8566ff00), radial-gradient(32.98% 20.96% at 50% 32.36%, #8566ff14, #8566ff00);
+        z-index: 3;
+      }
+}
+
+.section-header-2 {
+  .header-text {
+    margin-top: 115px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    z-index: 1000;
+    align-items: center;
+
+    h2 {
+      margin: 0 0 3rem 0;
+      font-size: 36px;
+      line-height: 44px;
+      @media (min-width: 78em) {
+        font-size: 56px;
+        line-height: 64px;
+      }
+    }
+
+
+    p {
+      margin: 0;
+      &:first-of-type {
+        color: #fff;
+      }
+    }
+  }
+}
