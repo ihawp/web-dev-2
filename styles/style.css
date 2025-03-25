@@ -1527,6 +1527,9 @@ header {
   opacity: 1;
   top: 43px;
 }
+.header-main #header-navigation.h-max .hn-inner {
+  padding: 0 0 130px 0;
+}
 .header-main #header-navigation a {
   color: #d2d0dd;
   text-decoration: none;
@@ -1609,7 +1612,6 @@ header {
 .header-main #header-navigation .hn-inner {
   overflow-x: hidden;
   overflow-y: scroll;
-  padding: 0 0 130px 0;
   width: max-content;
 }
 .header-main #header-navigation .hn-inner ul {
