@@ -1653,7 +1653,7 @@ header {
   justify-content: space-between;
 }
 
-summary {
+details summary {
   list-style-type: none;
   list-style: none;
   -webkit-appearance: none;
