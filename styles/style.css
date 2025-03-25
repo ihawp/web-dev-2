@@ -1527,8 +1527,10 @@ header {
   opacity: 1;
   top: 43px;
 }
-.header-main #header-navigation.h-max .hn-inner {
-  padding: 0 0 130px 0;
+@media (max-width: 78em) {
+  .header-main #header-navigation.h-max .hn-inner {
+    padding: 0 0 130px 0;
+  }
 }
 .header-main #header-navigation a {
   color: #d2d0dd;

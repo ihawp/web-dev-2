@@ -1736,8 +1736,10 @@
         opacity: 1;
         top: 43px;
 
-        .hn-inner {
-          padding: 0 0 130px 0;
+        @media (max-width: 78em) {
+          .hn-inner {
+            padding: 0 0 130px 0;
+          }
         }
       }
   
