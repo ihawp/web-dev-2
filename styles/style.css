@@ -2796,6 +2796,7 @@ input:checked + .slider:before {
   zoom: 140%;
   transform: translateX(-50%);
   clip-path: inset(0 0 62px 0);
+  overflow: hidden;
 }
 @media (min-width: 78rem) {
   .section-header .spreadsheet-header-image {

@@ -19,6 +19,8 @@
       transform: translateX(-50%);
       clip-path: inset(0 0 62px 0);
 
+      overflow: hidden;
+
       @media (min-width: 78rem) {
         clip-path: none;
         height: unset;
