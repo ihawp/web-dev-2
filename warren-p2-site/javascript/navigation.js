@@ -53,8 +53,11 @@ const Mobile = (item) => {
     updateArrowState(details, !details.open, color);
 
     if (headerDetailsOpen === details) {
+        setPColor(openDropdown, '#d2d0dd');
         return headerDetailsOpen = undefined;
     }
+
+    setPColor(item, '#fff');
 
     if (headerDetailsOpen && headerDetailsOpen !== details) {
         Reset(headerDetailsOpen, false, color);
