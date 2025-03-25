@@ -1652,7 +1652,9 @@ header {
 }
 
 summary {
+  list-style-type: none;
   list-style: none;
+  -webkit-appearance: none;
   cursor: pointer;
 }
 

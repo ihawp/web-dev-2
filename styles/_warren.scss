@@ -1708,10 +1708,6 @@
   
     #header-navigation {
 
-      @if (#header-navigation) {
-
-      }
-  
       background: #0a0118b8;
       -webkit-backdrop-filter: blur(36px);
       backdrop-filter: blur(36px);
@@ -1895,7 +1891,9 @@
   }
 
   summary {
+    list-style-type: none;
     list-style: none;
+    -webkit-appearance: none;
     cursor: pointer;
   }
   
