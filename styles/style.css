@@ -1653,7 +1653,7 @@ header {
   justify-content: space-between;
 }
 
-details summary {
+summary::marker {
   list-style-type: none;
   list-style: none;
   -webkit-appearance: none;
@@ -2850,7 +2850,6 @@ input:checked + .slider:before {
 .section-header h2 {
   font-size: 32px;
   line-height: 42px;
-  font-weight: 700;
   max-width: 100%;
   margin: 0 0 0.5rem 0;
 }
