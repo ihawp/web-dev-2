@@ -1886,6 +1886,11 @@
     }
   
   }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
   
   .menu-button {
     max-width: 98.16px;
@@ -2214,6 +2219,7 @@
         background-color: transparent;
   
         -webkit-backdrop-filter: blur(0);
+        filter: blur(0);
         backdrop-filter: blur(0);
     
         z-index: 9;

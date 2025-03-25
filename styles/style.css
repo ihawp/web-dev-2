@@ -1648,6 +1648,11 @@ header {
   justify-content: space-between;
 }
 
+summary {
+  list-style: none;
+  cursor: pointer;
+}
+
 .menu-button {
   max-width: 98.16px;
   padding: 0;
@@ -1916,6 +1921,7 @@ header {
   .header-main #header-navigation {
     background-color: transparent;
     -webkit-backdrop-filter: blur(0);
+    filter: blur(0);
     backdrop-filter: blur(0);
     z-index: 9;
     justify-content: center;
