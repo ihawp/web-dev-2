@@ -31,6 +31,7 @@ function UpdateNavigation(bool, svg, overflow) {
     isOpen = bool;
     navButton.innerHTML = svg;
     document.body.style.overflowY = overflow;
+    document.documentElement.style.overflowY = overflow;
 }
 
 function openNavigation(bodyOverflow) {
